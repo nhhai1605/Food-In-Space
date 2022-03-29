@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: d5821287dee6e0640bf5da63f7aee507
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Box019
+    100002: Dummy002
+    100004: Line010
+    100006: Object001
+    100008: Object002
+    100010: //RootNode
+    400000: Box019
+    400002: Dummy002
+    400004: Line010
+    400006: Object001
+    400008: Object002
+    400010: //RootNode
+    2100000: EC_blackrubber
+    2100002: EC_whiteplastic
+    2100004: EC_metalframe
+    2100006: EC_autoilum
+    2100008: MM_CB_ClearCristal
+    2300000: Box019
+    2300002: Line010
+    2300004: Object001
+    2300006: Object002
+    3300000: Box019
+    3300002: Line010
+    3300004: Object001
+    3300006: Object002
+    4300000: Box019
+    4300002: Line010
+    4300004: Object001
+    4300006: Object002
+    6400000: Box019
+    6400002: Line010
+    6400004: Object001
+    6400006: Object002
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EC_autoilum
+    second: {fileID: 2100000, guid: 9b2b5c4b2b51ad04fb22806290f3b0a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EC_blackrubber
+    second: {fileID: 2100000, guid: e6173c13ab09c8e4d8228ba526009a48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EC_metalframe
+    second: {fileID: 2100000, guid: 9c6f8f3c21e4f1b4e8efea4e18122ab7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EC_whiteplastic
+    second: {fileID: 2100000, guid: 83d153a622dc95b44b16508b010ba96b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_ClearCristal
+    second: {fileID: 2100000, guid: 1c83d376d7d9f884d93f9d4e9b0afe06, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

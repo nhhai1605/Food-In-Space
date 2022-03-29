@@ -1,0 +1,382 @@
+fileFormatVersion: 2
+guid: 0aaf54c594c026a4d9b4ed31b79aa007
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Box020
+    100002: Box021
+    100004: Box022
+    100006: Box023
+    100008: Box024
+    100010: Chair
+    100012: ctr_Sala03
+    100014: Cylinder012
+    100016: Cylinder016
+    100018: Cylinder018
+    100020: Gate005
+    100022: Line011
+    100024: Object006
+    100026: Object007
+    100028: Object008
+    100030: Object009
+    100032: Object010
+    100034: Object011
+    100036: Object012
+    100038: RoomRoof
+    100040: Sala02
+    100042: //RootNode
+    100044: Tube001
+    100046: Tube002
+    100048: Box025
+    100050: Box026
+    100052: Box027
+    100054: Box028
+    100056: Chair001
+    100058: Cylinder019
+    100060: Cylinder020
+    100062: Cylinder021
+    100064: Tube003
+    400000: Box020
+    400002: Box021
+    400004: Box022
+    400006: Box023
+    400008: Box024
+    400010: Chair
+    400012: ctr_Sala03
+    400014: Cylinder012
+    400016: Cylinder016
+    400018: Cylinder018
+    400020: Gate005
+    400022: Line011
+    400024: Object006
+    400026: Object007
+    400028: Object008
+    400030: Object009
+    400032: Object010
+    400034: Object011
+    400036: Object012
+    400038: RoomRoof
+    400040: Sala02
+    400042: //RootNode
+    400044: Tube001
+    400046: Tube002
+    400048: Box025
+    400050: Box026
+    400052: Box027
+    400054: Box028
+    400056: Chair001
+    400058: Cylinder019
+    400060: Cylinder020
+    400062: Cylinder021
+    400064: Tube003
+    2100000: Sala02_whiteplastic
+    2100002: Sala02_metalfloor
+    2100004: Sala02_blackrubber
+    2100006: Sala02_autoilum
+    2100008: roof02metaldetail
+    2100010: roof02_blackrubber
+    2100012: roof02lights
+    2100014: MM_CB_GreyRubber00
+    2100016: MM_CB_WhitePlastic
+    2100018: Monitor2
+    2100020: MM_CB_WhiteLight00
+    2100022: MM_CB_ClearCristal
+    2100024: BlackMetal
+    2100026: ColorPaint2
+    2100028: Mission Logo
+    2100030: Monitor
+    2100032: ButtonLight
+    2300000: Box020
+    2300002: Box021
+    2300004: Box022
+    2300006: Box023
+    2300008: Box024
+    2300010: Chair
+    2300012: Cylinder012
+    2300014: Cylinder016
+    2300016: Cylinder018
+    2300018: Gate005
+    2300020: Line011
+    2300022: Object006
+    2300024: Object007
+    2300026: Object008
+    2300028: Object009
+    2300030: Object010
+    2300032: Object011
+    2300034: Object012
+    2300036: RoomRoof
+    2300038: Sala02
+    2300040: Tube001
+    2300042: Tube002
+    2300044: Box025
+    2300046: Box026
+    2300048: Box027
+    2300050: Box028
+    2300052: Chair001
+    2300054: Cylinder019
+    2300056: Cylinder020
+    2300058: Cylinder021
+    2300060: Tube003
+    3300000: Box020
+    3300002: Box021
+    3300004: Box022
+    3300006: Box023
+    3300008: Box024
+    3300010: Chair
+    3300012: Cylinder012
+    3300014: Cylinder016
+    3300016: Cylinder018
+    3300018: Gate005
+    3300020: Line011
+    3300022: Object006
+    3300024: Object007
+    3300026: Object008
+    3300028: Object009
+    3300030: Object010
+    3300032: Object011
+    3300034: Object012
+    3300036: RoomRoof
+    3300038: Sala02
+    3300040: Tube001
+    3300042: Tube002
+    3300044: Box025
+    3300046: Box026
+    3300048: Box027
+    3300050: Box028
+    3300052: Chair001
+    3300054: Cylinder019
+    3300056: Cylinder020
+    3300058: Cylinder021
+    3300060: Tube003
+    4300000: Sala02
+    4300002: RoomRoof
+    4300004: Tube002
+    4300006: Line011
+    4300008: Gate005
+    4300010: Object010
+    4300012: Object009
+    4300014: Box020
+    4300016: Chair
+    4300018: Box021
+    4300020: Box022
+    4300022: Object011
+    4300024: Object012
+    4300026: Tube001
+    4300028: Box024
+    4300030: Cylinder018
+    4300032: Cylinder016
+    4300034: Cylinder012
+    4300036: Box023
+    4300038: Object006
+    4300040: Object008
+    4300042: Object007
+    4300044: Box025
+    4300046: Box026
+    4300048: Box027
+    4300050: Box028
+    4300052: Chair001
+    4300054: Cylinder019
+    4300056: Cylinder020
+    4300058: Cylinder021
+    4300060: Tube003
+    6400000: Box020
+    6400002: Box021
+    6400004: Box022
+    6400006: Box023
+    6400008: Box024
+    6400010: Box025
+    6400012: Box026
+    6400014: Box027
+    6400016: Box028
+    6400018: Chair
+    6400020: Chair001
+    6400022: Cylinder012
+    6400024: Cylinder016
+    6400026: Cylinder018
+    6400028: Cylinder019
+    6400030: Cylinder020
+    6400032: Cylinder021
+    6400034: Gate005
+    6400036: Line011
+    6400038: Object006
+    6400040: Object007
+    6400042: Object008
+    6400044: Object009
+    6400046: Object010
+    6400048: Object011
+    6400050: Object012
+    6400052: RoomRoof
+    6400054: Sala02
+    6400056: Tube001
+    6400058: Tube002
+    6400060: Tube003
+    7400000: Take 001
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackMetal
+    second: {fileID: 2100000, guid: 93b5b1a5279e31e4783e582d3312a6ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ButtonLight
+    second: {fileID: 2100000, guid: 44beb41f19a30524faa9a7c71ca96a10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ColorPaint2
+    second: {fileID: 2100000, guid: 1be4b2053f5c59541a426c88c253c601, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_ClearCristal
+    second: {fileID: 2100000, guid: 1c83d376d7d9f884d93f9d4e9b0afe06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_GreyRubber00
+    second: {fileID: 2100000, guid: bd5e04d8843748d4a81d2fa02b83a1a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_WhiteLight00
+    second: {fileID: 2100000, guid: 4607f28920501b9419c4ad3b6c17b82d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_WhitePlastic
+    second: {fileID: 2100000, guid: c0d9a430cedca9646b1a465b05e1ae0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mission Logo
+    second: {fileID: 2100000, guid: 8b45bb044d2074c49bb5f1ca0bbf8ab9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monitor
+    second: {fileID: 2100000, guid: e064e71115f93bc4a85e93805d7cdf50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Monitor2
+    second: {fileID: 2100000, guid: 2e37c6c18bab5d54bb2573b540bcba16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sala02_autoilum
+    second: {fileID: 2100000, guid: 103bd3ff2fd9f6b45bfcd4a40a13fef3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sala02_blackrubber
+    second: {fileID: 2100000, guid: eae96c8846f1a1d40994ae6109e1ff10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sala02_metalfloor
+    second: {fileID: 2100000, guid: 7b641d37df941d34a819ea776aef3659, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sala02_whiteplastic
+    second: {fileID: 2100000, guid: 1b8a2eb816a4cbf4d976044a6fe347e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof02_blackrubber
+    second: {fileID: 2100000, guid: 459052c0c5fc82f41ae627c69df51362, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof02lights
+    second: {fileID: 2100000, guid: 24cea061469bff041b7934a4befee4f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof02metaldetail
+    second: {fileID: 2100000, guid: 18dddbc56adcfd14d959c2c9b8895179, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
