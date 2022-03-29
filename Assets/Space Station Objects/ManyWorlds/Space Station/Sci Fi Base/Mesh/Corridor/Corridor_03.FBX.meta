@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: bf3863780a000b4478ea2ace43b82034
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ArcPieces002
+    100002: ArcPieces003
+    100004: BigArc002
+    100006: BigArc003
+    100008: Box002
+    100010: //RootNode
+    100012: Dummy012
+    100014: Floor00
+    100016: Plane006
+    100018: Plane007
+    100020: Roof
+    100022: Roof002
+    100024: Roof003
+    100026: Wall002
+    100028: Wall003
+    400000: ArcPieces002
+    400002: ArcPieces003
+    400004: BigArc002
+    400006: BigArc003
+    400008: Box002
+    400010: //RootNode
+    400012: Dummy012
+    400014: Floor00
+    400016: Plane006
+    400018: Plane007
+    400020: Roof
+    400022: Roof002
+    400024: Roof003
+    400026: Wall002
+    400028: Wall003
+    2100000: WhitePlastic
+    2100002: GreyRubber00
+    2100004: WhiteLight00
+    2300000: ArcPieces002
+    2300002: ArcPieces003
+    2300004: BigArc002
+    2300006: BigArc003
+    2300008: Box002
+    2300010: Floor00
+    2300012: Plane006
+    2300014: Plane007
+    2300016: Roof
+    2300018: Roof002
+    2300020: Roof003
+    2300022: Wall002
+    2300024: Wall003
+    3300000: ArcPieces002
+    3300002: ArcPieces003
+    3300004: BigArc002
+    3300006: BigArc003
+    3300008: Box002
+    3300010: Floor00
+    3300012: Plane006
+    3300014: Plane007
+    3300016: Roof
+    3300018: Roof002
+    3300020: Roof003
+    3300022: Wall002
+    3300024: Wall003
+    4300000: BigArc002
+    4300002: BigArc003
+    4300004: Plane006
+    4300006: Plane007
+    4300008: Box002
+    4300010: Roof003
+    4300012: Wall002
+    4300014: Wall003
+    4300016: ArcPieces002
+    4300018: ArcPieces003
+    4300020: Roof002
+    4300022: Floor00
+    4300024: Roof
+    6400000: ArcPieces002
+    6400002: ArcPieces003
+    6400004: BigArc002
+    6400006: BigArc003
+    6400008: Box002
+    6400010: Floor00
+    6400012: Plane006
+    6400014: Plane007
+    6400016: Roof
+    6400018: Roof002
+    6400020: Roof003
+    6400022: Wall002
+    6400024: Wall003
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GreyRubber00
+    second: {fileID: 2100000, guid: 3a93ec137fef64242a7a2c4d9a437200, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteLight00
+    second: {fileID: 2100000, guid: 31d84e9d712359049bde60f0eecea9ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhitePlastic
+    second: {fileID: 2100000, guid: 74110ae0dc2cdb342a2f63f46833304f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

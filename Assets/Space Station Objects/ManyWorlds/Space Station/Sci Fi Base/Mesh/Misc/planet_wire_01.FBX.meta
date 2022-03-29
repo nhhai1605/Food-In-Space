@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: 6507b589191aeb140bc031cd01183867
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Circle001
+    100002: Circle002
+    100004: Dummy001
+    100006: planet_selection
+    100008: planet_selection001
+    100010: planet_selection002
+    100012: planet_selection003
+    100014: planet_selection004
+    100016: planet_selection005
+    100018: planet_selection006
+    100020: planet_selection007
+    100022: //RootNode
+    100024: Sphere001
+    100026: Sphere002
+    100028: Sphere003
+    100030: Sphere004
+    100032: Torus001
+    100034: Torus002
+    100036: Torus003
+    100038: Torus004
+    100040: Torus005
+    100042: Torus006
+    100044: Torus007
+    100046: Torus008
+    100048: Torus009
+    100050: Torus010
+    100052: Torus011
+    100054: Torus012
+    100056: Torus013
+    100058: Torus014
+    100060: Torus015
+    100062: Torus016
+    100064: Torus017
+    100066: Torus018
+    100068: Torus019
+    100070: Torus020
+    100072: Torus021
+    100074: Torus022
+    100076: Torus023
+    100078: Torus024
+    100080: Circle003
+    100082: spacestation sphere vision
+    100084: planet wire03
+    100086: planet wire12
+    100088: Cylinder001
+    100090: Circle004
+    100092: Circle005
+    100094: Circle006
+    400000: Circle001
+    400002: Circle002
+    400004: Dummy001
+    400006: planet_selection
+    400008: planet_selection001
+    400010: planet_selection002
+    400012: planet_selection003
+    400014: planet_selection004
+    400016: planet_selection005
+    400018: planet_selection006
+    400020: planet_selection007
+    400022: //RootNode
+    400024: Sphere001
+    400026: Sphere002
+    400028: Sphere003
+    400030: Sphere004
+    400032: Torus001
+    400034: Torus002
+    400036: Torus003
+    400038: Torus004
+    400040: Torus005
+    400042: Torus006
+    400044: Torus007
+    400046: Torus008
+    400048: Torus009
+    400050: Torus010
+    400052: Torus011
+    400054: Torus012
+    400056: Torus013
+    400058: Torus014
+    400060: Torus015
+    400062: Torus016
+    400064: Torus017
+    400066: Torus018
+    400068: Torus019
+    400070: Torus020
+    400072: Torus021
+    400074: Torus022
+    400076: Torus023
+    400078: Torus024
+    400080: Circle003
+    400082: spacestation sphere vision
+    400084: planet wire03
+    400086: planet wire12
+    400088: Cylinder001
+    400090: Circle004
+    400092: Circle005
+    400094: Circle006
+    2100000: space estation planet01
+    2100002: space estation lineplanet01
+    2100004: space estation planet03
+    2100006: space estation planet02
+    2100008: space estation lineplanet02
+    2100010: space estation planet04
+    2300000: Circle001
+    2300002: Circle002
+    2300004: Sphere001
+    2300006: Sphere002
+    2300008: Sphere003
+    2300010: Sphere004
+    2300012: Torus001
+    2300014: Torus002
+    2300016: Torus003
+    2300018: Torus004
+    2300020: Torus005
+    2300022: Torus006
+    2300024: Torus007
+    2300026: Torus008
+    2300028: Torus009
+    2300030: Torus010
+    2300032: Torus011
+    2300034: Torus012
+    2300036: Torus013
+    2300038: Torus014
+    2300040: Torus015
+    2300042: Torus016
+    2300044: Torus017
+    2300046: Torus018
+    2300048: Torus019
+    2300050: Torus020
+    2300052: Torus021
+    2300054: Torus022
+    2300056: Torus023
+    2300058: Torus024
+    2300060: Circle003
+    2300062: Cylinder001
+    2300064: Circle004
+    2300066: Circle005
+    2300068: Circle006
+    3300000: Circle001
+    3300002: Circle002
+    3300004: Sphere001
+    3300006: Sphere002
+    3300008: Sphere003
+    3300010: Sphere004
+    3300012: Torus001
+    3300014: Torus002
+    3300016: Torus003
+    3300018: Torus004
+    3300020: Torus005
+    3300022: Torus006
+    3300024: Torus007
+    3300026: Torus008
+    3300028: Torus009
+    3300030: Torus010
+    3300032: Torus011
+    3300034: Torus012
+    3300036: Torus013
+    3300038: Torus014
+    3300040: Torus015
+    3300042: Torus016
+    3300044: Torus017
+    3300046: Torus018
+    3300048: Torus019
+    3300050: Torus020
+    3300052: Torus021
+    3300054: Torus022
+    3300056: Torus023
+    3300058: Torus024
+    3300060: Circle003
+    3300062: Cylinder001
+    3300064: Circle004
+    3300066: Circle005
+    3300068: Circle006
+    4300000: Sphere001
+    4300002: Circle001
+    4300004: Sphere002
+    4300006: Torus002
+    4300008: Torus003
+    4300010: Torus001
+    4300012: Circle002
+    4300014: Sphere003
+    4300016: Torus004
+    4300018: Torus005
+    4300020: Torus006
+    4300022: Torus007
+    4300024: Torus008
+    4300026: Torus009
+    4300028: Torus010
+    4300030: Torus011
+    4300032: Torus012
+    4300034: Torus013
+    4300036: Torus014
+    4300038: Torus015
+    4300040: Torus016
+    4300042: Torus017
+    4300044: Torus018
+    4300046: Torus019
+    4300048: Torus020
+    4300050: Torus021
+    4300052: Torus022
+    4300054: Torus023
+    4300056: Torus024
+    4300058: Sphere004
+    4300060: Circle003
+    4300062: Cylinder001
+    4300064: Circle004
+    4300066: Circle005
+    4300068: Circle006
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation lineplanet01
+    second: {fileID: 2100000, guid: a9cd8e55858f0674f9f73abbc2180ca5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation lineplanet02
+    second: {fileID: 2100000, guid: 50d8c71b949be82499d02f2dcb3584fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation normal
+    second: {fileID: 2100000, guid: 0d5b5df680a9c45489983b4e44386f9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation plane01
+    second: {fileID: 2100000, guid: 6678ee68151a8df4388ef2a78289da4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation planet01
+    second: {fileID: 2100000, guid: a0cf937adf1e1ae449b77fba596e78f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation planet02
+    second: {fileID: 2100000, guid: cb9c6f0e2ef8c694fb198bb5de37e319, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation planet03
+    second: {fileID: 2100000, guid: bf845c29bec72e748a90b03ecf871e7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: space estation planet04
+    second: {fileID: 2100000, guid: b0a5283b936e5ee41804f6e7daa28df9, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
