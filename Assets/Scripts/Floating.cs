@@ -5,12 +5,12 @@ using UnityEngine;
 public class Floating : MonoBehaviour
 { 
     [SerializeField] private Vector3 offset;
-    [SerializeField] private float rotation,  bounciness = 0.1f;
+    [SerializeField] private float rotation;
     
     void Start () 
     {
-        offset =  new Vector3(Random.Range(-2f, 2f), Random.Range(10f , 20f),Random.Range(-2f, 2f)) / 50f;
-        rotation = Random.Range(-2f, 2f) / 50f;
+        offset =  new Vector3(Random.Range(-20f, 20f), Random.Range(50f , 100f),Random.Range(-20f, 20f));
+        rotation = Random.Range(-4f, 4f) / 50f;
         transform.GetComponent<Rigidbody>().velocity = offset;
     }
      

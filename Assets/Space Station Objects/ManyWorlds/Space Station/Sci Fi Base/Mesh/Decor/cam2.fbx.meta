@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: 969a5b21cd78fa24983efc4e2ab1f23d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arm
+    100002: BaseCam
+    100004: //RootNode
+    100006: cobjetivo
+    100008: CristalCam
+    100010: insideCam
+    100012: objetivo
+    100014: pSphere2
+    100016: Roofankle
+    100018: cam09
+    100020: cam10
+    100022: cam11
+    100024: cam12
+    100026: cam13
+    100028: cam14
+    100030: hand1
+    100032: pasted__pCylinder003
+    100034: pasted__pCylinder2
+    100036: polySurface3
+    100038: polySurface4
+    100040: CamAnchor
+    100042: CamArm
+    100044: CamCyl
+    100046: CamHalfsphere
+    100048: Camhand1
+    100050: CamHand2
+    400000: arm
+    400002: BaseCam
+    400004: //RootNode
+    400006: cobjetivo
+    400008: CristalCam
+    400010: insideCam
+    400012: objetivo
+    400014: pSphere2
+    400016: Roofankle
+    400018: cam09
+    400020: cam10
+    400022: cam11
+    400024: cam12
+    400026: cam13
+    400028: cam14
+    400030: hand1
+    400032: pasted__pCylinder003
+    400034: pasted__pCylinder2
+    400036: polySurface3
+    400038: polySurface4
+    400040: CamAnchor
+    400042: CamArm
+    400044: CamCyl
+    400046: CamHalfsphere
+    400048: Camhand1
+    400050: CamHand2
+    2300000: arm
+    2300002: BaseCam
+    2300004: cobjetivo
+    2300006: CristalCam
+    2300008: insideCam
+    2300010: objetivo
+    2300012: pSphere2
+    2300014: Roofankle
+    2300016: cam09
+    2300018: cam10
+    2300020: cam11
+    2300022: cam12
+    2300024: cam13
+    2300026: cam14
+    2300028: hand1
+    2300030: pasted__pCylinder003
+    2300032: pasted__pCylinder2
+    2300034: polySurface3
+    2300036: polySurface4
+    2300038: CamAnchor
+    2300040: CamArm
+    2300042: CamCyl
+    2300044: CamHalfsphere
+    2300046: Camhand1
+    2300048: CamHand2
+    3300000: arm
+    3300002: BaseCam
+    3300004: cobjetivo
+    3300006: CristalCam
+    3300008: insideCam
+    3300010: objetivo
+    3300012: pSphere2
+    3300014: Roofankle
+    3300016: cam09
+    3300018: cam10
+    3300020: cam11
+    3300022: cam12
+    3300024: cam13
+    3300026: cam14
+    3300028: hand1
+    3300030: pasted__pCylinder003
+    3300032: pasted__pCylinder2
+    3300034: polySurface3
+    3300036: polySurface4
+    3300038: CamAnchor
+    3300040: CamArm
+    3300042: CamCyl
+    3300044: CamHalfsphere
+    3300046: Camhand1
+    3300048: CamHand2
+    4300000: CristalCam
+    4300002: objetivo
+    4300004: Roofankle
+    4300006: BaseCam
+    4300008: insideCam
+    4300010: arm
+    4300012: cobjetivo
+    4300014: pSphere2
+    4300016: cam13
+    4300018: cam10
+    4300020: cam09
+    4300022: cam12
+    4300024: cam11
+    4300026: cam14
+    4300028: pasted__pCylinder2
+    4300030: polySurface4
+    4300032: polySurface3
+    4300034: pasted__pCylinder003
+    4300036: hand1
+    4300038: CamArm
+    4300040: CamAnchor
+    4300042: CamCyl
+    4300044: Camhand1
+    4300046: CamHand2
+    4300048: CamHalfsphere
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackGlossy
+    second: {fileID: 2100000, guid: 7e6966677bd2d1543be860eb3f4f2395, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamBlackMaterial
+    second: {fileID: 2100000, guid: c685e500eb344ea41b2bfa59a48b68cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamCristalMat
+    second: {fileID: 2100000, guid: 08beda66d3b708a41836d163dc750e9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamLedLight
+    second: {fileID: 2100000, guid: d922a461616b494479be276ddf4d0053, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamMetallic
+    second: {fileID: 2100000, guid: 06fee35938b89ea459d8897dba0c6bf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamWhiteMaterial
+    second: {fileID: 2100000, guid: 736a1eb0c75da814a80ef3cdd15b1838, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CamhalfSphere
+    second: {fileID: 2100000, guid: c8f941d390e0c9345ba5a8b62085e14c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert2
+    second: {fileID: 2100000, guid: a64c1c2eadb67014db4d6589bf6d13bc, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

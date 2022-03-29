@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 3091b600f21870e4e92a7f7742207e31
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cylinder006
+    100002: Line008
+    100004: Sala00
+    100006: //RootNode
+    400000: Cylinder006
+    400002: Line008
+    400004: Sala00
+    400006: //RootNode
+    2100000: sala00_blackrubber
+    2100002: sala00_metalframe
+    2100004: sala00_autoilum
+    2100006: sala00_whiteplastic
+    2100008: sala00_window
+    2100010: sala00_tiles
+    2100012: sala00_secondplastic
+    2100014: sala00_screens
+    2100016: MM_CB_WhitePlastic
+    2100018: MM_CB_GreyRubber00
+    2300000: Cylinder006
+    2300002: Line008
+    2300004: Sala00
+    3300000: Cylinder006
+    3300002: Line008
+    3300004: Sala00
+    4300000: Sala00
+    4300002: Cylinder006
+    4300004: Line008
+    6400000: Cylinder006
+    6400002: Line008
+    6400004: Sala00
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_GreyRubber00
+    second: {fileID: 2100000, guid: bd5e04d8843748d4a81d2fa02b83a1a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MM_CB_WhitePlastic
+    second: {fileID: 2100000, guid: c0d9a430cedca9646b1a465b05e1ae0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_autoilum
+    second: {fileID: 2100000, guid: 13608c1690c4b234598fd278880b716c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_blackrubber
+    second: {fileID: 2100000, guid: 1179225e97dfe5e40a7a3cd25275c95c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_metalframe
+    second: {fileID: 2100000, guid: 12db6beeed9779b40a631c5b3a8d4759, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_screens
+    second: {fileID: 2100000, guid: 6a57524c56048454eb5681870833d4ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_secondplastic
+    second: {fileID: 2100000, guid: b7b7723fda2953f4b9dd2dac7cb89b4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_tiles
+    second: {fileID: 2100000, guid: 581ea5dd5c2842e4090f85e1fced3b3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_whiteplastic
+    second: {fileID: 2100000, guid: bff7d9c76e777fc428bc14e938ca5d09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sala00_window
+    second: {fileID: 2100000, guid: 307a7c6b47beb4a42966334c6092253b, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
