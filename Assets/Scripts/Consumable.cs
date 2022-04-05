@@ -51,7 +51,7 @@ public class Consumable : MonoBehaviour
             SetVisuals();
             if(index == portions.Length)
             {
-                canvas.GetComponentInChildren<Text>().text = "Rate your " + name.Substring(0, name.Length - 6) + ": ";
+                canvas.GetComponentInChildren<Text>().text = "Survey: " + name.Substring(0, name.Length - 6);
                 canvas.gameObject.SetActive(true);    
             }
         }

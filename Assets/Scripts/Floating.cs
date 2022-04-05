@@ -9,7 +9,7 @@ public class Floating : MonoBehaviour
     
     void Start () 
     {
-        offset =  new Vector3(Random.Range(-20f, 20f), Random.Range(50f , 100f),Random.Range(-20f, 20f));
+        offset =  new Vector3(Random.Range(-20f, 20f), Random.Range(-40f , 40f),Random.Range(-20f, 20f));
         rotation = Random.Range(-4f, 4f) / 50f;
         transform.GetComponent<Rigidbody>().velocity = offset;
     }
