@@ -12,136 +12,204 @@ public class PageManagement : MonoBehaviour
     private List<Page> pageList = new List<Page>();
     private int currentPage = 0;
     [SerializeField] Button nextButton, submitButton;
-    private Slider slider;
-    private ToggleGroup toggleGroup;
-    public string nameOfFood;
-    private string outputPath = @"C:\temp\SurveyResult.txt";
-    private string inputPath = @"C:\temp\SurveyQuestions.txt";
-    private List<string> invalidLine = new List<string> { "", " " };
-    private Text currentText;
+
+    public string nameOfFood { get; set; }
+    private string outputPath = @"C:\temp\SurveyResult.csv";
+    [SerializeField] private Text pageText;
     private int resultID;
     private int numOfColumns = 0;
 
-    bool readFromInputPath()
+    [SerializeField] private Slider slider;
+    [SerializeField] private ToggleGroup toggleGroup;
+    [SerializeField]  private GameObject sensorialGroup;
+    [SerializeField]  private GameObject emotionGroup;
+    private static String sensorialTransitPage = "Sensorial";
+    private static string emotionTransitPage = "Emotion";
+    private static string[] generalAttributes = { "Liking" };
+    private static string[] sensorialAttributes = { "Sweetness", "Creamy", "Milky", "Sourness", "Vanilla" };
+    private static string[] emotionAttributes = { "Active", "Adventurous", "Aggressive", "Bored", "Calm",
+    "Disgusted", "Enthusiastic", "Good", "Good-natured", "Guilty", "Happy", "Interested",
+    "Joyful","Loving","Mild","Nostalgic","Pleasant","Satisfied","Secure","Tame",
+    "Understanding","Warm","Wild","Worried"};
+    private static string finishTransitPage = "Finish";
+    private static string[] sliderAttribute = { "Liking", "Milky" };
+    private static string[] allAttributes = generalAttributes.Concat(new[] { sensorialTransitPage }).Concat(sensorialAttributes).Concat(new[] { emotionTransitPage }).Concat(emotionAttributes).Concat(new[] { finishTransitPage }).ToArray();
+
+    private static string[] transitPages = new[] { sensorialTransitPage, emotionTransitPage, finishTransitPage };
+    private List<string> checkedAttributes;
+
+
+    void initializePages()
     {
-        List <string>stringList = File.ReadAllText(inputPath).Split(new string[] {Environment.NewLine}, StringSplitOptions.None).Except(invalidLine).ToList();
-        while(true)
+        for (int i = 0; i < allAttributes.Length; i++)
         {
-            try
-            {
-                pageList.Add(new Page(numOfColumns, stringList[numOfColumns].Split(',')[1] == "1", stringList[numOfColumns].Split(',')[0]));
-            }
-            catch
-            {
-                Debug.LogError("Invalid format in input file! - Must be '[Type],[IsSlider, yes is 1 and no is 0]'. For example, 'Sweetness Liking,1'");
-                return false;
-            }
-            numOfColumns++;
-            if(numOfColumns == stringList.Count)
-            {
-                break;
-            }
+            pageList.Add(new Page(i, sliderAttribute.Contains<string>(allAttributes[i]) , allAttributes[i]));
         }
-        return true;
     }
-    bool initializeColumns()
+    void initializeColumns()
     {
-        List <string>stringList = File.ReadAllText(inputPath).Split(new string[] {Environment.NewLine}, StringSplitOptions.None).Except(invalidLine).ToList();
-        if(!readFromInputPath())
+        File.WriteAllText(outputPath, "ID,Name");
+        for (int i = 0; i < allAttributes.Length; i++)
         {
-            return false;
-        }   
-        File.AppendAllText(outputPath, "ID,Name,");
-        for (int i = 0; i < numOfColumns; i++)
-        {
-            if(i == numOfColumns - 1)
+            if (!transitPages.Contains<string>(allAttributes[i]))
             {
-                File.AppendAllText(outputPath, stringList[i].Split(',')[0] + Environment.NewLine);
-            }
-            else
-            {
-                File.AppendAllText(outputPath, stringList[i].Split(',')[0] + ",");
+                File.AppendAllText(outputPath, "," + allAttributes[i]);
             }
         }
-        
-        if (!File.Exists(inputPath))
-        {
-            Debug.LogError("Cannot find the question file!");
-            return false;
-        }
-        return true;
+        File.AppendAllText(outputPath, Environment.NewLine);
     }
-    bool initializeOutputFile()
+    void initializeOutputFile()
     {
-        string readText = File.ReadAllText(inputPath);
-        List <string>stringList = readText.Split(new string[] {Environment.NewLine}, StringSplitOptions.None).Except(invalidLine).ToList();
+
         if(File.Exists(outputPath) && !string.IsNullOrEmpty(File.ReadAllText(outputPath)))
         {
             string[] columns = File.ReadAllLines(outputPath)[0].Split(',');
-            if(columns.Length - 2 != stringList.Count)
+            // minus 2 for id and name
+            if(columns.Length - 2 != numOfColumns)
             {
                 //Automatically create file if not exist
                 File.WriteAllText(outputPath, string.Empty); 
-                return initializeColumns();
-            }
-            else
-            {
-                return readFromInputPath();
+                initializeColumns();
             }
         }
         else 
         {
-            return initializeColumns();
+            initializeColumns();
         }
-        
+
+    }
+    private  static bool FileInUse(string path)
+    {
+        try
+        {
+            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                return false;
+            }
+        }
+        catch (IOException ex)
+        {
+            return true;
+        }
+    }
+    private void Reset()
+    {
+        currentPage = 0;
+        checkedAttributes = new List<string> {sensorialTransitPage, emotionTransitPage, finishTransitPage};
+        checkedAttributes.AddRange(generalAttributes);
+    }
+    void DisplayError(string error)
+    {
+        pageText.text = error;
+        nextButton.gameObject.SetActive(false);
+        submitButton.gameObject.SetActive(false);
+        sensorialGroup.gameObject.SetActive(false);
+        emotionGroup.gameObject.SetActive(false);
+        toggleGroup.gameObject.SetActive(false);
+        slider.gameObject.SetActive(false);
+    }
+    void OnDisable()
+    {
+        Reset();
+        if(FileInUse(outputPath))
+        {
+            // Debug.LogError("try closing the csv file first and try again!");
+            DisplayError("try closing the csv file first and try again!");
+        }
+        else
+        {
+            ChangeVisual();
+        }
     }
     void Start()
     {
-        if(!initializeOutputFile())
-        {
-            return;
-        }
-        resultID = File.ReadAllLines(outputPath).Length;
+
+        this.numOfColumns = allAttributes.Length - transitPages.Length;
+        Reset();
         nextButton.gameObject.SetActive(true);
         submitButton.gameObject.SetActive(false);
-        toggleGroup = pageObject.GetComponentInChildren<ToggleGroup>();
-        slider = pageObject.GetComponentInChildren<Slider>();
-        foreach(Text textObj in pageObject.GetComponentsInChildren<Text>())
+        if(FileInUse(outputPath))
         {
-            if(textObj.name == "Text")
-            {
-                currentText = textObj;
-            }
+            // Debug.LogError("try closing the csv file first and try again!");
+            DisplayError("try closing the csv file first and try again!");
+            return;
         }
+
+        resultID = File.ReadAllLines(outputPath).Length;
+        initializePages();
+        initializeOutputFile();
         ChangeVisual();
+        
     }
 
     private void ChangeVisual()
     {
-        currentText.text = "Rate your " + pageList[currentPage].type;
-        toggleGroup.gameObject.SetActive(!pageList[currentPage].IsSlider);
-        slider.gameObject.SetActive(pageList[currentPage].IsSlider);
-        slider.value = 5;
-        toggleGroup.GetComponentsInChildren<Toggle>()[0].isOn = true;
-        if(currentPage == pageList.Count - 1)
+        sensorialGroup.gameObject.SetActive(false);
+        emotionGroup.gameObject.SetActive(false);
+        while (!checkedAttributes.Contains(allAttributes[currentPage]))
         {
+            currentPage++; 
+        }
+        if(allAttributes[currentPage] == "Sensorial")
+        {
+            toggleGroup.gameObject.SetActive(false);
+            slider.gameObject.SetActive(false);
+            sensorialGroup.gameObject.SetActive(true);
+            pageText.text = "Choose sensories you experienced";
+            Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>();
+            foreach(Toggle toggle in toggles)
+            {
+                toggle.isOn = false;
+            }
+            return;
+        }
+        else if(allAttributes[currentPage] == "Emotion")
+        {
+            toggleGroup.gameObject.SetActive(false);
+            slider.gameObject.SetActive(false);
+            emotionGroup.gameObject.SetActive(true);
+            pageText.text = "Choose emotions you experienced";
+            Toggle[] toggles = emotionGroup.GetComponentsInChildren<Toggle>();
+            foreach(Toggle toggle in toggles)
+            {
+                toggle.isOn = false;
+            }
+            return;
+        }
+
+
+        if(allAttributes[currentPage] == finishTransitPage)
+        {
+            toggleGroup.gameObject.SetActive(false);
+            slider.gameObject.SetActive(false);
+            pageText.text = "Thank you for your answers!";
             nextButton.gameObject.SetActive(false);
             submitButton.gameObject.SetActive(true);
         }
         else
         {
+            pageText.text = "Rate your " + pageList[currentPage].type;
+            toggleGroup.gameObject.SetActive(!pageList[currentPage].IsSlider);
+            slider.gameObject.SetActive(pageList[currentPage].IsSlider);
+            slider.value = 5;
+            toggleGroup.GetComponentsInChildren<Toggle>()[0].isOn = true;
             nextButton.gameObject.SetActive(true);
             submitButton.gameObject.SetActive(false);
         }
     }
     public void SubmitSurvey()
     {
-        ChangePage();
-        Debug.Log("Survey submitted!");
+        ChangeVisual();
+        // Debug.Log("Survey submitted!");
         File.AppendAllText(outputPath, resultID + "," + nameOfFood);
         for (int i = 0; i < pageList.Count; i++)
         {
-            File.AppendAllText(outputPath,  "," + pageList[i].score.ToString());
+            if (!transitPages.Contains<string>(pageList[i].type))
+            {
+                string text = pageList[i].score == 0 ? "NULL" : pageList[i].score.ToString();
+                File.AppendAllText(outputPath,  "," + text);
+            }
+
         }
         File.AppendAllText(outputPath, Environment.NewLine);
         resultID = File.ReadAllLines(outputPath).Length;
@@ -150,26 +218,50 @@ public class PageManagement : MonoBehaviour
     }
     public void ChangePage()
     {
+        //Extract data first
         int score = 0;
-        if(currentPage == 0)
+        if (!sensorialGroup.activeSelf && !emotionGroup.activeSelf)
         {
-            
-        }
-        if(pageList[currentPage].IsSlider)
-        {
-            score = (int) slider.value;
+            if (pageList[currentPage].IsSlider)
+            {
+                score = (int)slider.value;
+            }
+            else
+            {
+                score = int.Parse(toggleGroup.ActiveToggles().FirstOrDefault().name.Split(' ')[1]);
+            }
+            pageList[currentPage].score = score;
         }
         else
         {
-            score = int.Parse(toggleGroup.ActiveToggles().FirstOrDefault().name.Split(' ')[1]);
+            if(sensorialGroup.activeSelf)
+            {
+                Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>();
+                foreach(Toggle toggle in toggles)
+                {
+                    if(toggle.isOn)
+                    {
+                        checkedAttributes.Add(toggle.GetComponentInChildren<Text>().text);
+                    }
+                }
+
+            }
+            else if (emotionGroup.activeSelf)
+            {
+                Toggle[] toggles = emotionGroup.GetComponentsInChildren<Toggle>();
+                foreach (Toggle toggle in toggles)
+                {
+                    if (toggle.isOn)
+                    {
+                        checkedAttributes.Add(toggle.GetComponentInChildren<Text>().text);
+                    }
+                }
+            }
         }
-        pageList[currentPage].score = score;
+        //Then change to next page
         currentPage++;
-        if(currentPage == pageList.Count)
-        {
-            currentPage = 0;
-        }
         ChangeVisual();
+
     }
     // Update is called once per frame
     void Update()
