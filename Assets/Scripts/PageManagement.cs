@@ -87,7 +87,7 @@ public class PageManagement : MonoBehaviour
                 return false;
             }
         }
-        catch (IOException ex)
+        catch
         {
             return true;
         }
