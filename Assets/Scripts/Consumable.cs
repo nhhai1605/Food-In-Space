@@ -8,25 +8,13 @@ public class Consumable : MonoBehaviour
     [SerializeField] private GameObject[] portions;
     [SerializeField] private int index = 0;
     public bool IsFinished => index == portions.Length;
-    private Canvas canvas = null;
+    [SerializeField] private Canvas surveyCanvas;
     private AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();
         SetVisuals();
-        Canvas[] canvasList = GameObject.FindObjectsOfType<Canvas>(true);
-        foreach (Canvas c in canvasList)
-        {
-            if (c.name == "Food Rating Canvas")
-            {
-                canvas = c;
-            }
-        } 
-        if(canvas == null)
-        {
-            Debug.LogError("Cannot find Food Rating Canvas");
-        }
     }
 
     void SetVisuals()
@@ -51,8 +39,10 @@ public class Consumable : MonoBehaviour
             SetVisuals();
             if(index == portions.Length)
             {
-                canvas.GetComponentInChildren<Text>().text = "Rate your " + name.Substring(0, name.Length - 6) + ": ";
-                canvas.gameObject.SetActive(true);    
+                surveyCanvas.gameObject.SetActive(false);
+                surveyCanvas.GetComponentInChildren<Text>().text = "Survey: " + name.Substring(0, name.Length - 6);
+                surveyCanvas.GetComponent<PageManagement>().nameOfFood = name.Substring(0, name.Length - 6);
+                surveyCanvas.gameObject.SetActive(true);    
             }
         }
     }

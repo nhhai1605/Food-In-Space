@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bd3023910cbc97444a6b10313048ca9a
+guid: 4ef087fa4f032d34dab6a678bf5fbe55
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -14,11 +14,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Pouch
     second: {fileID: 2100000, guid: 09fbc73ccf9e3474fbea026ccea60b2f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Straw
-    second: {fileID: 2100000, guid: cebe28bcb59381245aa6277af893fc48, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
