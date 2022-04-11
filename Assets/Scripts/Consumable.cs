@@ -8,25 +8,13 @@ public class Consumable : MonoBehaviour
     [SerializeField] private GameObject[] portions;
     [SerializeField] private int index = 0;
     public bool IsFinished => index == portions.Length;
-    private Canvas canvas = null;
+    [SerializeField] private Canvas canvas;
     private AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();
         SetVisuals();
-        Canvas[] canvasList = GameObject.FindObjectsOfType<Canvas>(true);
-        foreach (Canvas c in canvasList)
-        {
-            if (c.name == "Food Rating Canvas")
-            {
-                canvas = c;
-            }
-        } 
-        if(canvas == null)
-        {
-            Debug.LogError("Cannot find Food Rating Canvas");
-        }
     }
 
     void SetVisuals()
