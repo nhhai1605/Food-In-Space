@@ -8,7 +8,7 @@ public class Consumable : MonoBehaviour
     [SerializeField] private GameObject[] portions;
     [SerializeField] private int index = 0;
     public bool IsFinished => index == portions.Length;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private Canvas surveyCanvas;
     private AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
@@ -39,10 +39,10 @@ public class Consumable : MonoBehaviour
             SetVisuals();
             if(index == portions.Length)
             {
-                canvas.gameObject.SetActive(false);
-                canvas.GetComponentInChildren<Text>().text = "Survey: " + name.Substring(0, name.Length - 6);
-                canvas.GetComponent<PageManagement>().nameOfFood = name.Substring(0, name.Length - 6);
-                canvas.gameObject.SetActive(true);    
+                surveyCanvas.gameObject.SetActive(false);
+                surveyCanvas.GetComponentInChildren<Text>().text = "Survey: " + name.Substring(0, name.Length - 6);
+                surveyCanvas.GetComponent<PageManagement>().nameOfFood = name.Substring(0, name.Length - 6);
+                surveyCanvas.gameObject.SetActive(true);    
             }
         }
     }

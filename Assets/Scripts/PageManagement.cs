@@ -10,7 +10,7 @@ public class PageManagement : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject pageObject;
     private List<Page> pageList = new List<Page>();
-    private int currentPage = 0;
+    public int currentPage { get; set; } = 0;
     [SerializeField] Button nextButton, submitButton;
 
     public string nameOfFood { get; set; }
@@ -23,14 +23,15 @@ public class PageManagement : MonoBehaviour
     [SerializeField] private ToggleGroup toggleGroup;
     [SerializeField]  private GameObject sensorialGroup;
     [SerializeField]  private GameObject emotionGroup;
-    private static String sensorialTransitPage = "Sensorial";
+    private static string sensorialTransitPage = "Sensorial";
     private static string emotionTransitPage = "Emotion";
     private static string[] generalAttributes = { "Liking" };
     private static string[] sensorialAttributes = { "Sweetness", "Creamy", "Milky", "Sourness", "Vanilla" };
-    private static string[] emotionAttributes = { "Active", "Adventurous", "Aggressive", "Bored", "Calm",
-    "Disgusted", "Enthusiastic", "Good", "Good-natured", "Guilty", "Happy", "Interested",
-    "Joyful","Loving","Mild","Nostalgic","Pleasant","Satisfied","Secure","Tame",
-    "Understanding","Warm","Wild","Worried"};
+    private static string[] emotionAttributes = {   "Active", "Adventurous", "Aggressive", "Bored", "Calm",
+                                                    "Disgusted", "Enthusiastic", "Good", "Good-natured", 
+                                                    "Guilty", "Happy", "Interested","Joyful","Loving","Mild",
+                                                    "Nostalgic","Pleasant","Satisfied","Secure","Tame",
+                                                    "Understanding","Warm","Wild","Worried"};
     private static string finishTransitPage = "Finish";
     private static string[] sliderAttribute = { "Liking", "Milky" };
     private static string[] allAttributes = generalAttributes.Concat(new[] { sensorialTransitPage }).Concat(sensorialAttributes).Concat(new[] { emotionTransitPage }).Concat(emotionAttributes).Concat(new[] { finishTransitPage }).ToArray();
@@ -82,10 +83,8 @@ public class PageManagement : MonoBehaviour
     {
         try
         {
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                return false;
-            }
+            using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
+            return false;
         }
         catch
         {
@@ -101,6 +100,7 @@ public class PageManagement : MonoBehaviour
     void DisplayError(string error)
     {
         pageText.text = error;
+        GetComponentInChildren<Text>().text = "Error";
         nextButton.gameObject.SetActive(false);
         submitButton.gameObject.SetActive(false);
         sensorialGroup.gameObject.SetActive(false);
