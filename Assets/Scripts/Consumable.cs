@@ -15,25 +15,13 @@ public class Consumable : MonoBehaviour
     {
         audioSrc = GetComponent<AudioSource>();
         SetVisuals();
-        Canvas[] canvasList = GameObject.FindObjectsOfType<Canvas>(true);
-        foreach (Canvas c in canvasList)
-        {
-            if (c.name == "Food Rating Canvas")
-            {
-                canvas = c;
-            }
-        } 
-        if(canvas == null)
-        {
-            Debug.LogError("Cannot find Food Rating Canvas");
-        }
     }
 
     void SetVisuals()
     {
         for (int i = 0; i < portions.Length; i++)
         {
-            if(portions[i] != null)
+            if (portions[i] != null)
             {
                 portions[i].SetActive(i == index);
             }
@@ -49,12 +37,12 @@ public class Consumable : MonoBehaviour
             audioSrc.Play();
 
             SetVisuals();
-            if(index == portions.Length)
+            if (index == portions.Length)
             {
                 surveyCanvas.gameObject.SetActive(false);
                 surveyCanvas.GetComponentInChildren<Text>().text = "Survey: " + name.Substring(0, name.Length - 6);
                 surveyCanvas.GetComponent<PageManagement>().nameOfFood = name.Substring(0, name.Length - 6);
-                surveyCanvas.gameObject.SetActive(true);    
+                surveyCanvas.gameObject.SetActive(true);
             }
         }
     }
