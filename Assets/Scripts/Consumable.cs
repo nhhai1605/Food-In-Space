@@ -15,6 +15,18 @@ public class Consumable : MonoBehaviour
     {
         audioSrc = GetComponent<AudioSource>();
         SetVisuals();
+        Canvas[] canvasList = GameObject.FindObjectsOfType<Canvas>(true);
+        foreach (Canvas c in canvasList)
+        {
+            if (c.name == "Food Rating Canvas")
+            {
+                canvas = c;
+            }
+        } 
+        if(canvas == null)
+        {
+            Debug.LogError("Cannot find Food Rating Canvas");
+        }
     }
 
     void SetVisuals()
