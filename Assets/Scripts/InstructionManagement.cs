@@ -48,7 +48,7 @@ public class InstructionManagement : MonoBehaviour
 
         "Thank you for taking this survey" //finished the survey
     };
-    private float CameraDistance = 0.1f;
+    private float CameraDistance = 0.2f;
     private float smoothTime = 0.1f;
     private Vector3 velocity = Vector3.zero;
     // Start is called before the first frame update
@@ -57,7 +57,7 @@ public class InstructionManagement : MonoBehaviour
         pageManagement = surveyCanvas.GetComponent<PageManagement>();
         currentText = GetComponentInChildren<Text>();
         currentText.gameObject.SetActive(false);
-        //currentText.transform.rotation = Quaternion.Euler(0,180,0);
+        currentText.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     // Update is called once per frame
@@ -68,10 +68,10 @@ public class InstructionManagement : MonoBehaviour
             return;
         }
 
-        //Vector3 targetPosition = Camera.main.transform.TransformPoint(new Vector3(0, 0, CameraDistance));
-        //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-        //var lookAtPos = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
-        //transform.LookAt(lookAtPos, Camera.main.transform.up);
+        Vector3 targetPosition = Camera.main.transform.TransformPoint(new Vector3(0, 0, CameraDistance));
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        var lookAtPos = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        transform.LookAt(lookAtPos, Camera.main.transform.up);
         currentPage = pageManagement.currentPage;
         currentText.gameObject.SetActive(true);
         currentText.text = instructions[currentPage];
