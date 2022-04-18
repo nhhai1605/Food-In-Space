@@ -14473,7 +14473,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Current Value: 5'
+  m_Text: 'Current Value:'
 --- !u!222 &1732549882
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17243,8 +17243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75016e5b8fede66489229645a1d92681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainSlider: {fileID: 2042950894}
-  mainText: {fileID: 1732549881}
+  slider: {fileID: 2042950894}
+  valueText: {fileID: 1732549881}
 --- !u!1 &2045649316
 GameObject:
   m_ObjectHideFlags: 0
