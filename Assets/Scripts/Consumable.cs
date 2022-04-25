@@ -40,7 +40,8 @@ public class Consumable : MonoBehaviour
             if (index == portions.Length)
             {
                 surveyCanvas.gameObject.SetActive(false);
-                surveyCanvas.GetComponentInChildren<Text>().text = name.Substring(0, name.Length - 6);
+                // surveyCanvas.GetComponentInChildren<Text>().text = name.Substring(0, name.Length - 6);
+                Debug.Log("Survey for: " + name.Substring(0, name.Length - 6));
                 surveyCanvas.GetComponent<PageManagement>().nameOfFood = name.Substring(0, name.Length - 6);
                 surveyCanvas.gameObject.SetActive(true);
             }
