@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +10,14 @@ public class InstructionManagement : MonoBehaviour
     private PageManagement pageManagement;
     private int currentPage;
     private Text currentText;
+    private string sliderInstruction = "1=disliked extrememly to 9=liked extremely";
+    private string checkBoxInstruction = "1=not at all to 5=extremely";
+    //private bool SurveyIsOn = false;
     string[] instructions =
     {
-        "Firstly, please rate your liking experience using the below sliders",//Liking instruciton
+        "Firstly, please rate your liking experience",//Liking instruciton
 
-        "Now, please select the sensorial feeling you had currently", //SensorialTransit instruction go here
+        "Now, please select the sensorial feeling you had currently experienced while consuming the product", //SensorialTransit instruction go here
         "You have select Sweetness, now please rate how sweetness are you feeling", 
         "You have select Creamy, now please rate how Creamy are you feeling", 
         "You have select Milky, now please rate how milky are you feeling",
@@ -56,25 +60,29 @@ public class InstructionManagement : MonoBehaviour
     {
         pageManagement = surveyCanvas.GetComponent<PageManagement>();
         currentText = GetComponentInChildren<Text>();
-        currentText.gameObject.SetActive(false);
+        currentText.gameObject.SetActive(true);
         currentText.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!surveyCanvas.isActiveAndEnabled)
-        {
-            return;
-        }
-
         Vector3 targetPosition = Camera.main.transform.TransformPoint(new Vector3(0, 0, CameraDistance));
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         var lookAtPos = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
         transform.LookAt(lookAtPos, Camera.main.transform.up);
-        currentPage = pageManagement.currentPage;
-        currentText.gameObject.SetActive(true);
-        currentText.text = instructions[currentPage];
-        
+        if (!surveyCanvas.isActiveAndEnabled)
+        {
+            currentText.text = "Please take a couple sips of the sample and do the survey after consuming the product.";
+        }
+        else
+        {
+            currentPage = pageManagement.currentPage;
+            currentText.text = instructions[currentPage];
+            if(!pageManagement.transitPages.Contains(pageManagement.pageList[currentPage].Type))
+            {
+                currentText.text += pageManagement.pageList[currentPage].IsSlider ? " using the slider with the scale of " + sliderInstruction : " checking one box with the scale of " + checkBoxInstruction;
+            }
+        }
     }
 }
