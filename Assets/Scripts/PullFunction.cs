@@ -5,21 +5,23 @@ using UnityEngine.InputSystem.XR;
 public class PullFunction : MonoBehaviour
     {
     [SerializeField] GameObject XROrigin;
-    private Transform target;
+    private Vector3 target;
     public bool isPulling = false;
     void Start()
     {
-        target = XROrigin.transform;
+        target = XROrigin.transform.position;
     }
 
     void Update()
     {
-        if(isPulling)
-            XROrigin.transform.position = Vector3.Lerp(XROrigin.transform.position, target.position, Time.deltaTime / 5f);
+        if (isPulling)
+        {
+            XROrigin.transform.position = Vector3.Lerp(XROrigin.transform.position, target, Time.deltaTime);
+        }
     }
     public void Pull()
     {
-        target = this.transform;
+        target = XROrigin.transform.position + (this.transform.position - XROrigin.transform.position) * 0.75f;
         isPulling = true;
         TrackedPoseDriver driver = Camera.main.GetComponent<TrackedPoseDriver>();
         driver.trackingType = TrackedPoseDriver.TrackingType.RotationOnly;
