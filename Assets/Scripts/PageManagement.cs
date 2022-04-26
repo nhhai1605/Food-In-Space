@@ -14,7 +14,7 @@ public class PageManagement : MonoBehaviour
     [SerializeField] Button nextButton, submitButton;
 
     public string nameOfFood { get; set; }
-    private string outputPath = @"C:\SurveyResult.csv";
+    private string outputPath = @"SurveyResult.csv";
     [SerializeField] private Text pageText;
     private int resultID;
     private int numOfColumns = 0;
@@ -84,6 +84,7 @@ public class PageManagement : MonoBehaviour
         try
         {
             using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
+
             return false;
         }
         catch
@@ -123,6 +124,8 @@ public class PageManagement : MonoBehaviour
     }
     void Start()
     {
+        // Path
+        outputPath = Application.persistentDataPath + "/SurveyResult.csv";
 
         this.numOfColumns = allAttributes.Length - transitPages.Length;
         Reset();
