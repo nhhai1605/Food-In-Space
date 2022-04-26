@@ -14,7 +14,7 @@ public class PageManagement : MonoBehaviour
     [SerializeField] Button nextButton, submitButton;
 
     public string nameOfFood { get; set; }
-    private string outputPath = @"C:\temp\SurveyResult.csv";
+    private string outputPath = @"SurveyResult.csv";
     [SerializeField] private Text pageText;
     private int resultID;
     private int numOfColumns = 0;
@@ -59,7 +59,7 @@ public class PageManagement : MonoBehaviour
     {
         for (int i = 0; i < allAttributes.Length; i++)
         {
-            pageList.Add(new Page(i, sliderAttribute.Contains(allAttributes[i]) , allAttributes[i]));
+            pageList.Add(new Page(i, sliderAttribute.Contains(allAttributes[i]), allAttributes[i]));
         }
     }
     void InitializeColumns()
@@ -77,28 +77,29 @@ public class PageManagement : MonoBehaviour
     void InitializeOutputFile()
     {
 
-        if(File.Exists(outputPath) && !string.IsNullOrEmpty(File.ReadAllText(outputPath)))
+        if (File.Exists(outputPath) && !string.IsNullOrEmpty(File.ReadAllText(outputPath)))
         {
             string[] columns = File.ReadAllLines(outputPath)[0].Split(',');
             // minus 2 for id and name
-            if(columns.Length - 2 != numOfColumns)
+            if (columns.Length - 2 != numOfColumns)
             {
                 //Automatically create file if not exist
-                File.WriteAllText(outputPath, string.Empty); 
+                File.WriteAllText(outputPath, string.Empty);
                 InitializeColumns();
             }
         }
-        else 
+        else
         {
             InitializeColumns();
         }
 
     }
-    private  static bool FileInUse(string path)
+    private static bool FileInUse(string path)
     {
         try
         {
             using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
+
             return false;
         }
         catch
@@ -109,7 +110,7 @@ public class PageManagement : MonoBehaviour
     private void Reset()
     {
         currentPage = 0;
-        checkedAttributes = new List<string> {sensorialTransitPage, emotionTransitPage, finishTransitPage};
+        checkedAttributes = new List<string> { sensorialTransitPage, emotionTransitPage, finishTransitPage };
         checkedAttributes.AddRange(generalAttributes);
     }
     void DisplayError(string error)
@@ -127,7 +128,7 @@ public class PageManagement : MonoBehaviour
     void OnDisable()
     {
         Reset();
-        if(FileInUse(outputPath))
+        if (FileInUse(outputPath))
         {
             // Debug.LogError("try closing the csv file first and try again!");
             DisplayError("try closing the csv file first and try again!");
@@ -144,11 +145,14 @@ public class PageManagement : MonoBehaviour
     }
     void Start()
     {
+        // Path
+        outputPath = Application.persistentDataPath + "/SurveyResult.csv";
+
         this.numOfColumns = allAttributes.Length - transitPages.Length;
         Reset();
         nextButton.gameObject.SetActive(true);
         submitButton.gameObject.SetActive(false);
-        if(FileInUse(outputPath))
+        if (FileInUse(outputPath))
         {
             // Debug.LogError("try closing the csv file first and try again!");
             DisplayError("Try closing the csv file first and try again!");
@@ -159,7 +163,7 @@ public class PageManagement : MonoBehaviour
         InitializePages();
         InitializeOutputFile();
         ChangeVisual();
-        
+
     }
 
     private void ChangeVisual()
@@ -168,29 +172,29 @@ public class PageManagement : MonoBehaviour
         emotionGroup.SetActive(false);
         while (!checkedAttributes.Contains(allAttributes[currentPage]))
         {
-            currentPage++; 
+            currentPage++;
         }
-        if(allAttributes[currentPage] == "Sensorial")
+        if (allAttributes[currentPage] == "Sensorial")
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
             sensorialGroup.SetActive(true);
             pageText.text = "Choose which sensorial attributes you experienced while consuming the product";
             Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>();
-            foreach(Toggle toggle in toggles)
+            foreach (Toggle toggle in toggles)
             {
                 toggle.isOn = false;
             }
             return;
         }
-        else if(allAttributes[currentPage] == "Emotion")
+        else if (allAttributes[currentPage] == "Emotion")
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
             emotionGroup.SetActive(true);
             pageText.text = "Choose which emotions you experienced while consuming the product";
             Toggle[] toggles = emotionGroup.GetComponentsInChildren<Toggle>();
-            foreach(Toggle toggle in toggles)
+            foreach (Toggle toggle in toggles)
             {
                 toggle.isOn = false;
             }
@@ -198,7 +202,7 @@ public class PageManagement : MonoBehaviour
         }
 
 
-        if(allAttributes[currentPage] == finishTransitPage)
+        if (allAttributes[currentPage] == finishTransitPage)
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
@@ -228,7 +232,7 @@ public class PageManagement : MonoBehaviour
             if (!transitPages.Contains(pageList[i].Type))
             {
                 string text = pageList[i].score == 0 ? "NULL" : pageList[i].score.ToString();
-                File.AppendAllText(outputPath,  "," + text);
+                File.AppendAllText(outputPath, "," + text);
             }
 
         }
@@ -255,12 +259,12 @@ public class PageManagement : MonoBehaviour
         }
         else
         {
-            if(sensorialGroup.activeSelf)
+            if (sensorialGroup.activeSelf)
             {
                 Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>();
-                foreach(Toggle toggle in toggles)
+                foreach (Toggle toggle in toggles)
                 {
-                    if(toggle.isOn)
+                    if (toggle.isOn)
                     {
                         checkedAttributes.Add(toggle.GetComponentInChildren<Text>().text);
                     }
@@ -287,6 +291,6 @@ public class PageManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
