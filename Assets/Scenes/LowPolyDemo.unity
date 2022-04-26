@@ -1417,6 +1417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Survey Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5475237758262151451, guid: d2e7775a94051b94cb314417fb1bf7ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2e7775a94051b94cb314417fb1bf7ac, type: 3}
 --- !u!224 &1905993605 stripped
