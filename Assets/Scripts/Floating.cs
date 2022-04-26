@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Floating : MonoBehaviour
-{ 
+{
     [SerializeField] private Vector3 offset;
     [SerializeField] private float rotation;
-    
-    void Start () 
+
+    void Start()
     {
-        offset =  new Vector3(Random.Range(-20f, 20f), Random.Range(-40f , 40f),Random.Range(-20f, 20f));
+        offset = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         rotation = Random.Range(-4f, 4f) / 50f;
         transform.GetComponent<Rigidbody>().velocity = offset;
     }
-     
-    void Update () 
+
+    void Update()
     {
-        transform.Rotate(rotation,rotation,rotation);
+        transform.Rotate(rotation, rotation, rotation);
     }
 
 }
