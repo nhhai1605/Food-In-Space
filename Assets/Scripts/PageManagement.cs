@@ -14,21 +14,21 @@ public class PageManagement : MonoBehaviour
     [SerializeField] Button nextButton, submitButton;
 
     public string nameOfFood { get; set; }
-    private string outputPath = @"C:\temp\SurveyResult.csv";
+    private string outputPath = @"C:\SurveyResult.csv";
     [SerializeField] private Text pageText;
     private int resultID;
     private int numOfColumns = 0;
 
     [SerializeField] private Slider slider;
     [SerializeField] private ToggleGroup toggleGroup;
-    [SerializeField]  private GameObject sensorialGroup;
-    [SerializeField]  private GameObject emotionGroup;
+    [SerializeField] private GameObject sensorialGroup;
+    [SerializeField] private GameObject emotionGroup;
     private static string sensorialTransitPage = "Sensorial";
     private static string emotionTransitPage = "Emotion";
     private static string[] generalAttributes = { "Liking" };
     private static string[] sensorialAttributes = { "Sweetness", "Creamy", "Milky", "Sourness", "Vanilla" };
     private static string[] emotionAttributes = {   "Active", "Adventurous", "Aggressive", "Bored", "Calm",
-                                                    "Disgusted", "Enthusiastic", "Good", "Good-natured", 
+                                                    "Disgusted", "Enthusiastic", "Good", "Good-natured",
                                                     "Guilty", "Happy", "Interested","Joyful","Loving","Mild",
                                                     "Nostalgic","Pleasant","Satisfied","Secure","Tame",
                                                     "Understanding","Warm","Wild","Worried"};
@@ -44,7 +44,7 @@ public class PageManagement : MonoBehaviour
     {
         for (int i = 0; i < allAttributes.Length; i++)
         {
-            pageList.Add(new Page(i, sliderAttribute.Contains<string>(allAttributes[i]) , allAttributes[i]));
+            pageList.Add(new Page(i, sliderAttribute.Contains<string>(allAttributes[i]), allAttributes[i]));
         }
     }
     void initializeColumns()
@@ -62,24 +62,24 @@ public class PageManagement : MonoBehaviour
     void initializeOutputFile()
     {
 
-        if(File.Exists(outputPath) && !string.IsNullOrEmpty(File.ReadAllText(outputPath)))
+        if (File.Exists(outputPath) && !string.IsNullOrEmpty(File.ReadAllText(outputPath)))
         {
             string[] columns = File.ReadAllLines(outputPath)[0].Split(',');
             // minus 2 for id and name
-            if(columns.Length - 2 != numOfColumns)
+            if (columns.Length - 2 != numOfColumns)
             {
                 //Automatically create file if not exist
-                File.WriteAllText(outputPath, string.Empty); 
+                File.WriteAllText(outputPath, string.Empty);
                 initializeColumns();
             }
         }
-        else 
+        else
         {
             initializeColumns();
         }
 
     }
-    private  static bool FileInUse(string path)
+    private static bool FileInUse(string path)
     {
         try
         {
@@ -94,7 +94,7 @@ public class PageManagement : MonoBehaviour
     private void Reset()
     {
         currentPage = 0;
-        checkedAttributes = new List<string> {sensorialTransitPage, emotionTransitPage, finishTransitPage};
+        checkedAttributes = new List<string> { sensorialTransitPage, emotionTransitPage, finishTransitPage };
         checkedAttributes.AddRange(generalAttributes);
     }
     void DisplayError(string error)
@@ -111,7 +111,7 @@ public class PageManagement : MonoBehaviour
     void OnDisable()
     {
         Reset();
-        if(FileInUse(outputPath))
+        if (FileInUse(outputPath))
         {
             // Debug.LogError("try closing the csv file first and try again!");
             DisplayError("try closing the csv file first and try again!");
@@ -128,7 +128,7 @@ public class PageManagement : MonoBehaviour
         Reset();
         nextButton.gameObject.SetActive(true);
         submitButton.gameObject.SetActive(false);
-        if(FileInUse(outputPath))
+        if (FileInUse(outputPath))
         {
             // Debug.LogError("try closing the csv file first and try again!");
             DisplayError("try closing the csv file first and try again!");
@@ -139,7 +139,7 @@ public class PageManagement : MonoBehaviour
         initializePages();
         initializeOutputFile();
         ChangeVisual();
-        
+
     }
 
     private void ChangeVisual()
@@ -148,29 +148,29 @@ public class PageManagement : MonoBehaviour
         emotionGroup.gameObject.SetActive(false);
         while (!checkedAttributes.Contains(allAttributes[currentPage]))
         {
-            currentPage++; 
+            currentPage++;
         }
-        if(allAttributes[currentPage] == "Sensorial")
+        if (allAttributes[currentPage] == "Sensorial")
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
             sensorialGroup.gameObject.SetActive(true);
             pageText.text = "Choose sensories you experienced";
             Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>();
-            foreach(Toggle toggle in toggles)
+            foreach (Toggle toggle in toggles)
             {
                 toggle.isOn = false;
             }
             return;
         }
-        else if(allAttributes[currentPage] == "Emotion")
+        else if (allAttributes[currentPage] == "Emotion")
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
             emotionGroup.gameObject.SetActive(true);
             pageText.text = "Choose emotions you experienced";
             Toggle[] toggles = emotionGroup.GetComponentsInChildren<Toggle>();
-            foreach(Toggle toggle in toggles)
+            foreach (Toggle toggle in toggles)
             {
                 toggle.isOn = false;
             }
@@ -178,7 +178,7 @@ public class PageManagement : MonoBehaviour
         }
 
 
-        if(allAttributes[currentPage] == finishTransitPage)
+        if (allAttributes[currentPage] == finishTransitPage)
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
@@ -207,7 +207,7 @@ public class PageManagement : MonoBehaviour
             if (!transitPages.Contains<string>(pageList[i].type))
             {
                 string text = pageList[i].score == 0 ? "NULL" : pageList[i].score.ToString();
-                File.AppendAllText(outputPath,  "," + text);
+                File.AppendAllText(outputPath, "," + text);
             }
 
         }
@@ -234,12 +234,12 @@ public class PageManagement : MonoBehaviour
         }
         else
         {
-            if(sensorialGroup.activeSelf)
+            if (sensorialGroup.activeSelf)
             {
                 Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>();
-                foreach(Toggle toggle in toggles)
+                foreach (Toggle toggle in toggles)
                 {
-                    if(toggle.isOn)
+                    if (toggle.isOn)
                     {
                         checkedAttributes.Add(toggle.GetComponentInChildren<Text>().text);
                     }
@@ -266,6 +266,6 @@ public class PageManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
