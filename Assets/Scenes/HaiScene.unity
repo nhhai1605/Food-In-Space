@@ -5204,7 +5204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 557524993}
-        m_TargetAssemblyTypeName: PullFunction, Assembly-CSharp
+        m_TargetAssemblyTypeName: Pullable, Assembly-CSharp
         m_MethodName: Pull
         m_Mode: 1
         m_Arguments:
@@ -5219,7 +5219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 557524993}
-        m_TargetAssemblyTypeName: PullFunction, Assembly-CSharp
+        m_TargetAssemblyTypeName: Pullable, Assembly-CSharp
         m_MethodName: Release
         m_Mode: 1
         m_Arguments:
@@ -5288,12 +5288,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 557524986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e40c7b510dbea44b0e67ff9227a1f4, type: 3}
+  m_Script: {fileID: 11500000, guid: ee9a026986f10ff4d9fab847ababcf35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VROrigin: {fileID: 1861036326}
-  pullingSpeed: 1
-  pullingDistance: 20
 --- !u!1 &559235784
 GameObject:
   m_ObjectHideFlags: 0
@@ -15496,6 +15493,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1476509693}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1861036327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861036326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9df95cd1aac904985de1268c04101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pullingSpeed: 0.5
+  pullingDistance: 0.2
 --- !u!1 &1866840432
 GameObject:
   m_ObjectHideFlags: 0
