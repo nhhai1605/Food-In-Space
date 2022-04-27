@@ -1,24 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem.XR;
 public class PullFunction : MonoBehaviour
-{
-    [SerializeField] GameObject XROrigin;
-    private Transform target;
+    {
+    [SerializeField] private GameObject VROrigin;
+    private Camera VRCamera;
+
+    [SerializeField] private float pullingSpeed = 1f;
+    [SerializeField] private float pullingDistance = 20f;
+    TrackedPoseDriver driver;
+    private Vector3 dir = Vector3.zero;
     void Start()
     {
-        target = XROrigin.transform;
+        VRCamera = Camera.main;
+        driver = VRCamera.GetComponent<TrackedPoseDriver>();
     }
 
     void Update()
     {
-        XROrigin.transform.position = Vector3.Lerp(XROrigin.transform.position, target.position, Time.deltaTime);
+
+        if(Vector3.Distance(VRCamera.transform.position, this.transform.position) > pullingDistance)
+        {
+            VROrigin.transform.position += dir * Time.deltaTime * pullingSpeed;
+        }
+
     }
     public void Pull()
     {
-        print(this.name + " Pulling");
-        target = this.transform;
-        
+        dir = this.transform.position - VRCamera.transform.position;
+        driver.trackingType = TrackedPoseDriver.TrackingType.RotationOnly;
+    }
+
+    public void Release()
+    {
+        dir = Vector3.zero;
+        driver.trackingType = TrackedPoseDriver.TrackingType.RotationAndPosition;
     }
 }
