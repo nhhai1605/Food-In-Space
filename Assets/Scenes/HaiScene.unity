@@ -4939,7 +4939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &539558968
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4956,7 +4956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 666}
+  m_AnchoredPosition: {x: 0, y: 763}
   m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539558969
@@ -5292,6 +5292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VROrigin: {fileID: 1861036326}
+  pullingSpeed: 1
+  pullingDistance: 20
 --- !u!1 &559235784
 GameObject:
   m_ObjectHideFlags: 0
@@ -15494,24 +15496,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1476509693}
   m_PrefabAsset: {fileID: 0}
---- !u!143 &1861036327
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861036326}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1866840432
 GameObject:
   m_ObjectHideFlags: 0
@@ -15679,7 +15663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.999997, y: 41.411865}
+  m_AnchoredPosition: {x: -9.999997, y: 34.1}
   m_SizeDelta: {x: 913.734, y: 258.0053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867387251
@@ -16083,6 +16067,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3680132613710571849, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7880130034100170568, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
       propertyPath: canvas
@@ -16102,6 +16091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HamObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880130034100170570, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880130034100170572, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
@@ -16131,7 +16125,7 @@ PrefabInstance:
     - target: {fileID: 7880130034100170573, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
       propertyPath: m_AngularDrag
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7880130034100170573, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
@@ -16167,7 +16161,7 @@ PrefabInstance:
     - target: {fileID: 7880130034100170674, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2153.3
+      value: 2177.4
       objectReference: {fileID: 0}
     - target: {fileID: 7880130034100170674, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
@@ -16177,7 +16171,7 @@ PrefabInstance:
     - target: {fileID: 7880130034100170674, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1513
+      value: 1527.24
       objectReference: {fileID: 0}
     - target: {fileID: 7880130034100170674, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
@@ -16214,7 +16208,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3680132613710571849, guid: 0ba0a8d455d61b64baf284dd10e8bb5b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0ba0a8d455d61b64baf284dd10e8bb5b, type: 3}
 --- !u!1 &1887545295 stripped
 GameObject:
@@ -18729,7 +18724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2145943913
 Transform:
   m_ObjectHideFlags: 0
@@ -18760,7 +18755,7 @@ PrefabInstance:
     - target: {fileID: 4512769977073444544, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2126
+      value: 2119.23
       objectReference: {fileID: 0}
     - target: {fileID: 4512769977073444544, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
@@ -18809,8 +18804,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512769977073444545, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512769977073444545, guid: 3217f3c10a1740747bd1c880942c99bf,
+        type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512769977073444545, guid: 3217f3c10a1740747bd1c880942c99bf,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4512769977073444548, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
@@ -18822,7 +18827,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PouchObject
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4512769977073444602, guid: 3217f3c10a1740747bd1c880942c99bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965856279634563526, guid: 3217f3c10a1740747bd1c880942c99bf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5965856279634563526, guid: 3217f3c10a1740747bd1c880942c99bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3217f3c10a1740747bd1c880942c99bf, type: 3}
 --- !u!222 &7657535340098034129
 CanvasRenderer:
