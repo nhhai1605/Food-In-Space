@@ -39,10 +39,14 @@ public class Consumable : MonoBehaviour
             SetVisuals();
             if (index == portions.Length)
             {
-                surveyCanvas.gameObject.SetActive(false);
-                surveyCanvas.GetComponentInChildren<Text>().text = name.Substring(0, name.Length - 6);
-                Debug.Log("Survey for: " + name.Substring(0, name.Length - 6));
+                
+                surveyCanvas.GetComponentInChildren<Text>().text = name;
+                Debug.Log("Survey for: " + name);
                 surveyCanvas.GetComponent<PageManagement>().nameOfFood = name;
+                surveyCanvas.GetComponent<NewPageManagement>().nameOfFood = name;
+
+                //Set the name first then deactive and active again to activate OnDisabled
+                surveyCanvas.gameObject.SetActive(false);
                 surveyCanvas.gameObject.SetActive(true);
             }
         }
