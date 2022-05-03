@@ -21,12 +21,13 @@ public class VRInitialiser : MonoBehaviour
         else if (XRSettings.isDeviceActive && (XRSettings.loadedDeviceName == "Mock HMD" || XRSettings.loadedDeviceName == "MockHMD Display"))
         {
             Debug.Log("Using Mock HMD");
-            Instantiate(mockOrigin);
+            mockOrigin.SetActive(true);
         }
         else
         {
             Debug.Log("Using Headset: " + XRSettings.loadedDeviceName);
             Instantiate(mockOculusOrigin);
+            mockOculusOrigin.SetActive(true);
         }
 
     }
