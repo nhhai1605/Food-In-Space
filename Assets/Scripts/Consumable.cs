@@ -42,8 +42,22 @@ public class Consumable : MonoBehaviour
                 
                 surveyCanvas.GetComponentInChildren<Text>().text = name;
                 Debug.Log("Survey for: " + name);
-                surveyCanvas.GetComponent<PageManagement>().nameOfFood = name;
-                surveyCanvas.GetComponent<NewPageManagement>().nameOfFood = name;
+                try
+                {
+                    surveyCanvas.GetComponent<PageManagement>().nameOfFood = name;
+                }
+                catch
+                {
+                    Debug.LogWarning("Using NewPageManagement");
+                }
+                try
+                {
+                    surveyCanvas.GetComponent<NewPageManagement>().nameOfFood = name;
+                }
+                catch
+                {
+                    Debug.LogWarning("Using old PageManagement");
+                }
 
                 //Set the name first then deactive and active again to activate OnDisabled
                 surveyCanvas.gameObject.SetActive(false);
