@@ -526,6 +526,41 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.y
       value: 4e-45
       objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671386399006107241, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c04eb3dcb26e44b8024303c5bcd9cd, type: 3}
 --- !u!4 &389440983 stripped
@@ -742,6 +777,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OculusOrigin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6396972356140362810, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
