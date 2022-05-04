@@ -9,13 +9,15 @@ public class Consumer : MonoBehaviour
     void Start()
     {
         _collider = GetComponent<Collider>();
-        _collider.isTrigger = true;
+        _collider.isTrigger = false;
     }
 
-    void OnTriggerEnter(Collider other)
+
+
+    private void OnCollisionEnter(Collision other)
     {
-        Consumable consumable = other.GetComponent<Consumable>();
-        if (consumable != null && !consumable.IsFinished)
+        Consumable consumable = other.collider.GetComponent<Consumable>();
+        if (consumable != null)
         {
             consumable.Consume();
         }
