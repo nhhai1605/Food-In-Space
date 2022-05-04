@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
 using System.Linq;
-public class XMLManagement : MonoBehaviour
+public class XMLManager : MonoBehaviour
 {
     
     // Start is called before the first frame update
