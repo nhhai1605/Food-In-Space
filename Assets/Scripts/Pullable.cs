@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Pullable : MonoBehaviour
 {
-    private PullingManagement pullingManagement;
+    private MovementManager movementManager;
     void Start()
     {
-        pullingManagement = GameObject.FindGameObjectWithTag("VR Origin").GetComponent<PullingManagement>();
+        movementManager = GameObject.FindGameObjectWithTag("VR Origin").GetComponent<MovementManager>();
     }
     public void Pull()
     {
-        pullingManagement.Pull(this.gameObject);
+        movementManager.Pull(this.gameObject);
     }
     public void Release()
     {
-        pullingManagement.Release();
+        movementManager.Release();
     }
 }
