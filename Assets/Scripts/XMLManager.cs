@@ -14,7 +14,15 @@ public class XMLManager : MonoBehaviour
     {
         path = Application.persistentDataPath + "/SurveyQuestions.xml";
         string foodName, questionType, questionName, questionContent, questionSlider;
-        reader = XmlReader.Create(path);
+        try
+        {
+            reader = XmlReader.Create(path);
+        }
+        catch
+        {
+            Debug.Log("xml does not exist so it will run the default version");
+            return;
+        }
         reader.ReadToFollowing("Food");
         do
         {
