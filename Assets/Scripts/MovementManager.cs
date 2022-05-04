@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.InputSystem.XR;
-//using UnityEngine.SpatialTracking;
-public class PullingManagement : MonoBehaviour
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
+public class MovementManager : MonoBehaviour
 {
     private GameObject VROrigin;
     public Camera VRCamera { get; set; }
-    [SerializeField] private float pullingSpeed = 0.5f;
+    [SerializeField] private float pullingSpeed = 0.02f;
+    [SerializeField] private float thrustingSpeed = 0.02f;
     [SerializeField] private float pullingDistance = 0.2f;
     private GameObject pullableObject = null;
     void Start()
@@ -15,16 +16,19 @@ public class PullingManagement : MonoBehaviour
         VROrigin = this.gameObject;
         VRCamera = GetComponentInChildren<Camera>();
     }
-    void Update()
+    void FixedUpdate()
     {
         if(pullableObject != null)
         {
             Vector3 dir = pullableObject.transform.position - VRCamera.transform.position;
             if (pullableObject != null && Vector3.Distance(VRCamera.transform.position, pullableObject.transform.position) > pullingDistance)
             {
-                VROrigin.transform.position += dir * Time.deltaTime * pullingSpeed;
+                VROrigin.transform.position += dir * pullingSpeed;
             }
         }
+
+        //Vector3 look = Camera.main.transform.TransformDirection(Vector3.forward);
+        //VROrigin.transform.position += look * thrustingSpeed;
 
     }
 
