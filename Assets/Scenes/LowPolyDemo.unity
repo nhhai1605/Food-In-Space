@@ -578,6 +578,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Device Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
 --- !u!1001 &325749465
@@ -1488,12 +1493,7 @@ PrefabInstance:
     - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Name
-      value: OculusOrigin
-      objectReference: {fileID: 0}
-    - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: VROrigin
       objectReference: {fileID: 0}
     - target: {fileID: 6396972356140362810, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
@@ -1550,26 +1550,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6396972356140362811, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: m_RequestedTrackingOriginMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6396972357223583995, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6396972357223583999, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 404423725}
-    - target: {fileID: 6396972357730296144, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6396972357730296148, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_InteractionManager
@@ -2587,7 +2572,7 @@ PrefabInstance:
     - target: {fileID: 4657911316405339383, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 277e15b63da459d418fb212202b1189d, type: 3}
