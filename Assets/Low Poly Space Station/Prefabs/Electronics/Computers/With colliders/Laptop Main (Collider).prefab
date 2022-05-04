@@ -89,7 +89,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140806}
-  m_Material: {fileID: 13400000, guid: bbe4e562d722a904c84429edf6ab4452, type: 2}
+  m_Material: {fileID: 13400000, guid: 638982835a0687d44b274a3bd3b21cc0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 428470}
   - component: {fileID: 5486054}
-  - component: {fileID: 11467114}
+  - component: {fileID: 8119865733300740105}
   m_Layer: 0
   m_Name: Laptop Main (Collider)
   m_TagString: Untagged
@@ -145,7 +145,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11467114
+--- !u!114 &8119865733300740105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,10 +154,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 150884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2cd96365c3cf1944836463955494291, type: 3}
+  m_Script: {fileID: 11500000, guid: 67b2b19b3c1404f47a4445c1b85b3647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  offset: {x: 0, y: 0, z: 0}
+  rotation: 0
 --- !u!1 &156138
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +248,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156138}
-  m_Material: {fileID: 13400000, guid: bbe4e562d722a904c84429edf6ab4452, type: 2}
+  m_Material: {fileID: 13400000, guid: 638982835a0687d44b274a3bd3b21cc0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

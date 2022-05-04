@@ -4,10 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InstructionManagement : MonoBehaviour
+public class InstructionManager : MonoBehaviour
 {
     [SerializeField] private Canvas surveyCanvas;
-    private PageManagement pageManagement;
+    private PageManager pageManager;
     private int currentPage;
     private Text currentText;
     private string sliderInstruction = "1=disliked extrememly to 9=liked extremely";
@@ -58,7 +58,8 @@ public class InstructionManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pageManagement = surveyCanvas.GetComponent<PageManagement>();
+        //pageManagement = surveyCanvas.GetComponent<OldPageManagement>();
+        pageManager = surveyCanvas.GetComponent<PageManager>();
         currentText = GetComponentInChildren<Text>();
         currentText.gameObject.SetActive(true);
         currentText.transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -77,11 +78,11 @@ public class InstructionManagement : MonoBehaviour
         }
         else
         {
-            currentPage = pageManagement.currentPage;
+            currentPage = pageManager.currentPage;
             currentText.text = instructions[currentPage];
-            if(!pageManagement.transitPages.Contains(pageManagement.pageList[currentPage].Type))
+            if(!pageManager.transitPages.Contains(pageManager.pageList[currentPage].Name))
             {
-                currentText.text += pageManagement.pageList[currentPage].IsSlider ? " using the slider with the scale of " + sliderInstruction : " checking one box with the scale of " + checkBoxInstruction;
+                currentText.text += pageManager.pageList[currentPage].IsSlider ? " using the slider with the scale of " + sliderInstruction : " checking one box with the scale of " + checkBoxInstruction;
             }
         }
     }
