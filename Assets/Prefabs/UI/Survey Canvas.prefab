@@ -1788,7 +1788,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9365,7 +9365,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5475237758262151452}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PageManagement, Assembly-CSharp
         m_MethodName: ChangePage
         m_Mode: 1
@@ -11192,7 +11192,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12839,7 +12839,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5475237758262151452}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PageManagement, Assembly-CSharp
         m_MethodName: SubmitSurvey
         m_Mode: 1
@@ -13019,7 +13019,7 @@ GameObject:
   - component: {fileID: 5475237758262151450}
   - component: {fileID: 5475237758262151462}
   - component: {fileID: 5475237758262151463}
-  - component: {fileID: 5475237758262151452}
+  - component: {fileID: 5864042825404683983}
   m_Layer: 5
   m_Name: Survey Canvas
   m_TagString: Untagged
@@ -13130,7 +13130,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
---- !u!114 &5475237758262151452
+--- !u!114 &5864042825404683983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13139,14 +13139,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5475237758262151451}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d98bc7c3a48144eaf0fb3d6078e548, type: 3}
+  m_Script: {fileID: 11500000, guid: 42821a3fdc3539c4c9652a92faf21b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pageObject: {fileID: 2431649580753621073}
-  nextButton: {fileID: 2431649582303005690}
-  submitButton: {fileID: 5475237756578523995}
-  pageText: {fileID: 2431649582303568891}
-  slider: {fileID: 2431649582613300838}
-  toggleGroup: {fileID: 2431649581578938821}
-  sensorialGroup: {fileID: 2431649582699961276}
-  emotionGroup: {fileID: 2431649582029742424}
+  xmlManager: {fileID: 0}
+  pageObject: {fileID: 0}
+  nextButton: {fileID: 0}
+  submitButton: {fileID: 0}
+  pageText: {fileID: 0}
+  slider: {fileID: 0}
+  toggleGroup: {fileID: 0}
+  sensorialGroup: {fileID: 0}
+  emotionGroup: {fileID: 0}
