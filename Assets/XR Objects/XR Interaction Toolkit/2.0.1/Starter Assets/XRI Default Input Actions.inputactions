@@ -94,7 +94,7 @@
                 {
                     "name": "",
                     "id": "f69fc717-b44a-44c1-a006-8b42c899878f",
-                    "path": "<XRController>{RightHand}/devicePosition",
+                    "path": "<XRController>{LeftHand}/devicePosition",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
@@ -127,7 +127,7 @@
                 {
                     "name": "",
                     "id": "b2c06f7c-5089-4f69-b2f4-5b36ca25ade0",
-                    "path": "<XRController>{RightHand}/deviceRotation",
+                    "path": "<XRController>{LeftHand}/deviceRotation",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
