@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 6396972356140362811}
   - component: {fileID: 6291399382867091902}
   - component: {fileID: 926032363}
+  - component: {fileID: 5233144154086249007}
   m_Layer: 0
   m_Name: VROrigin
   m_TagString: VR Origin
@@ -154,6 +155,21 @@ MonoBehaviour:
   pullingSpeed: 0.5
   thrustingSpeed: 0.02
   pullingDistance: 0.2
+--- !u!114 &5233144154086249007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6396972356140362788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b8e7bc301122e4ba12a26d37e45509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spectatorCamera: {fileID: 0}
+  buttonReference: {fileID: 2546589484075061272, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
 --- !u!1 &6396972357223583995
 GameObject:
   m_ObjectHideFlags: 0

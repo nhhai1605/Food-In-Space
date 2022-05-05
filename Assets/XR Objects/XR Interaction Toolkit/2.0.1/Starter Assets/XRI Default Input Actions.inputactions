@@ -410,6 +410,17 @@
                     "action": "Primary Button",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88238533-051c-4afb-9d5d-dcdb884d58d3",
+                    "path": "<ViveController>{LeftHand}/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
