@@ -10,9 +10,11 @@ public class Consumable : MonoBehaviour
     public bool IsFinished => index == portions.Length;
     [SerializeField] private Canvas surveyCanvas;
     private AudioSource audioSrc;
+    private bool IsGrabbed;
     // Start is called before the first frame update
     void Start()
     {
+        IsGrabbed = false;
         audioSrc = GetComponent<AudioSource>();
         SetVisuals();
     }
@@ -27,11 +29,18 @@ public class Consumable : MonoBehaviour
             }
         }
     }
-
+    public void Grab()
+    {
+        IsGrabbed = true;
+    }
+    public void Drop()
+    {
+        IsGrabbed = false; 
+    }
     [ContextMenu("Consume")]
     public void Consume()
     {
-        if (!IsFinished)
+        if (!IsFinished && IsGrabbed)
         {
             index++;
             audioSrc.Play();
@@ -42,24 +51,25 @@ public class Consumable : MonoBehaviour
                 
                 surveyCanvas.GetComponentInChildren<Text>().text = name;
                 Debug.Log("Survey for: " + name);
-                try
-                {
-                    surveyCanvas.GetComponent<PageManagement>().nameOfFood = name;
-                }
-                catch
-                {
-                    Debug.LogWarning("Using NewPageManagement");
-                }
-                try
-                {
-                    surveyCanvas.GetComponent<NewPageManagement>().nameOfFood = name;
-                }
-                catch
-                {
-                    Debug.LogWarning("Using old PageManagement");
-                }
+                //try
+                //{
+                //    surveyCanvas.GetComponent<OldPageManagement>().nameOfFood = name;
+                //}
+                //catch
+                //{
+                //    Debug.LogWarning("Using New PageManagement");
+                //}
+                //try
+                //{
+                //    surveyCanvas.GetComponent<PageManagement>().nameOfFood = name;
+                //}
+                //catch
+                //{
+                //    Debug.LogWarning("Using Old PageManagement");
+                //}
+                surveyCanvas.GetComponent<PageManager>().nameOfFood = name;
 
-                //Set the name first then deactive and active again to activate OnDisabled
+                //Set the name first then deactive and active again to activate OnEnabled
                 surveyCanvas.gameObject.SetActive(false);
                 surveyCanvas.gameObject.SetActive(true);
             }
