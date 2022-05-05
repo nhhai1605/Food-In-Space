@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LowPolyDemo.unity
     guid: 2b25316ec1536d345b9298128bc43494
+  - enabled: 1
+    path: Assets/Scenes/HighDifinitionScene.unity
+    guid: 61c3fc2c1be344690b19efb0147d93ee
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260,
       type: 2}
