@@ -1325,7 +1325,7 @@ PrefabInstance:
     - target: {fileID: 6396972356140362810, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 55
+      value: 54.3
       objectReference: {fileID: 0}
     - target: {fileID: 6396972356140362810, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
@@ -2742,6 +2742,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MockOrigin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657911316405339383, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 277e15b63da459d418fb212202b1189d, type: 3}

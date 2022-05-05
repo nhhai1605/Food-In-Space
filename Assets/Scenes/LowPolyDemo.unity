@@ -2249,6 +2249,11 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5233144154086249007, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: spectatorCamera
+      value: 
+      objectReference: {fileID: 978701191}
     - target: {fileID: 5627902856144133210, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2690,6 +2695,12 @@ PrefabInstance:
 --- !u!4 &978701190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6684958047926896783, guid: 45a21b5aa30340d4c9ef6a3189a87879,
+    type: 3}
+  m_PrefabInstance: {fileID: 978701189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &978701191 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6684958047926896780, guid: 45a21b5aa30340d4c9ef6a3189a87879,
     type: 3}
   m_PrefabInstance: {fileID: 978701189}
   m_PrefabAsset: {fileID: 0}

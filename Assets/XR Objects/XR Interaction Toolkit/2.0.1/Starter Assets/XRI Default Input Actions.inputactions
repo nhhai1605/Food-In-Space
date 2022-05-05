@@ -414,7 +414,7 @@
                 {
                     "name": "",
                     "id": "88238533-051c-4afb-9d5d-dcdb884d58d3",
-                    "path": "<ViveController>{LeftHand}/select",
+                    "path": "<ViveController>{LeftHand}/trackpadClicked",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
