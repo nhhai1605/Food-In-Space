@@ -1623,7 +1623,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!850595691 &518306417
 LightingSettings:
@@ -2272,7 +2272,7 @@ PrefabInstance:
     - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6396972356140362810, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
@@ -2400,7 +2400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9df95cd1aac904985de1268c04101f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullingSpeed: 0.5
+  pullingSpeed: 0.02
   thrustingSpeed: 0.02
   pullingDistance: 0.2
 --- !u!1 &937665384 stripped
@@ -2987,7 +2987,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &1148590228
 GameObject:
@@ -4671,7 +4671,7 @@ PrefabInstance:
     - target: {fileID: 4657911316405339383, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4657911316499463558, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
