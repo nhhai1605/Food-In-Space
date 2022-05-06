@@ -6,27 +6,47 @@ using UnityEngine.XR;
 public class MovementManager : MonoBehaviour
 {
     private GameObject VROrigin;
+    private XRDeviceSimulatorControls controls;
     public Camera VRCamera { get; set; }
     [SerializeField] private float pullingSpeed = 0.02f;
     [SerializeField] private float thrustingSpeed = 0.02f;
     [SerializeField] private float pullingDistance = 0.2f;
+    [SerializeField] private float friction = 0.98f;
     private GameObject pullableObject = null;
     private bool IsThrusting = false;
     Vector3 look = Vector3.zero;
     void Start()
     {
+       
         VROrigin = this.gameObject;
         VRCamera = GetComponentInChildren<Camera>();
     }
+    void Awake()
+    {
+        controls = new XRDeviceSimulatorControls();
+        controls.InputControls.PrimaryButton.started += ctx => Thrust();
+        controls.InputControls.PrimaryButton.canceled += ctx => StopThurst();
+    }
+    void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
+    }
+
     void FixedUpdate()
     {
+
         if (IsThrusting)
         {
             look = Camera.main.transform.TransformDirection(Vector3.forward);
         }
         else
         {
-           look *= 0.95f;
+           look *= friction;
         }
         if(look.magnitude < 0.0001f)
         {
@@ -48,17 +68,11 @@ public class MovementManager : MonoBehaviour
     }
     public void Thrust()
     {
-        if(IsThrusting)
-        {
-            IsThrusting = false;
-        }
-        else
-        {
-            IsThrusting=true;
-        }
+        IsThrusting = true;
     }
     public void StopThurst()
     {
+        print("stop run");
         IsThrusting = false;
     }
 
