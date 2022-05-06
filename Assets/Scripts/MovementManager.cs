@@ -2,39 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
 public class MovementManager : MonoBehaviour
 {
     private GameObject VROrigin;
-    private XRDeviceSimulatorControls controls;
+    //private XRDeviceSimulatorControls controls;
     public Camera VRCamera { get; set; }
     [SerializeField] private float pullingSpeed = 0.02f;
     [SerializeField] private float thrustingSpeed = 0.02f;
     [SerializeField] private float pullingDistance = 0.2f;
     [SerializeField] private float friction = 0.98f;
+    [SerializeField] private InputActionReference buttonReference;
     private GameObject pullableObject = null;
     private bool IsThrusting = false;
     Vector3 look = Vector3.zero;
     void Start()
     {
-       
         VROrigin = this.gameObject;
         VRCamera = GetComponentInChildren<Camera>();
     }
     void Awake()
     {
-        controls = new XRDeviceSimulatorControls();
-        controls.InputControls.PrimaryButton.started += ctx => Thrust();
-        controls.InputControls.PrimaryButton.canceled += ctx => StopThurst();
+        buttonReference.action.started += Thrust;
+        buttonReference.action.canceled += StopThrust;
     }
-    void OnEnable()
+    void OnDestroy()
     {
-        controls.Enable();
-    }
-
-    void OnDisable()
-    {
-        controls.Disable();
+        buttonReference.action.started -= Thrust;
+        buttonReference.action.canceled -= StopThrust;
     }
 
     void FixedUpdate()
@@ -66,13 +60,12 @@ public class MovementManager : MonoBehaviour
 
 
     }
-    public void Thrust()
+    private void Thrust(InputAction.CallbackContext context)
     {
-        IsThrusting = true;
+        IsThrusting =true;
     }
-    public void StopThurst()
+    private void StopThrust(InputAction.CallbackContext context)
     {
-        print("stop run");
         IsThrusting = false;
     }
 
