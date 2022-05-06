@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoundaryManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject VROrigin;
+    private GameObject VROrigin;
     [SerializeField] private List<GameObject> walls;
 
 

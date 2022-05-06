@@ -11,6 +11,8 @@ public class MovementManager : MonoBehaviour
     [SerializeField] private float thrustingSpeed = 0.02f;
     [SerializeField] private float pullingDistance = 0.2f;
     private GameObject pullableObject = null;
+    private bool IsThrusting = false;
+    Vector3 look = Vector3.zero;
     void Start()
     {
         VROrigin = this.gameObject;
@@ -18,7 +20,21 @@ public class MovementManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(pullableObject != null)
+        if (IsThrusting)
+        {
+            look = Camera.main.transform.TransformDirection(Vector3.forward);
+        }
+        else
+        {
+           look *= 0.95f;
+        }
+        if(look.magnitude < 0.0001f)
+        {
+            look = Vector3.zero;
+        }
+        VROrigin.transform.position += look * thrustingSpeed;
+
+        if (pullableObject != null)
         {
             Vector3 dir = pullableObject.transform.position - VRCamera.transform.position;
             if (pullableObject != null && Vector3.Distance(VRCamera.transform.position, pullableObject.transform.position) > pullingDistance)
@@ -27,9 +43,23 @@ public class MovementManager : MonoBehaviour
             }
         }
 
-        //Vector3 look = Camera.main.transform.TransformDirection(Vector3.forward);
-        //VROrigin.transform.position += look * thrustingSpeed;
 
+
+    }
+    public void Thrust()
+    {
+        if(IsThrusting)
+        {
+            IsThrusting = false;
+        }
+        else
+        {
+            IsThrusting=true;
+        }
+    }
+    public void StopThurst()
+    {
+        IsThrusting = false;
     }
 
     public void Pull(GameObject pullableObject)
