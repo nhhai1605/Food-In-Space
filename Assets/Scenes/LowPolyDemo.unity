@@ -423,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   rotation: 0
+  IsRandom: 1
 --- !u!82 &140556953
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1603,28 +1604,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 494347822}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &506637615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657911316499463561, guid: 277e15b63da459d418fb212202b1189d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1824341637}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &506637619
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506637615}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!850595691 &518306417
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2403,6 +2382,8 @@ MonoBehaviour:
   pullingSpeed: 0.02
   thrustingSpeed: 0.02
   pullingDistance: 0.2
+  friction: 0.98
+  buttonReference: {fileID: 0}
 --- !u!1 &937665384 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2431649582029742424, guid: d2e7775a94051b94cb314417fb1bf7ac,
@@ -3725,6 +3706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   rotation: 0
+  IsRandom: 1
 --- !u!114 &1536302845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4201,6 +4183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   rotation: 0
+  IsRandom: 1
 --- !u!114 &1604565204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4742,6 +4725,8 @@ MonoBehaviour:
   pullingSpeed: 0.02
   thrustingSpeed: 0.02
   pullingDistance: 0.2
+  friction: 0.98
+  buttonReference: {fileID: 0}
 --- !u!1 &1843415282
 GameObject:
   m_ObjectHideFlags: 0
@@ -5803,7 +5788,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: d2e7775a94051b94cb314417fb1bf7ac, type: 3}
 --- !u!224 &1905993605 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5475237758262151448, guid: d2e7775a94051b94cb314417fb1bf7ac,
+  m_CorrespondingSourceObject: {fileID: 2431649580874545390, guid: d2e7775a94051b94cb314417fb1bf7ac,
     type: 3}
   m_PrefabInstance: {fileID: 1905993604}
   m_PrefabAsset: {fileID: 0}
@@ -6027,6 +6012,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3510385359526197241, guid: d48f5dbdf48b8c34aac8e278392e087b,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cd003d060ba25624791ae5aa0c453b07, type: 3}
     - target: {fileID: 3510385359526197241, guid: d48f5dbdf48b8c34aac8e278392e087b,
         type: 3}
       propertyPath: m_PlayOnAwake
