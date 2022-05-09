@@ -3,24 +3,99 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml;
 using System.Linq;
+using System.Xml.Linq;
+using System;
+
 public class XMLManager : MonoBehaviour
 {
     
     // Start is called before the first frame update
-    private XmlReader reader;
-    private string path;
     public List<XMLFood> foodList = new List<XMLFood>() ;
-    void Awake()
+    [SerializeField] private GameObject foodFolder;
+    private void ReadFoodXML()
     {
-        path = Application.persistentDataPath + "/SurveyQuestions.xml";
-        string foodName, questionType, questionName, questionContent, questionSlider;
+        List<GameObject> foodObjects =  new List<GameObject>();
+        for (int i = 0; i < foodFolder.transform.childCount; i++)
+        {
+            foodObjects.Add(foodFolder.transform.GetChild(i).gameObject);
+        }
         try
         {
-            reader = XmlReader.Create(path);
+            //If the food mentioned in the xml is not exist in the scene, nothing will happen
+            //But if the food exist in the scene but is not mentioned in the xml, the xml will update, and default will be active
+            XmlReader reader = XmlReader.Create(Application.persistentDataPath + "/SceneFoods.xml");
+            List<string> foodNames = new List<string>();
+            reader.ReadToFollowing("Food");
+            do
+            {
+                reader.MoveToFirstAttribute();
+                string foodName = reader.Value;             
+                reader.MoveToNextAttribute();
+                string active = reader.Value;
+                GameObject obj = foodObjects.Where(obj => obj.name == foodName).SingleOrDefault();
+                if(obj != null) 
+                {
+                    obj.SetActive(active == "Yes");
+                    foodNames.Add(foodName);
+                }
+                else
+                {
+                    reader.Close();
+                    XDocument doc = XDocument.Load(Application.persistentDataPath + "/SceneFoods.xml");
+                    doc.Element("Foods").Elements("Food").Where(x => (string)x.Attribute("name") == foodName).Remove();
+                    doc.Save(Application.persistentDataPath + "/SceneFoods.xml");
+                    reader = XmlReader.Create(Application.persistentDataPath + "/SceneFoods.xml");
+
+                }
+
+            } while (reader.ReadToFollowing("Food"));
+            reader.Close();
+            for (int i = 0; i < foodFolder.transform.childCount; i++)
+            {
+                if(!foodNames.Contains(foodFolder.transform.GetChild(i).name))
+                {
+                    XDocument doc = XDocument.Load(Application.persistentDataPath + "/SceneFoods.xml");
+                    XElement root = new XElement("Food");
+                    root.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
+                    root.Add(new XAttribute("active", "Yes"));                   
+                    doc.Element("Foods").Add(root);
+                    doc.Save(Application.persistentDataPath + "/SceneFoods.xml");
+                    foodFolder.transform.GetChild(i).gameObject.SetActive(true);
+                }
+            }
         }
         catch
         {
-            Debug.Log("xml does not exist so it will run the default version");
+            Debug.Log("food xml does not exist so it will generate and run the default version");
+            XmlWriter writer = XmlWriter.Create(Application.persistentDataPath + "/SceneFoods.xml");
+            writer.WriteWhitespace("\n");
+            writer.WriteStartElement("Foods");
+            writer.WriteWhitespace("\n");
+            for (int i = 0; i < foodFolder.transform.childCount; i++)
+            {
+                writer.WriteStartElement("Food");
+                writer.WriteAttributeString("name", foodFolder.transform.GetChild(i).name);
+                foodFolder.transform.GetChild(i).gameObject.SetActive(true);              
+                writer.WriteAttributeString("active", "Yes");            
+                writer.WriteEndElement();
+                writer.WriteWhitespace("\n");
+            }
+            writer.WriteEndElement();
+            writer.Flush();
+
+        }
+    }
+    private void ReadQuestionXML()
+    {
+        XmlReader reader; 
+        string foodName, questionType, questionName, questionContent, questionSlider;
+        try
+        {
+            reader = XmlReader.Create(Application.persistentDataPath + "/SurveyQuestions.xml");
+        }
+        catch
+        {
+            Debug.Log("question xml does not exist so it will run the default version of questions");
             return;
         }
         reader.ReadToFollowing("Food");
@@ -29,7 +104,6 @@ public class XMLManager : MonoBehaviour
             reader.MoveToFirstAttribute();
             foodName = reader.Value;
             foodList.Add(new XMLFood(foodName));
-            //print(foodName);
             reader.ReadToFollowing("Question");
             do
             {
@@ -41,12 +115,17 @@ public class XMLManager : MonoBehaviour
                 questionContent = reader.Value;
                 reader.MoveToNextAttribute();
                 questionSlider = reader.Value;
-                //print(foodName + " " + questionType + " " + questionName + " " + questionSlider);
                 foodList.Last().questionList.Add(new XMLQuestion(questionType, questionName, questionContent, questionSlider));
 
             } while (reader.ReadToNextSibling("Question"));
 
         } while (reader.ReadToFollowing("Food"));
+        reader.Close();
+    }
+    void Awake()
+    {
+        ReadFoodXML();
+        ReadQuestionXML();
 
         //PrintAll();
     }
