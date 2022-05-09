@@ -155,6 +155,8 @@ MonoBehaviour:
   pullingSpeed: 0.5
   thrustingSpeed: 0.02
   pullingDistance: 0.2
+  friction: 0.98
+  buttonReference: {fileID: 0}
 --- !u!114 &5233144154086249007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +360,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.005
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1038,7 +1040,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.005
     widthCurve:
       serializedVersion: 2
       m_Curve:

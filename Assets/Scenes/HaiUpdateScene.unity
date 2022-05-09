@@ -816,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 4512769977073444602, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4512769977321059384, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
@@ -1615,7 +1615,7 @@ PrefabInstance:
     - target: {fileID: 4512769977073444602, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5965856279634563526, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
@@ -4527,6 +4527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7cc3c2fd7e2ae4b99a3c9617261519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodFolder: {fileID: 874836473}
 --- !u!4 &1634281085
 Transform:
   m_ObjectHideFlags: 0
@@ -4967,7 +4968,7 @@ PrefabInstance:
     - target: {fileID: 4512769977073444602, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5965856279634563526, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
@@ -5635,6 +5636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tomato
       objectReference: {fileID: 0}
+    - target: {fileID: 3821935952105121243, guid: 8d51dc9568c66bf47ad579428c1bb9d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d51dc9568c66bf47ad579428c1bb9d5, type: 3}
 --- !u!1001 &4078089310222214815
@@ -5703,6 +5709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tomato Soup Can
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078089308584969794, guid: 972b9565544019c4b9e781288559aaec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4078089308584969853, guid: 972b9565544019c4b9e781288559aaec,
         type: 3}
@@ -5954,6 +5965,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ministrone Can
       objectReference: {fileID: 0}
+    - target: {fileID: 6225155360415090626, guid: ad22cd9bb947fa64b8fde3440d82be55,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6225155360415090637, guid: ad22cd9bb947fa64b8fde3440d82be55,
         type: 3}
       propertyPath: surveyCanvas
@@ -6126,6 +6142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pea Strew Can
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632213600840036649, guid: 8193d9c91345b6042817cdd2784fc862,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8632213600840036650, guid: 8193d9c91345b6042817cdd2784fc862,
         type: 3}
