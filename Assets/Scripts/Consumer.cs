@@ -21,6 +21,12 @@ public class Consumer : MonoBehaviour
         {
             consumable.Consume();
         }
+
+        MainMenuFood mainMenuFood = other.collider.GetComponent<MainMenuFood>();
+        if (mainMenuFood != null)
+        {
+            mainMenuFood.GoToScene();
+        }
     }
 
 }
