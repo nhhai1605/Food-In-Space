@@ -18,10 +18,7 @@ public class FoodDispenser : MonoBehaviour
     {
         
     }
-    private void CloseDoor()
-    {
-        doorManager.ControlDoor();
-    }
+
     private void Spawn()
     {
         Instantiate(foods[idx], SpawningLocation.transform.position, Quaternion.identity);
@@ -30,7 +27,6 @@ public class FoodDispenser : MonoBehaviour
         {
             idx = 0;
         }
-        //Invoke("CloseDoor", 1f);
     }
     public void Dispense()
     {
