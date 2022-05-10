@@ -13,7 +13,8 @@ public class PageManager : MonoBehaviour
     public int currentPage { get; set; } = 0;
     [SerializeField] Button nextButton, submitButton;
 
-    public string nameOfFood { get; set; }
+    public string foodName { get; set; }
+    public int foodId { get; set; }
     private string outputPath;
     [SerializeField] private Text pageText;
     private int resultID;
@@ -119,7 +120,7 @@ public class PageManager : MonoBehaviour
         XMLManager.XMLFood food = null;
         foreach (XMLManager.XMLFood f in foodList)
         {
-            if (f.Name == nameOfFood)
+            if (f.Id == foodId)
             {
                 food = f;
                 break;
@@ -287,7 +288,7 @@ public class PageManager : MonoBehaviour
             pageText.text += pageList[currentPage].IsSlider ? sliderInstruction : checkBoxInstruction;
             foreach (XMLManager.XMLFood f in foodList)
             {
-                if (f.Name == nameOfFood)
+                if (f.Id == foodId)
                 {
                     foreach(XMLManager.XMLQuestion q in f.questionList)
                     {
@@ -317,7 +318,7 @@ public class PageManager : MonoBehaviour
     {
         ChangeVisual();
         // Debug.Log("Survey submitted!");
-        File.AppendAllText(outputPath, resultID + "," + nameOfFood);
+        File.AppendAllText(outputPath, resultID + "," + foodName);
         for (int i = 0; i < pageList.Count; i++)
         {
             if (!transitPages.Contains(pageList[i].Name))

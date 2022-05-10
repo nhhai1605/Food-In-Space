@@ -67,7 +67,8 @@ public class Consumable : MonoBehaviour
                 //{
                 //    Debug.LogWarning("Using Old PageManagement");
                 //}
-                surveyCanvas.GetComponent<PageManager>().nameOfFood = name;
+                surveyCanvas.GetComponent<PageManager>().foodName = name.Split('-')[0];
+                surveyCanvas.GetComponent<PageManager>().foodId = int.Parse(name.Split('-')[1]);
 
                 //Set the name first then deactive and active again to activate OnEnabled
                 surveyCanvas.gameObject.SetActive(false);
