@@ -5,13 +5,13 @@ using System.Xml;
 using System.Linq;
 using System.Xml.Linq;
 using System;
-
+using System.IO;
 public class XMLManager : MonoBehaviour
 {
 
     // Start is called before the first frame update
     public List<XMLFood> foodList = new List<XMLFood>();
-    private string questionPath, foodPath;
+    private string questionPath, foodPath, logPath;
     private int id = 1;
     [SerializeField] private GameObject foodFolder, SpawningLocation;
 
@@ -23,6 +23,7 @@ public class XMLManager : MonoBehaviour
                                                     "Nostalgic","Pleasant","Satisfied","Secure","Tame",
                                                     "Understanding","Warm","Wild","Worried"};
     private string[] allAttributes;
+
     private void ReadFoodXML()
     {
         List<GameObject> foodObjects =  new List<GameObject>();
@@ -34,222 +35,224 @@ public class XMLManager : MonoBehaviour
         {
             //If the food mentioned in the xml is not exist in the scene, nothing will happen
             //But if the food exist in the scene but is not mentioned in the xml, the xml will update, and default will be active
+
             XmlReader reader = XmlReader.Create(foodPath);
-            List<string> foodNames = new List<string>();
-            reader.ReadToFollowing("Food");
-            do
-            {
-                reader.MoveToFirstAttribute();
-                string foodName = reader.Value;             
-                reader.MoveToNextAttribute();
-                int foodId = int.Parse(reader.Value);
-                id = foodId;
-                reader.MoveToNextAttribute();
-                int quantity = int.Parse(reader.Value);
-
-                //Check if the mentioned food in xml exist or not
-                GameObject obj = foodObjects.Where(obj => obj.name == foodName).SingleOrDefault();
-                //if exist
-                if(obj != null) 
-                {
-                    // obj.SetActive(active == "Yes");
-                    foodNames.Add(foodName);
-                    for(int j = 0; j < quantity; j++)
-                    {
-                        GameObject obj2 = Instantiate(obj, SpawningLocation.transform.position, Quaternion.identity);
-                        obj2.name = foodName + "-" + foodId;
-                        obj2.SetActive(true);
-                    }
-                }
-                else //if not exist, delete the food in the xml
-                {
-                    reader.Close();
-                    XDocument doc = XDocument.Load(foodPath);
-                    doc.Element("Foods").Elements("Food").Where(x => (string)x.Attribute("name") == foodName).Remove();
-                    doc.Save(foodPath);
-                    reader = XmlReader.Create(foodPath);
-
-                }
-
-            } while (reader.ReadToFollowing("Food"));
             reader.Close();
-
-            //Existing foods but not mentioned in the xml will be created with default quantity = 1
-            for (int i = 0; i < foodFolder.transform.childCount; i++)
+            List<string> foodNames = new List<string>();
+            List<int> foodIds = new List<int>();
+            XDocument doc = XDocument.Load(foodPath, LoadOptions.SetLineInfo);
+            List<XElement> foodElements = doc.Element("Foods").Elements("Food").ToList();
+            foreach(XElement foodElement in foodElements)
             {
-                if(!foodNames.Contains(foodFolder.transform.GetChild(i).name))
+                IXmlLineInfo info = foodElement;
+                try
                 {
-                    id++;
-                    XDocument doc = XDocument.Load(foodPath);
-                    XElement root = new XElement("Food");
-                    root.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
-                    root.Add(new XAttribute("id", id));
-                    root.Add(new XAttribute("quantity", "1"));                   
-                    doc.Element("Foods").Add(root);
-                    doc.Save(foodPath);
-
-                    //Create obj in the scene
-                    GameObject obj = Instantiate(foodFolder.transform.GetChild(i).gameObject, SpawningLocation.transform.position, Quaternion.identity);
-                    obj.name = foodFolder.transform.GetChild(i).name + "-" + id;
-                    obj.SetActive(true);
-                    
+                    string foodIdString = foodElement.Attribute("id").Value;
+                    string mesh = foodElement.Attribute("mesh").Value;
+                    string name = foodElement.Attribute("name").Value;
+                    string quantityString = foodElement.Attribute("quantity").Value;
+                    string orderString = foodElement.Attribute("order").Value;
+                    if(foodIds.Contains(int.Parse(foodIdString))) // existed
+                    {
+                        LogOutput(logPath, $"[ERROR]: The Food at line {info.LineNumber}, with ID: {foodIdString}, already existed!");
+                        foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                    }
+                    else // not existed
+                    {
+                        GameObject obj = foodObjects.Where(obj => obj.name == mesh).FirstOrDefault();
+                        if (obj == null)
+                        {
+                            LogOutput(logPath, $"[ERROR]: The mesh in the Food XML at line {info.LineNumber} cannot be found!");
+                            foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                        }
+                        else
+                        {
+                            foodNames.Add(mesh);
+                            foodIds.Add(int.Parse(foodIdString));
+                            id = int.Parse(foodIdString);
+                        }
+                    }
+ 
+                }
+                catch (Exception ex)
+                {
+                    LogOutput(logPath, $"[ERROR]: Invalid input or missing some parameters in Food XML at line {info.LineNumber}");
+                    foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                    Debug.LogWarning(ex);
                 }
             }
+            //Create available food in the scene with quantity = 0
+            for (int i = 0; i < foodFolder.transform.childCount; i++)
+            {
+                if (!foodNames.Contains(foodFolder.transform.GetChild(i).name))
+                {
+                    id++;
+                    XElement foodElement = new XElement("Food");
+                    foodElement.Add(new XAttribute("id", id));
+                    foodElement.Add(new XAttribute("mesh", foodFolder.transform.GetChild(i).name));
+                    foodElement.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
+                    foodElement.Add(new XAttribute("quantity", 0));
+                    foodElement.Add(new XAttribute("order", 1));
+                    doc.Element("Foods").Add(foodElement);
+                    IXmlLineInfo info = foodElement;
+                    LogOutput(logPath, $"[INFO]: Create a Food for an available but unmentioned mesh '{foodFolder.transform.GetChild(i).name}' with ID: {id} in Food XML");
+                }
+            }
+            doc.Save(foodPath);
+
         }
-        catch
+        catch (Exception ex)
         {
-            Debug.Log("food xml does not exist so it will generate and run the default version");
+            //Debug.Log("food xml does not exist so it will generate and run the default version");
+            Debug.LogWarning(ex);
             XmlWriter writer = XmlWriter.Create(foodPath);
             writer.WriteWhitespace("\n");
             writer.WriteStartElement("Foods");
-            writer.WriteWhitespace("\n");
-            for (int i = 0; i < foodFolder.transform.childCount; i++)
-            {
-                writer.WriteStartElement("Food");
-                writer.WriteAttributeString("name", foodFolder.transform.GetChild(i).name);
-                writer.WriteAttributeString("id", id.ToString());
-                writer.WriteAttributeString("quantity", "1");              
-                writer.WriteEndElement();
-                writer.WriteWhitespace("\n");
-
-                //Create obj in the scene
-                GameObject obj = Instantiate(foodFolder.transform.GetChild(i).gameObject, SpawningLocation.transform.position, Quaternion.identity);
-                obj.name = foodFolder.transform.GetChild(i).name + "-" + id;
-                obj.SetActive(true);
-                id++;
-            }
             writer.WriteEndElement();
             writer.Flush();
             writer.Close();
+            XDocument doc = XDocument.Load(foodPath, LoadOptions.SetLineInfo);
+            for(int i = 0; i < foodFolder.transform.childCount; i++)
+            {
+                XElement foodElement = new XElement("Food");
+                foodElement.Add(new XAttribute("id", id));
+                foodElement.Add(new XAttribute("mesh", foodFolder.transform.GetChild(i).name));
+                foodElement.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
+                foodElement.Add(new XAttribute("quantity", 1));
+                foodElement.Add(new XAttribute("order", id));
+                doc.Element("Foods").Add(foodElement);
+                id++;
+            }
+            doc.Save(foodPath);         
         }
     }
     private void ReadQuestionXML()
     {
         List<int> foodIdList = new List<int>();
-        XmlReader foodReader = XmlReader.Create(foodPath);
-        foodReader.ReadToFollowing("Food");
-        do
+
+        XDocument foodDoc = XDocument.Load(foodPath, LoadOptions.SetLineInfo);
+        foreach(XElement e in foodDoc.Element("Foods").Elements("Food").ToList())
         {
-            foodReader.MoveToFirstAttribute();
-            //string foodName = reader.Value;
-            foodReader.MoveToNextAttribute();
-            foodIdList.Add(int.Parse(foodReader.Value));
+            foodIdList.Add(int.Parse(e.Attribute("id").Value));
+        }
 
-        } while (foodReader.ReadToFollowing("Food"));
-        foodReader.Close();
-
-        XmlReader reader; 
+        XmlReader reader = null; 
         try
-        {      
+        {
             reader = XmlReader.Create(questionPath);
-            reader.ReadToFollowing("Food");
+            reader.Close();
+            XDocument doc = XDocument.Load(questionPath, LoadOptions.SetLineInfo);
             List<int> questionIdList = new List<int>();
-
-            do
-            {             
-                reader.MoveToFirstAttribute();
-                //string foodName = reader.Value;
-                reader.MoveToNextAttribute();
-                string foodIdString = reader.Value;
-                int foodId = 0;
-                bool isInt = int.TryParse(foodIdString, out foodId);
-                if (foodIdList.Contains(foodId) && isInt)
+            List<XElement> foodElements = doc.Element("Foods").Elements("Food").ToList();
+            foreach (XElement foodElement in foodElements)
+            {
+                int questionId = int.MinValue;
+                try
                 {
-                    List<string> questionNameList = new List<string>();
-                    foodList.Add(new XMLFood(foodId));
-                    questionIdList.Add(foodId);
-                    int currentQuestion = 0;
-                    reader.ReadToFollowing("Question");
-                    do
+                    questionId = int.Parse(foodElement.Attribute("id").Value);
+                    if (questionIdList.Contains(questionId) || !foodIdList.Contains(questionId)) //if already exist or id is invalid
                     {
-                        reader.MoveToFirstAttribute();
-                        string questionName = reader.Value;
-                        //print(questionName);
-                        if(allAttributes.Contains(questionName))
-                        {
-                            questionNameList.Add(questionName);
-                            reader.MoveToNextAttribute();
-                            string questionContent = reader.Value;
-                            reader.MoveToNextAttribute();
-                            string questionType = reader.Value;
-                            reader.MoveToNextAttribute();
-                            string questionSlider = reader.Value;
-                            reader.MoveToNextAttribute();
-                            bool questionActive = reader.Value == "Yes";
-                            foodList.Last().questionList.Add(new XMLQuestion(questionName, questionContent, questionType, questionSlider, questionActive));
-                            currentQuestion++;
-                        }
-                        else
-                        {
-                            reader.Close();
-                            XDocument doc = XDocument.Load(questionPath);
-                            doc.Element("Foods").Elements("Food").Where(x => (string)x.Attribute("id") == foodId.ToString())
-                                .Elements("Question").Where(x => (string)x.Attribute("name") == questionName).Remove();
-                            doc.Save(questionPath);
-                            reader = XmlReader.Create(questionPath);
-                            for(int i = 0; i < currentQuestion; i++)
-                            {
-                                reader.ReadToFollowing("Question");
-                            }
-                        }
-                        
-                    } while (reader.ReadToNextSibling("Question"));
+                        IXmlLineInfo info = foodElement;
+                        this.LogOutput(logPath, $"[ERROR]: The food with ID: {questionId} in Question XML at line {info.LineNumber} is invalid, already existed in this XML or not mentioned in the Food XML");
+                        foodElement.ReplaceWith(new XComment(foodElement.ToString()));
 
-                    //if missing any attribute, it will create the default question for that attribute
-                    foreach (string attr in allAttributes)
+                        //foodElement.Remove();
+                    }
+                    else //if not exist, then go into each question of the food
                     {
-                        if (!questionNameList.Contains(attr))
+                        //Add to the id list
+                        questionIdList.Add(questionId);
+                        this.foodList.Add(new XMLFood(questionId));
+                        List<string> questionKeys = new List<string>();
+                        List<XElement> questionElements = foodElement.Elements("Question").ToList();
+                        foreach (XElement questionElement in questionElements)
                         {
-                            reader.Close();
-
-                            XDocument doc = XDocument.Load(questionPath);
-                            string type = "";
-                            if (generalAttributes.Contains(attr))
+                            try
                             {
-                                type = "General";
+                                string questionKey = questionElement.Attribute("key").Value;
+                                string content = questionElement.Attribute("content").Value;
+                                string type = questionElement.Attribute("type").Value;
+                                bool isSlider = questionElement.Attribute("slider").Value == "No";
+                                bool isActive = questionElement.Attribute("active").Value == "Yes";
+                                if (allAttributes.Contains(questionKey) && !questionKeys.Contains(questionKey)) //If the key is valid, then continue
+                                {
+                                    questionKeys.Add(questionKey);                                  
+                                    foodList.Last().questionList.Add(new XMLQuestion(questionKey, content, type, isSlider, isActive));
+                                }
+                                else //If the key is invalid, comment and output the error in the log file, and maybe even delete the codes
+                                {
+                                    //delete the invalid question
+                                    //questionElement.Remove();
+
+                                    //Output to log file
+                                    IXmlLineInfo info = questionElement;
+                                    this.LogOutput(logPath, $"[ERROR]: the question Key at line {info.LineNumber} is invalid, please use the correct Key or check the spelling");
+                                    questionElement.ReplaceWith(new XComment(questionElement.ToString()));
+                                }
                             }
-                            else if (sensorialAttributes.Contains(attr))
+                            catch //Missing paramenter
                             {
-                                type = "Sensorial";
+                                IXmlLineInfo info = questionElement;
+                                LogOutput(logPath, $"[ERROR]: Invalid input or missing some parameters in Question XML at line {info.LineNumber}");
+                                questionElement.ReplaceWith(new XComment(questionElement.ToString()));
 
                             }
-                            else if (emotionAttributes.Contains(attr))
+                        }
+                        foreach (string attr in allAttributes)
+                        {
+                            //If some attribute existed but not in the xml, create the default one
+                            if (!questionKeys.Contains(attr))
                             {
-                                type = "Emotion";
-                            }
-                            string content = "Rate your " + attr + " using the scale below (1=not at all to 5=extremely)";
-                            XElement root = new XElement("Question", new XAttribute("name", attr), new XAttribute("content", content), new XAttribute("type", type), new XAttribute("slider", "No"), new XAttribute("active", "Yes"));
-                            doc.Element("Foods").Elements("Food").Where(x => (string)x.Attribute("id") == foodId.ToString()).First().Add(root);
-                            doc.Save(questionPath);
+                                string type = "";
+                                if (generalAttributes.Contains(attr))
+                                {
+                                    type = "General";
+                                }
+                                else if (sensorialAttributes.Contains(attr))
+                                {
+                                    type = "Sensorial";
 
-                            reader = XmlReader.Create(questionPath);
+                                }
+                                else if (emotionAttributes.Contains(attr))
+                                {
+                                    type = "Emotion";
+                                }
+                                string content = "Rate your " + attr + " using the scale below (1=not at all to 5=extremely)";
+                                XElement questionElement = new XElement("Question");
+                                questionElement.Add(new XAttribute("key", attr));
+                                questionElement.Add(new XAttribute("content", content));
+                                questionElement.Add(new XAttribute("type", type));
+                                questionElement.Add(new XAttribute("slider", "No"));
+                                questionElement.Add(new XAttribute("active", "Yes"));
+                                foodElement.Add(questionElement);
+                                foodList.Last().questionList.Add(new XMLQuestion(attr, content, type, false, true));
+                                this.LogOutput(logPath, $"[INFO]: Key '{attr}' for Food Id: {questionId} is missing, a default version for this Key will be generated");
+
+                            }
                         }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //if the food id in the question xml is not exist in the food xml, we can delete it or just ignore it
-                    //here is the code for deleting it, we can comment these codes if we want just to ignore it
-                    reader.Close();
-
-                    XDocument doc = XDocument.Load(questionPath);
-                    doc.Element("Foods").Elements("Food").Where(x => (string)x.Attribute("id") == foodId.ToString()).Remove();
-                    doc.Save(questionPath);
-
-                    reader = XmlReader.Create(questionPath);
+                    IXmlLineInfo info = foodElement;
+                    LogOutput(logPath, $"[ERROR]: Invalid input or missing some parameters in Food XML at line {info.LineNumber}");
+                    foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                    Debug.LogWarning(ex);
                 }
                 
+               
+            }
+            //Now if food id is mentioned in the food xml but not in the question xml, create a default version for it
 
-            } while (reader.ReadToFollowing("Food"));
-            reader.Close();
-            //If there is a food mentioned in food xml but not in question xml, it will create the default one
-            foreach(int id in foodIdList)
+            foreach (int idx in foodIdList)
             {
-                if(!questionIdList.Contains(id))
+                if (!questionIdList.Contains(idx))
                 {
-                    XDocument doc = XDocument.Load(questionPath);
-                    XElement root = new XElement("Food", new XAttribute("id", id.ToString()));
-                    for(int i = 0; i < allAttributes.Length; i++)
+                    this.LogOutput(logPath, $"[INFO]: Questions for ID '{idx}' is missing, a default version for this ID will be generated");
+                    XElement foodElement = new XElement("Food");
+                    foodElement.Add(new XAttribute("id", idx));
+                    this.foodList.Add(new XMLFood(idx));
+                    for (int i = 0; i < allAttributes.Length; i++)
                     {
                         string type = "";
                         if (generalAttributes.Contains(allAttributes[i]))
@@ -266,77 +269,68 @@ public class XMLManager : MonoBehaviour
                             type = "Emotion";
                         }
                         string content = "Rate your " + allAttributes[i] + " using the scale below (1=not at all to 5=extremely)";
-                        root.Add(new XElement("Question", new XAttribute("name", allAttributes[i]), new XAttribute("content", content), new XAttribute("type", type), new XAttribute("slider", "No"), new XAttribute("active", "Yes")));
+                        XElement questionElement = new XElement("Question");
+                        questionElement.Add(new XAttribute("key", allAttributes[i]));
+                        questionElement.Add(new XAttribute("content", content));
+                        questionElement.Add(new XAttribute("type", type));
+                        questionElement.Add(new XAttribute("slider", "No"));
+                        questionElement.Add(new XAttribute("active", "Yes"));
+                        foodElement.Add(questionElement);
+                        foodList.Last().questionList.Add(new XMLQuestion(allAttributes[i], content, type, false, true));
+
                     }
-                    doc.Element("Foods").Add(root);
-                    doc.Save(questionPath);
+                    doc.Element("Foods").Add(foodElement);
                 }
             }
+            doc.Save(questionPath);
+         
         }
-        catch
+        catch  (Exception ex)
         {
-            Debug.Log("question xml does not exist so it will run the default version of questions");
-
-            reader = XmlReader.Create(foodPath);
-            reader.ReadToFollowing("Food");
-
+            //Debug.LogWarning("The question xml does not exist or root element is invalid");
+            Debug.LogWarning(ex);
             XmlWriter writer = XmlWriter.Create(questionPath);
             writer.WriteWhitespace("\n");
             writer.WriteStartElement("Foods");
-            writer.WriteWhitespace("\n");
-
-            do
-            {
-                writer.WriteWhitespace("  ");
-                writer.WriteStartElement("Food");
-
-
-                reader.MoveToFirstAttribute();
-                //string foodName = reader.Value;
-                reader.MoveToNextAttribute();
-                string foodId = reader.Value;
-                writer.WriteAttributeString("id", foodId);
-                writer.WriteWhitespace("\n");
-                //question
-                for (int j = 0; j < allAttributes.Length; j++)
-                {
-                    writer.WriteWhitespace("    ");
-                    writer.WriteStartElement("Question");
-
-                    writer.WriteAttributeString("name", allAttributes[j]);
-                    //default Content for question
-                    string content = "Rate your " + allAttributes[j] + " using the scale below (1=not at all to 5=extremely)";
-                    writer.WriteAttributeString("content", content);
-                    if (generalAttributes.Contains(allAttributes[j]))
-                    {
-                        writer.WriteAttributeString("type", "General");
-                    }
-                    else if (sensorialAttributes.Contains(allAttributes[j]))
-                    {
-                        writer.WriteAttributeString("type", "Sensorial");
-
-                    }
-                    else if (emotionAttributes.Contains(allAttributes[j]))
-                    {
-                        writer.WriteAttributeString("type", "Emotion");
-                    }
-                    writer.WriteAttributeString("slider", "No");
-                    writer.WriteAttributeString("active", "Yes");
-                    writer.WriteEndElement();
-                    writer.WriteWhitespace("\n");
-                }
-
-                writer.WriteWhitespace("  ");
-                writer.WriteEndElement();
-                writer.WriteWhitespace("\n");
-
-            } while (reader.ReadToFollowing("Food"));
-            reader.Close();
-                    
             writer.WriteEndElement();
             writer.Flush();
             writer.Close();
-            return;
+            XDocument doc = XDocument.Load(questionPath, LoadOptions.SetLineInfo);
+            foreach (int idx in foodIdList)
+            {
+                XElement foodElement = new XElement("Food");
+                foodElement.Add(new XAttribute("id", idx));
+                foodList.Add(new XMLFood(idx));
+                foreach(string attr in allAttributes)
+                {
+                    XElement questionElement = new XElement("Question");
+                    questionElement.Add(new XAttribute("key", attr));
+                    string content = $"Rate your {attr} using the scale below (1=not at all to 5=extremely)";
+                    questionElement.Add(new XAttribute("content", content));
+                    string type = "";
+                    if (generalAttributes.Contains(attr))
+                    {
+                        type = "General";
+                    }
+                    else if (sensorialAttributes.Contains(attr))
+                    {
+                        type = "Sensorial";
+
+                    }
+                    else if (emotionAttributes.Contains(attr))
+                    {
+                        type = "Emotion";
+                    }
+                    questionElement.Add(new XAttribute("type", type));
+                    questionElement.Add(new XAttribute("slider", "No"));
+                    questionElement.Add(new XAttribute("active", "Yes"));
+                    foodElement.Add(questionElement);
+                    foodList.Last().questionList.Add(new XMLQuestion(attr, content,type,false,true));
+                }
+                doc.Element("Foods").Add(foodElement);
+
+            }
+            doc.Save(questionPath);
         }
         
     }
@@ -344,6 +338,12 @@ public class XMLManager : MonoBehaviour
     {
         foodPath = Application.persistentDataPath + "/SceneFoods.xml";
         questionPath = Application.persistentDataPath + "/SurveyQuestions.xml";
+        logPath = Application.persistentDataPath + "/Log.txt";
+
+        //Initialize Log file everytime the game run
+        File.WriteAllText(logPath, "Log generated at " + DateTime.Now);
+        File.AppendAllText(logPath, Environment.NewLine);
+
         allAttributes = generalAttributes.Concat(sensorialAttributes).Concat(emotionAttributes).ToArray();
         ReadFoodXML();
         ReadQuestionXML();
@@ -352,7 +352,11 @@ public class XMLManager : MonoBehaviour
 
         //PrintAll();
     }
-
+    private void LogOutput(string path, string content)      
+    {
+        File.AppendAllText(path, content);
+        File.AppendAllText(path, Environment.NewLine);
+    }
     public class XMLFood
     {
         public List<XMLQuestion> questionList = new List<XMLQuestion>();
@@ -365,16 +369,16 @@ public class XMLManager : MonoBehaviour
     public class XMLQuestion
     {
         public string Type { get; set; }
-        public string Name { get; set; }
+        public string Key { get; set; }
         public string Content { get; set; }
-        public string Slider { get; set; }
+        public bool Slider { get; set; }
         public bool Active { get; set; }
-        public XMLQuestion(string questionName, string questionContent, string questionType, string questionSlider, bool Active)
+        public XMLQuestion(string Key, string Content, string Type, bool Slider, bool Active)
         {
-            this.Type = questionType;
-            this.Name = questionName;
-            this.Content = questionContent;
-            this.Slider = questionSlider;
+            this.Type = Key;
+            this.Key = Content;
+            this.Content = Type;
+            this.Slider = Slider;
             this.Active = Active;
         }
     }
@@ -384,7 +388,7 @@ public class XMLManager : MonoBehaviour
         {
             foreach(XMLQuestion question in food.questionList)
             {
-                Debug.Log(food.Id + " - " + question.Name + " - " + question.Content + " - " + question.Slider);
+                Debug.Log(food.Id + " - " + question.Key + " - " + question.Content + " - " + question.Slider);
             }
         }
     }

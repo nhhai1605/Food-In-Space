@@ -135,23 +135,23 @@ public class PageManager : MonoBehaviour
             List<string> xmlSliderAttr = new List<string>();
             foreach (XMLManager.XMLQuestion question in food.questionList)
             {
-                if (allAttributes.Contains(question.Name))
+                if (allAttributes.Contains(question.Key))
                 {
                     if (question.Type == "Sensorial")
                     {
-                        xmlSensorialAttr.Add(question.Name);
+                        xmlSensorialAttr.Add(question.Key);
                     }
                     else if (question.Type == "Emotion")
                     {
-                        xmlEmotionAttr.Add(question.Name);
+                        xmlEmotionAttr.Add(question.Key);
                     }
                     else
                     {
                         Debug.LogError("Wrong question type!");
                     }
-                    if (question.Slider == "Yes")
+                    if (question.Slider)
                     {
-                        xmlSliderAttr.Add(question.Name);
+                        xmlSliderAttr.Add(question.Key);
                     }
                 }
                 else
@@ -293,7 +293,7 @@ public class PageManager : MonoBehaviour
                     foreach(XMLManager.XMLQuestion q in f.questionList)
                     {
                         //print(q.Name + " - " + pageList[currentPage].Name);
-                        if (q.Name == pageList[currentPage].Name)
+                        if (q.Key == pageList[currentPage].Name)
                         {
                             if(q.Content != "")
                             {
