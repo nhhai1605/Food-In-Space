@@ -4988,6 +4988,7 @@ GameObject:
   - component: {fileID: 1938010181}
   - component: {fileID: 1938010180}
   - component: {fileID: 1938010179}
+  - component: {fileID: 1938010183}
   m_Layer: 0
   m_Name: Food Spawning Location
   m_TagString: Untagged
@@ -5072,6 +5073,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1938010183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938010178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a966e0c274c8acb45b6ab11efd67fc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodFolder: {fileID: 874836473}
+  SpawningLocation: {fileID: 1938010178}
+  xmlManager: {fileID: 1634281084}
 --- !u!114 &1946634152 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4078089308584969853, guid: 972b9565544019c4b9e781288559aaec,

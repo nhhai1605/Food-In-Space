@@ -52,9 +52,13 @@ public class XMLManager : MonoBehaviour
                     string name = foodElement.Attribute("name").Value;
                     string quantityString = foodElement.Attribute("quantity").Value;
                     string orderString = foodElement.Attribute("order").Value;
-                    if(foodIds.Contains(int.Parse(foodIdString))) // existed
+                    int foodId = int.Parse(foodIdString);
+                    int quantity = int.Parse(quantityString);
+                    int order = int.Parse(orderString);
+
+                    if (foodIds.Contains(foodId)) // existed
                     {
-                        LogOutput(logPath, $"[ERROR]: The Food at line {info.LineNumber}, with ID: {foodIdString}, already existed!");
+                        LogOutput(logPath, $"[ERROR]: The Food at line {info.LineNumber}, with ID: {foodId}, already existed!");
                         foodElement.ReplaceWith(new XComment(foodElement.ToString()));
                     }
                     else // not existed
@@ -68,8 +72,8 @@ public class XMLManager : MonoBehaviour
                         else
                         {
                             foodNames.Add(mesh);
-                            foodIds.Add(int.Parse(foodIdString));
-                            id = int.Parse(foodIdString);
+                            foodIds.Add(foodId);
+                            id = foodId;
                         }
                     }
  
@@ -129,11 +133,13 @@ public class XMLManager : MonoBehaviour
     private void ReadQuestionXML()
     {
         List<int> foodIdList = new List<int>();
-
+        this.foodList = new List<XMLFood>();
         XDocument foodDoc = XDocument.Load(foodPath, LoadOptions.SetLineInfo);
         foreach(XElement e in foodDoc.Element("Foods").Elements("Food").ToList())
         {
             foodIdList.Add(int.Parse(e.Attribute("id").Value));
+            this.foodList.Add(new XMLFood(int.Parse(e.Attribute("id").Value), e.Attribute("mesh").Value, e.Attribute("name").Value, int.Parse(e.Attribute("quantity").Value), int.Parse(e.Attribute("order").Value)));
+        
         }
 
         XmlReader reader = null; 
@@ -156,13 +162,11 @@ public class XMLManager : MonoBehaviour
                         this.LogOutput(logPath, $"[ERROR]: The food with ID: {questionId} in Question XML at line {info.LineNumber} is invalid, already existed in this XML or not mentioned in the Food XML");
                         foodElement.ReplaceWith(new XComment(foodElement.ToString()));
 
-                        //foodElement.Remove();
                     }
                     else //if not exist, then go into each question of the food
                     {
                         //Add to the id list
                         questionIdList.Add(questionId);
-                        this.foodList.Add(new XMLFood(questionId));
                         List<string> questionKeys = new List<string>();
                         List<XElement> questionElements = foodElement.Elements("Question").ToList();
                         foreach (XElement questionElement in questionElements)
@@ -174,16 +178,20 @@ public class XMLManager : MonoBehaviour
                                 string type = questionElement.Attribute("type").Value;
                                 bool isSlider = questionElement.Attribute("slider").Value == "No";
                                 bool isActive = questionElement.Attribute("active").Value == "Yes";
+
                                 if (allAttributes.Contains(questionKey) && !questionKeys.Contains(questionKey)) //If the key is valid, then continue
                                 {
-                                    questionKeys.Add(questionKey);                                  
-                                    foodList.Last().questionList.Add(new XMLQuestion(questionKey, content, type, isSlider, isActive));
+                                    questionKeys.Add(questionKey);
+                                    foreach (XMLFood food in this.foodList)
+                                    {
+                                        if (food.Id == questionId)
+                                        {
+                                            food.questionList.Add(new XMLQuestion(questionKey, content, type, isSlider, isActive));
+                                        }
+                                    }
                                 }
                                 else //If the key is invalid, comment and output the error in the log file, and maybe even delete the codes
                                 {
-                                    //delete the invalid question
-                                    //questionElement.Remove();
-
                                     //Output to log file
                                     IXmlLineInfo info = questionElement;
                                     this.LogOutput(logPath, $"[ERROR]: the question Key at line {info.LineNumber} is invalid, please use the correct Key or check the spelling");
@@ -225,7 +233,13 @@ public class XMLManager : MonoBehaviour
                                 questionElement.Add(new XAttribute("slider", "No"));
                                 questionElement.Add(new XAttribute("active", "Yes"));
                                 foodElement.Add(questionElement);
-                                foodList.Last().questionList.Add(new XMLQuestion(attr, content, type, false, true));
+                                foreach (XMLFood food in this.foodList)
+                                {
+                                    if (food.Id == questionId)
+                                    {
+                                        food.questionList.Add(new XMLQuestion(attr, content, type, false, true));
+                                    }
+                                }
                                 this.LogOutput(logPath, $"[INFO]: Key '{attr}' for Food Id: {questionId} is missing, a default version for this Key will be generated");
 
                             }
@@ -251,7 +265,6 @@ public class XMLManager : MonoBehaviour
                     this.LogOutput(logPath, $"[INFO]: Questions for ID '{idx}' is missing, a default version for this ID will be generated");
                     XElement foodElement = new XElement("Food");
                     foodElement.Add(new XAttribute("id", idx));
-                    this.foodList.Add(new XMLFood(idx));
                     for (int i = 0; i < allAttributes.Length; i++)
                     {
                         string type = "";
@@ -276,8 +289,13 @@ public class XMLManager : MonoBehaviour
                         questionElement.Add(new XAttribute("slider", "No"));
                         questionElement.Add(new XAttribute("active", "Yes"));
                         foodElement.Add(questionElement);
-                        foodList.Last().questionList.Add(new XMLQuestion(allAttributes[i], content, type, false, true));
-
+                        foreach (XMLFood food in this.foodList)
+                        {
+                            if (food.Id == idx)
+                            {
+                                food.questionList.Add(new XMLQuestion(allAttributes[i], content, type, false, true));
+                            }
+                        }
                     }
                     doc.Element("Foods").Add(foodElement);
                 }
@@ -300,7 +318,6 @@ public class XMLManager : MonoBehaviour
             {
                 XElement foodElement = new XElement("Food");
                 foodElement.Add(new XAttribute("id", idx));
-                foodList.Add(new XMLFood(idx));
                 foreach(string attr in allAttributes)
                 {
                     XElement questionElement = new XElement("Question");
@@ -325,7 +342,13 @@ public class XMLManager : MonoBehaviour
                     questionElement.Add(new XAttribute("slider", "No"));
                     questionElement.Add(new XAttribute("active", "Yes"));
                     foodElement.Add(questionElement);
-                    foodList.Last().questionList.Add(new XMLQuestion(attr, content,type,false,true));
+                    foreach (XMLFood food in this.foodList)
+                    {
+                        if (food.Id == idx)
+                        {
+                            food.questionList.Add(new XMLQuestion(attr, content, type, false, true));
+                        }
+                    }
                 }
                 doc.Element("Foods").Add(foodElement);
 
@@ -348,8 +371,6 @@ public class XMLManager : MonoBehaviour
         ReadFoodXML();
         ReadQuestionXML();
 
-        
-
         //PrintAll();
     }
     private void LogOutput(string path, string content)      
@@ -360,10 +381,15 @@ public class XMLManager : MonoBehaviour
     public class XMLFood
     {
         public List<XMLQuestion> questionList = new List<XMLQuestion>();
-        public int Id;
-        public XMLFood(int id)
+        public int Id, Quantity, Order;
+        public string MeshName, SurveyName;
+        public XMLFood(int id, string MeshName, string SurveyName, int Quantity, int Order)
         {
             this.Id = id;
+            this.MeshName = MeshName;
+            this.SurveyName = SurveyName;
+            this.Quantity = Quantity;
+            this.Order = Order;
         }
     }
     public class XMLQuestion
