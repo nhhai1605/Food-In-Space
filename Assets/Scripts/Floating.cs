@@ -23,4 +23,12 @@ public class Floating : MonoBehaviour
         transform.Rotate(rotation, rotation, rotation);
     }
 
+    public void SetOffset(float x, float y, float z)
+    {
+        this.IsRandom = false;
+        offset = new Vector3(x, y, z);
+        transform.GetComponent<Rigidbody>().velocity = offset;
+        rotation = Random.Range(-2f, 2f) / 10f;
+    }
+
 }

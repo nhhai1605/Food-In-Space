@@ -61,17 +61,13 @@ public class DoorManager : MonoBehaviour
             }
             else
             {
-
                 timePassed += Time.deltaTime;
 
                 if (timePassed > WaitTimeIfNotToggleInSecond)
                 {
                     timePassed = 0f;
-                        ControlDoor();
-                }
-                
-
-
+                    ControlDoor();
+                }           
             }
         }
 
@@ -129,4 +125,10 @@ public class DoorManager : MonoBehaviour
         ButtonIsPressedFirst = !ButtonIsPressedFirst;
         button.GetComponent<MeshCollider>().enabled = false;
     }
+
+    public void InvokeControlDoor(float time)
+    {
+        Invoke("ControlDoor", time);
+    }
+
 }
