@@ -33,9 +33,6 @@ public class XMLManager : MonoBehaviour
         }
         try
         {
-            //If the food mentioned in the xml is not exist in the scene, nothing will happen
-            //But if the food exist in the scene but is not mentioned in the xml, the xml will update, and default will be active
-
             XmlReader reader = XmlReader.Create(foodPath);
             reader.Close();
             List<string> foodNames = new List<string>();
@@ -56,26 +53,20 @@ public class XMLManager : MonoBehaviour
                     int quantity = int.Parse(quantityString);
                     int order = int.Parse(orderString);
 
-                    if (foodIds.Contains(foodId)) // existed
+                    
+                    GameObject obj = foodObjects.Where(obj => obj.name == mesh).FirstOrDefault();
+                    if (obj == null)
                     {
-                        LogOutput(logPath, $"[ERROR]: The Food at line {info.LineNumber}, with ID: {foodId}, already existed!");
+                        LogOutput(logPath, $"[ERROR]: The mesh in the Food XML at line {info.LineNumber} cannot be found!");
                         foodElement.ReplaceWith(new XComment(foodElement.ToString()));
                     }
-                    else // not existed
+                    else
                     {
-                        GameObject obj = foodObjects.Where(obj => obj.name == mesh).FirstOrDefault();
-                        if (obj == null)
-                        {
-                            LogOutput(logPath, $"[ERROR]: The mesh in the Food XML at line {info.LineNumber} cannot be found!");
-                            foodElement.ReplaceWith(new XComment(foodElement.ToString()));
-                        }
-                        else
-                        {
-                            foodNames.Add(mesh);
-                            foodIds.Add(foodId);
-                            id = foodId;
-                        }
+                        foodNames.Add(mesh);
+                        foodIds.Add(foodId);
+                        id = foodId;
                     }
+                    
  
                 }
                 catch (Exception ex)
@@ -85,7 +76,7 @@ public class XMLManager : MonoBehaviour
                     Debug.LogWarning(ex);
                 }
             }
-            //Create available food in the scene with quantity = 0
+            //Create available food in the scene but not mentioned in the xml with quantity = 0
             for (int i = 0; i < foodFolder.transform.childCount; i++)
             {
                 if (!foodNames.Contains(foodFolder.transform.GetChild(i).name))
@@ -107,8 +98,8 @@ public class XMLManager : MonoBehaviour
         }
         catch (Exception ex)
         {
-            //Debug.Log("food xml does not exist so it will generate and run the default version");
-            Debug.LogWarning(ex);
+            Debug.Log("food xml does not exist so it will generate and run the default version");
+            Debug.Log(ex);
             XmlWriter writer = XmlWriter.Create(foodPath);
             writer.WriteWhitespace("\n");
             writer.WriteStartElement("Foods");
@@ -176,7 +167,7 @@ public class XMLManager : MonoBehaviour
                                 string questionKey = questionElement.Attribute("key").Value;
                                 string content = questionElement.Attribute("content").Value;
                                 string type = questionElement.Attribute("type").Value;
-                                bool isSlider = questionElement.Attribute("slider").Value == "No";
+                                bool isSlider = questionElement.Attribute("slider").Value == "Yes";
                                 bool isActive = questionElement.Attribute("active").Value == "Yes";
 
                                 if (allAttributes.Contains(questionKey) && !questionKeys.Contains(questionKey)) //If the key is valid, then continue
@@ -305,8 +296,8 @@ public class XMLManager : MonoBehaviour
         }
         catch  (Exception ex)
         {
-            //Debug.LogWarning("The question xml does not exist or root element is invalid");
-            Debug.LogWarning(ex);
+            Debug.Log("The question xml does not exist or root element is invalid");
+            Debug.Log(ex);
             XmlWriter writer = XmlWriter.Create(questionPath);
             writer.WriteWhitespace("\n");
             writer.WriteStartElement("Foods");
@@ -401,9 +392,9 @@ public class XMLManager : MonoBehaviour
         public bool Active { get; set; }
         public XMLQuestion(string Key, string Content, string Type, bool Slider, bool Active)
         {
-            this.Type = Key;
-            this.Key = Content;
-            this.Content = Type;
+            this.Type = Type;
+            this.Key = Key;
+            this.Content = Content;
             this.Slider = Slider;
             this.Active = Active;
         }

@@ -8,6 +8,7 @@ public class SpawningManager : MonoBehaviour
     [SerializeField] XMLManager xmlManager;
     private List<XMLManager.XMLFood> xmlFoodList;
     private List<GameObject> foodObjects;
+    private int currOrder;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +18,25 @@ public class SpawningManager : MonoBehaviour
         {
             foodObjects.Add(foodFolder.transform.GetChild(i).gameObject);
         }
-        SpawnAllFoods();
+        currOrder = 0;
+        SpawnFoods();
     }
 
-    void SpawnAllFoods()
+    void SpawnFoods()
     {
         foreach (var food in xmlFoodList)
         {
-            GameObject foodMesh = foodObjects.Where(obj => obj.name == food.MeshName).First();
-            var newSpawn = Instantiate(foodMesh, SpawningLocation.transform.position, Quaternion.identity);
-            newSpawn.name = $"{food.Id}-{food.MeshName}-{food.SurveyName}-{food.Quantity}-{food.Order}" ;
-            newSpawn.SetActive(true);
+            //if(food.Order == currOrder)
+            //{
+                for (int i = 0; i < food.Quantity; i++)
+                {
+                    GameObject foodMesh = foodObjects.Where(obj => obj.name == food.MeshName).First();
+                    var newSpawn = Instantiate(foodMesh, SpawningLocation.transform.position, Quaternion.identity);
+                    newSpawn.name = $"{food.Id}-{food.MeshName}-{food.SurveyName}-{food.Quantity}-{food.Order}";
+                    newSpawn.SetActive(true);
+                }
+            //}
         }
+        currOrder++;
     }
 }
