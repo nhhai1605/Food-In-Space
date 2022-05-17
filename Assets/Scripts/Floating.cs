@@ -6,11 +6,15 @@ public class Floating : MonoBehaviour
 {
     [SerializeField] private Vector3 offset;
     [SerializeField] private float rotation;
+    [SerializeField] private bool IsRandom = true;
 
     void Start()
     {
-        offset = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
-        rotation = Random.Range(-2f, 2f) / 50f;
+        if (IsRandom)
+        {
+            offset = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
+            rotation = Random.Range(-2f, 2f) / 10f;
+        }
         transform.GetComponent<Rigidbody>().velocity = offset;
     }
 
