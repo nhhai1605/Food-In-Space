@@ -3,15 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - VR Origin
+  - Door
+  - SpectatorCamera
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PlayerHead
   - Water
   - UI
-  - 
+  - Consumer
   - 
   - 
   - 
