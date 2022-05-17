@@ -306,6 +306,12 @@ public class PageManager : MonoBehaviour
         gameObject.SetActive(false);
 
     }
+    public void SubmitSurveyWithoutData()
+    {
+        ChangeVisual();
+        gameObject.SetActive(false);
+    }
+
     public void ChangePage()
     {
         //Extract data first
