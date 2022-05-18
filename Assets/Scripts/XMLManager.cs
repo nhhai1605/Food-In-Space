@@ -65,7 +65,7 @@ public class XMLManager : MonoBehaviour
                     }
                     else
                     {
-                        if(obj.name.Split('-')[0] == "Chroma")
+                        if(obj.name.Split(' ')[0] == "Chroma")
                         {
                             if (color != "default")
                             {

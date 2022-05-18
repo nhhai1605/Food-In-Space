@@ -41,7 +41,7 @@ public class FoodDispenser : MonoBehaviour
                 newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
                 if (food.Color != "default")
                 {
-                    newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split('-')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == food.Color).FirstOrDefault();
+                    newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == food.Color).FirstOrDefault();
                 }
             }
         }
@@ -89,7 +89,7 @@ public class FoodDispenser : MonoBehaviour
             newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
             if(currFood.Color != "default")
             {
-                newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split('-')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == currFood.Color).FirstOrDefault();
+                newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == currFood.Color).FirstOrDefault();
             }
         }
     }
