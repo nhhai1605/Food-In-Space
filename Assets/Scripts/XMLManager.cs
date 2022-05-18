@@ -6,6 +6,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System;
 using System.IO;
+
 public class XMLManager : MonoBehaviour
 {
 
@@ -13,7 +14,7 @@ public class XMLManager : MonoBehaviour
     public List<XMLFood> foodList = new List<XMLFood>();
     private string questionPath, foodPath, logPath;
     private int id = 1;
-    [SerializeField] private GameObject foodFolder, SpawningLocation;
+    [SerializeField] private GameObject foodFolder;
 
     private string[] generalAttributes = { "Liking" };
     private string[] sensorialAttributes = { "Sweetness", "Creamy", "Milky", "Sourness", "Vanilla" };
@@ -23,7 +24,7 @@ public class XMLManager : MonoBehaviour
                                                     "Nostalgic","Pleasant","Satisfied","Secure","Tame",
                                                     "Understanding","Warm","Wild","Worried"};
     private string[] allAttributes;
-
+    [SerializeField] private List<Material> materials;
     private void ReadFoodXML()
     {
         List<GameObject> foodObjects =  new List<GameObject>();
@@ -47,27 +48,67 @@ public class XMLManager : MonoBehaviour
                     string foodIdString = foodElement.Attribute("id").Value;
                     string mesh = foodElement.Attribute("mesh").Value;
                     string name = foodElement.Attribute("name").Value;
+                    string color = foodElement.Attribute("color").Value;
                     string quantityString = foodElement.Attribute("quantity").Value;
                     string orderString = foodElement.Attribute("order").Value;
                     int foodId = int.Parse(foodIdString);
                     int quantity = int.Parse(quantityString);
                     int order = int.Parse(orderString);
 
-                    
+                    bool hasError = false;
                     GameObject obj = foodObjects.Where(obj => obj.name == mesh).FirstOrDefault();
                     if (obj == null)
                     {
                         LogOutput(logPath, $"[ERROR]: The mesh in the Food XML at line {info.LineNumber} cannot be found!");
                         foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                        hasError = true;
                     }
                     else
+                    {
+                        if(obj.name.Split('-')[0] == "Chroma")
+                        {
+                            if (color != "default")
+                            {
+                                Material material = materials.Where(m => m.name == color).FirstOrDefault();
+                                if (material == null)
+                                {
+                                    LogOutput(logPath, $"[ERROR]: The color in the Food XML at line {info.LineNumber} is invalid!");
+                                    foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                                    hasError = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(color != "default")
+                            {
+                                LogOutput(logPath, $"[ERROR]: The color in the Food XML at line {info.LineNumber} is invalid because this food cannot change its color!");
+                                foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                                hasError = true;
+                            }
+                        }
+
+                        if (quantity < 0)
+                        {
+                            LogOutput(logPath, $"[ERROR]: The quantity in the Food XML at line {info.LineNumber} is invalid!");
+                            foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                            hasError = true;
+                        }
+
+                        if (order <= 0)
+                        {
+                            LogOutput(logPath, $"[ERROR]: The order in the Food XML at line {info.LineNumber} is invalid!");
+                            foodElement.ReplaceWith(new XComment(foodElement.ToString()));
+                            hasError = true;
+                        }
+                    }
+
+                    if (!hasError)
                     {
                         foodNames.Add(mesh);
                         foodIds.Add(foodId);
                         id = foodId;
                     }
-                    
- 
                 }
                 catch (Exception ex)
                 {
@@ -85,6 +126,7 @@ public class XMLManager : MonoBehaviour
                     XElement foodElement = new XElement("Food");
                     foodElement.Add(new XAttribute("id", id));
                     foodElement.Add(new XAttribute("mesh", foodFolder.transform.GetChild(i).name));
+                    foodElement.Add(new XAttribute("color","default"));
                     foodElement.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
                     foodElement.Add(new XAttribute("quantity", 0));
                     foodElement.Add(new XAttribute("order", 1));
@@ -112,6 +154,7 @@ public class XMLManager : MonoBehaviour
                 XElement foodElement = new XElement("Food");
                 foodElement.Add(new XAttribute("id", id));
                 foodElement.Add(new XAttribute("mesh", foodFolder.transform.GetChild(i).name));
+                foodElement.Add(new XAttribute("color", "default"));
                 foodElement.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
                 foodElement.Add(new XAttribute("quantity", 1));
                 foodElement.Add(new XAttribute("order", id));
@@ -129,14 +172,13 @@ public class XMLManager : MonoBehaviour
         foreach(XElement e in foodDoc.Element("Foods").Elements("Food").ToList())
         {
             foodIdList.Add(int.Parse(e.Attribute("id").Value));
-            this.foodList.Add(new XMLFood(int.Parse(e.Attribute("id").Value), e.Attribute("mesh").Value, e.Attribute("name").Value, int.Parse(e.Attribute("quantity").Value), int.Parse(e.Attribute("order").Value)));
+            this.foodList.Add(new XMLFood(int.Parse(e.Attribute("id").Value), e.Attribute("mesh").Value, e.Attribute("color").Value, e.Attribute("name").Value, int.Parse(e.Attribute("quantity").Value), int.Parse(e.Attribute("order").Value)));
         
         }
 
-        XmlReader reader = null; 
         try
         {
-            reader = XmlReader.Create(questionPath);
+            XmlReader reader = XmlReader.Create(questionPath);
             reader.Close();
             XDocument doc = XDocument.Load(questionPath, LoadOptions.SetLineInfo);
             List<int> questionIdList = new List<int>();
@@ -150,7 +192,7 @@ public class XMLManager : MonoBehaviour
                     if (questionIdList.Contains(questionId) || !foodIdList.Contains(questionId)) //if already exist or id is invalid
                     {
                         IXmlLineInfo info = foodElement;
-                        this.LogOutput(logPath, $"[ERROR]: The food with ID: {questionId} in Question XML at line {info.LineNumber} is invalid, already existed in this XML or not mentioned in the Food XML");
+                        this.LogOutput(logPath, $"[ERROR]: The Question for Food ID: {questionId} at line {info.LineNumber} is invalid!");
                         foodElement.ReplaceWith(new XComment(foodElement.ToString()));
 
                     }
@@ -369,18 +411,24 @@ public class XMLManager : MonoBehaviour
         File.AppendAllText(path, content);
         File.AppendAllText(path, Environment.NewLine);
     }
+
+    public List<Material> GetMaterialList()
+    {
+        return this.materials;
+    }
     public class XMLFood
     {
         public List<XMLQuestion> questionList = new List<XMLQuestion>();
         public int Id, Quantity, Order;
-        public string MeshName, SurveyName;
-        public XMLFood(int id, string MeshName, string SurveyName, int Quantity, int Order)
+        public string MeshName, SurveyName, Color;
+        public XMLFood(int id, string MeshName, string Color, string SurveyName, int Quantity, int Order)
         {
             this.Id = id;
             this.MeshName = MeshName;
             this.SurveyName = SurveyName;
             this.Quantity = Quantity;
             this.Order = Order;
+            this.Color = Color;
         }
     }
     public class XMLQuestion

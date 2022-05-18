@@ -51,8 +51,8 @@ public class Consumable : MonoBehaviour
                 
                 
                 Debug.Log("Survey for: " + name);
-                surveyCanvas.GetComponentInChildren<Text>().text = name.Split('-')[2];
-                surveyCanvas.GetComponent<PageManager>().foodName = name.Split('-')[2];
+                surveyCanvas.GetComponentInChildren<Text>().text = name.Split('-')[3];
+                surveyCanvas.GetComponent<PageManager>().foodName = name.Split('-')[3];
                 surveyCanvas.GetComponent<PageManager>().foodId = int.Parse(name.Split('-')[0]);
 
                 //Set the name first then deactive and active again to activate OnEnabled

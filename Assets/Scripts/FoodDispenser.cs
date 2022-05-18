@@ -15,6 +15,7 @@ public class FoodDispenser : MonoBehaviour
     private List<XMLManager.XMLFood> currFoods;
     private int spawned = 0;
     private float dt = 0;
+    private float yOffset = 0.5f;
     void Start()
     {
         doorManager = Door.GetComponent<DoorManager>();
@@ -35,9 +36,13 @@ public class FoodDispenser : MonoBehaviour
             {
                 GameObject foodMesh = foodObjects.Where(obj => obj.name == food.MeshName).First();
                 var newSpawn = Instantiate(foodMesh, SpawningLocation.transform.position, Quaternion.identity);
-                newSpawn.name = $"{food.Id}-{food.MeshName}-{food.SurveyName}-{food.Quantity}-{food.Order}";
+                newSpawn.name = $"{food.Id}-{food.MeshName}-{food.Color}-{food.SurveyName}-{food.Quantity}-{food.Order}";
                 newSpawn.SetActive(true);
-                newSpawn.GetComponent<Floating>().SetOffset(0, 0.3f, 0);             
+                newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
+                if (food.Color != "default")
+                {
+                    newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split('-')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == food.Color).FirstOrDefault();
+                }
             }
         }
         currOrder++;
@@ -49,7 +54,6 @@ public class FoodDispenser : MonoBehaviour
             if (currFoods.Count > 0)
             {
                 dt += Time.deltaTime;
-                print(dt);
                 if (dt > timeBetweenFoodSpawn)
                 {
                     SpawnFoodWithoutChangingOrder(currFoods[0]);
@@ -80,9 +84,13 @@ public class FoodDispenser : MonoBehaviour
         {
             GameObject foodMesh = foodObjects.Where(obj => obj.name == currFood.MeshName).First();
             var newSpawn = Instantiate(foodMesh, SpawningLocation.transform.position, Quaternion.identity);
-            newSpawn.name = $"{currFood.Id}-{currFood.MeshName}-{currFood.SurveyName}-{currFood.Quantity}-{currFood.Order}";
+            newSpawn.name = $"{currFood.Id}-{currFood.MeshName}-{currFood.Color}-{currFood.SurveyName}-{currFood.Quantity}-{currFood.Order}";
             newSpawn.SetActive(true);
-            newSpawn.GetComponent<Floating>().SetOffset(0, 0.5f, 0);
+            newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
+            if(currFood.Color != "default")
+            {
+                newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split('-')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == currFood.Color).FirstOrDefault();
+            }
         }
     }
 
