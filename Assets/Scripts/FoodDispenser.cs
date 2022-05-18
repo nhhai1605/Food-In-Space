@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 public class FoodDispenser : MonoBehaviour
 {
-    [SerializeField] GameObject foodFolder, SpawningLocation, Door;
-    [SerializeField] XMLManager xmlManager;
+    [SerializeField] private GameObject foodFolder, SpawningLocation, Door;
+    [SerializeField] private XMLManager xmlManager;
     private List<XMLManager.XMLFood> xmlFoodList;
     private List<GameObject> foodObjects;
     private DoorManager doorManager;
@@ -17,6 +18,8 @@ public class FoodDispenser : MonoBehaviour
     private float dt = 0;
     private float yOffset = 0.5f;
     private float doorOpenTime = 2f;
+    [SerializeField] private GameObject foodTag;
+    [SerializeField] private FoodTagManager foodTagManager;
     void Start()
     {
         doorManager = Door.GetComponent<DoorManager>();
@@ -44,6 +47,10 @@ public class FoodDispenser : MonoBehaviour
                 {
                     newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == food.Color).FirstOrDefault();
                 }
+                var foodTagSpawn = Instantiate(foodTag, newSpawn.transform.position, Quaternion.identity);
+                foodTagSpawn.name = $"Food ID: {food.Id}";
+                foodTagSpawn.GetComponentInChildren<Text>().text = $"Food ID: {food.Id}";
+                foodTagManager.AddNewTag(new FoodTagManager.FoodTag(newSpawn, foodTagSpawn));
             }
         }
         currOrder++;
@@ -91,6 +98,10 @@ public class FoodDispenser : MonoBehaviour
             {
                 newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == currFood.Color).FirstOrDefault();
             }
+            var foodTagSpawn = Instantiate(foodTag, newSpawn.transform.position, Quaternion.identity);
+            foodTagSpawn.name = $"Food ID: {currFood.Id}";
+            foodTagSpawn.GetComponentInChildren<Text>().text = $"Food ID: {currFood.Id}";
+            foodTagManager.AddNewTag(new FoodTagManager.FoodTag(newSpawn, foodTagSpawn));
         }
     }
 
