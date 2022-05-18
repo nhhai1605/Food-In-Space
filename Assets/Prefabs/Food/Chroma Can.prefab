@@ -176,7 +176,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: d20cd39d55fe76f44866a8f8415b3048, type: 3}
+  m_Mesh: {fileID: 4300002, guid: fa22f1078e1a09443ad1c501ed2af2b5, type: 3}
 --- !u!82 &3768465617290251221
 AudioSource:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portions:
-  - {fileID: 3767909590783207761}
+  - {fileID: 3768465616431848444}
   index: 0
   surveyCanvas: {fileID: 0}
 --- !u!114 &3768465617290251222

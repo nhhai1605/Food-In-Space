@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 4512769977073444549}
   - component: {fileID: 5965856279634563526}
   m_Layer: 0
-  m_Name: PouchObject
+  m_Name: Chroma Pouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

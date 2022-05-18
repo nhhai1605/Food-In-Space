@@ -156,13 +156,16 @@ public class PageManager : MonoBehaviour
         Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>(true).Concat(emotionGroup.GetComponentsInChildren<Toggle>(true)).ToArray();
         foreach (Toggle toggle in toggles)
         {
+            toggle.isOn = false;
             if (activeAttr.Contains(toggle.GetComponentInChildren<Text>().text))
             {
-                toggle.gameObject.SetActive(true);
+                toggle.interactable = true;
+                toggle.GetComponentInChildren<Image>().color = Color.white;
             }
             else
             {
-                toggle.gameObject.SetActive(false);
+                toggle.interactable = false;
+                toggle.GetComponentInChildren<Image>().color = Color.gray;
             }
         }
        
