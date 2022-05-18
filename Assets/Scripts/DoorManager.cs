@@ -17,12 +17,20 @@ public class DoorManager : MonoBehaviour
     private Renderer buttonRenderer;
     private bool ButtonIsBeingPressed = false, buttonMoved = false;
     private Vector3 initialPos;
-    [SerializeField] GameObject button;
+    [SerializeField] private GameObject button;
     private int notToggleState = 0;
     private float timePassed = 0;
+    public GameObject GetButton()
+    {
+        return this.button;
+    }
     public bool IsDoorOpen()
     {
         return DoorIsOpen;
+    }
+    public void SetOpenTime(float time)
+    {
+        WaitTimeIfNotToggleInSecond = time;
     }
     void Awake()
     {
@@ -61,17 +69,13 @@ public class DoorManager : MonoBehaviour
             }
             else
             {
-
                 timePassed += Time.deltaTime;
 
                 if (timePassed > WaitTimeIfNotToggleInSecond)
                 {
                     timePassed = 0f;
-                        ControlDoor();
-                }
-                
-
-
+                    ControlDoor();
+                }           
             }
         }
 
@@ -129,4 +133,10 @@ public class DoorManager : MonoBehaviour
         ButtonIsPressedFirst = !ButtonIsPressedFirst;
         button.GetComponent<MeshCollider>().enabled = false;
     }
+
+    public void InvokeControlDoor(float time)
+    {
+        Invoke("ControlDoor", time);
+    }
+
 }

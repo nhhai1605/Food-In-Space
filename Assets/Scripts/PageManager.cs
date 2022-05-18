@@ -13,7 +13,8 @@ public class PageManager : MonoBehaviour
     public int currentPage { get; set; } = 0;
     [SerializeField] Button nextButton, submitButton;
 
-    public string nameOfFood { get; set; }
+    public string foodName { get; set; }
+    public int foodId { get; set; }
     private string outputPath;
     [SerializeField] private Text pageText;
     private int resultID;
@@ -23,15 +24,7 @@ public class PageManager : MonoBehaviour
     [SerializeField] private ToggleGroup toggleGroup;
     [SerializeField] private GameObject sensorialGroup;
     [SerializeField] private GameObject emotionGroup;
-    private string sliderInstruction = "(1=disliked extrememly to 9=liked extremely)";
-    private string checkBoxInstruction = "(1=not at all to 5=extremely)";
-    private string[] generalAttributes = { "Liking" };
-    private string[] sensorialAttributes = { "Sweetness", "Creamy", "Milky", "Sourness", "Vanilla" };
-    private string[] emotionAttributes = { "Active", "Adventurous", "Aggressive", "Bored", "Calm",
-                                                    "Disgusted", "Enthusiastic", "Good", "Good-natured",
-                                                    "Guilty", "Happy", "Interested","Joyful","Loving","Mild",
-                                                    "Nostalgic","Pleasant","Satisfied","Secure","Tame",
-                                                    "Understanding","Warm","Wild","Worried"};
+
     private string sensorialTransitPage = "Sensorial";
     private string emotionTransitPage = "Emotion";
     private string finishTransitPage = "Finish";
@@ -41,19 +34,19 @@ public class PageManager : MonoBehaviour
     private List<string> checkedAttributes;
 
     private List<XMLManager.XMLFood> foodList;
-
-    List<string> xmlSensorialAttr, xmlEmotionAttr;
+    private XMLManager.XMLFood currFood;
+    List<string> xmlSensorialAttr, xmlEmotionAttr, xmlGeneralAttr;
     public class Page
     {
         public int PageNumber { get; }
-        public string Name { get; }
+        public string Key { get; }
         public bool IsSlider { get; }
         public int Score = 0;
-        public Page(int pageNumber, bool IsSlider, string name)
+        public Page(int pageNumber, bool IsSlider, string key)
         {
             this.PageNumber = pageNumber;
             this.IsSlider = IsSlider;
-            this.Name = name;
+            this.Key = key;
         }
     }
 
@@ -114,61 +107,56 @@ public class PageManager : MonoBehaviour
     private void Reset()
     {
         currentPage = 0;
-        checkedAttributes = new List<string> { sensorialTransitPage, emotionTransitPage, finishTransitPage };
-        checkedAttributes.AddRange(generalAttributes);
-        XMLManager.XMLFood food = null;
+        currFood = null;
         foreach (XMLManager.XMLFood f in foodList)
         {
-            if (f.Name == nameOfFood)
+            if (f.Id == foodId)
             {
-                food = f;
+                currFood = f;
                 break;
             }
         }
-        //Empty or we can make another default slider attribute variable
-        this.sliderAttribute = Array.Empty<string>();
-        if (food != null)
+
+        xmlSensorialAttr = new List<string>();
+        xmlEmotionAttr = new List<string>();
+        xmlGeneralAttr = new List<string>();
+        List<string> activeAttr = new List<string>();
+        List<string> xmlSliderAttr = new List<string>();
+        foreach (XMLManager.XMLQuestion question in currFood.questionList)
         {
-            xmlSensorialAttr = new List<string>();
-            xmlEmotionAttr = new List<string>();
-            List<string> xmlSliderAttr = new List<string>();
-            foreach (XMLManager.XMLQuestion question in food.questionList)
+            //print($"{question.Key}-{question.Slider}-{question.Active}-{question.Content}");
+            if (question.Active)
             {
-                if (allAttributes.Contains(question.Name))
-                {
-                    if (question.Type == "Sensorial")
-                    {
-                        xmlSensorialAttr.Add(question.Name);
-                    }
-                    else if (question.Type == "Emotion")
-                    {
-                        xmlEmotionAttr.Add(question.Name);
-                    }
-                    else
-                    {
-                        Debug.LogError("Wrong question type!");
-                    }
-                    if (question.Slider == "Yes")
-                    {
-                        xmlSliderAttr.Add(question.Name);
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Name of question is out of scope");
-                }
+                activeAttr.Add(question.Key);
             }
-            this.sliderAttribute = xmlSliderAttr.ToArray();
+            if (question.Type == "Sensorial")
+            {
+                xmlSensorialAttr.Add(question.Key);
+            }
+            else if (question.Type == "Emotion")
+            {
+                xmlEmotionAttr.Add(question.Key);
+            }
+            else if (question.Type == "General")
+            {
+                xmlGeneralAttr.Add(question.Key);
+            }
+            else
+            {
+                Debug.LogError("Wrong question type!");
+            }
+            if (question.Slider)
+            {
+                xmlSliderAttr.Add(question.Key);
+            }
+
         }
-        else
+        sliderAttribute = xmlSliderAttr.ToArray();
+
+        Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>(true).Concat(emotionGroup.GetComponentsInChildren<Toggle>(true)).ToArray();
+        foreach (Toggle toggle in toggles)
         {
-            xmlSensorialAttr = sensorialAttributes.ToList();
-            xmlEmotionAttr = emotionAttributes.ToList();
-        }
-        Toggle[] toggles1 = sensorialGroup.GetComponentsInChildren<Toggle>(true);
-        foreach (Toggle toggle in toggles1)
-        {
-            if (xmlSensorialAttr.Contains(toggle.GetComponentInChildren<Text>().text))
+            if (activeAttr.Contains(toggle.GetComponentInChildren<Text>().text))
             {
                 toggle.gameObject.SetActive(true);
             }
@@ -177,16 +165,15 @@ public class PageManager : MonoBehaviour
                 toggle.gameObject.SetActive(false);
             }
         }
-        Toggle[] toggles2 = emotionGroup.GetComponentsInChildren<Toggle>(true);
-        foreach (Toggle toggle in toggles2)
+       
+        allAttributes = xmlGeneralAttr.Concat(new[] { sensorialTransitPage }).Concat(xmlSensorialAttr).Concat(new[] { emotionTransitPage }).Concat(xmlEmotionAttr).Concat(new[] { finishTransitPage }).ToArray();
+        checkedAttributes = new List<string> { sensorialTransitPage, emotionTransitPage, finishTransitPage };
+        //checkedAttributes.AddRange(xmlGeneralAttr);
+        foreach(string general in xmlGeneralAttr)
         {
-            if (xmlEmotionAttr.Contains(toggle.GetComponentInChildren<Text>().text))
+            if(activeAttr.Contains(general))
             {
-                toggle.gameObject.SetActive(true);
-            }
-            else
-            {
-                toggle.gameObject.SetActive(false);
+                checkedAttributes.Add(general);
             }
         }
         InitializePages();
@@ -217,7 +204,6 @@ public class PageManager : MonoBehaviour
     }
     void Awake()
     {
-        allAttributes = generalAttributes.Concat(new[] { sensorialTransitPage }).Concat(sensorialAttributes).Concat(new[] { emotionTransitPage }).Concat(emotionAttributes).Concat(new[] { finishTransitPage }).ToArray();
         transitPages = new[] { sensorialTransitPage, emotionTransitPage, finishTransitPage };
         foodList = xmlManager.foodList;
         outputPath = Application.persistentDataPath + "/SurveyResult.csv";
@@ -232,9 +218,10 @@ public class PageManager : MonoBehaviour
             DisplayError("Try closing the csv file first and try again!");
             return;
         }
-        resultID = File.ReadAllLines(outputPath).Length;
         InitializeOutputFile();
-        
+        resultID = File.ReadAllLines(outputPath).Length;
+
+
     }
 
     private void ChangeVisual()
@@ -245,7 +232,7 @@ public class PageManager : MonoBehaviour
         {
             currentPage++;
         }
-        if (allAttributes[currentPage] == "Sensorial")
+        if (allAttributes[currentPage] == sensorialTransitPage)
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
@@ -256,9 +243,11 @@ public class PageManager : MonoBehaviour
             {
                 toggle.isOn = false;
             }
+            nextButton.gameObject.SetActive(true);
+            submitButton.gameObject.SetActive(false);
             return;
         }
-        else if (allAttributes[currentPage] == "Emotion")
+        else if (allAttributes[currentPage] == emotionTransitPage)
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
@@ -269,11 +258,11 @@ public class PageManager : MonoBehaviour
             {
                 toggle.isOn = false;
             }
+            nextButton.gameObject.SetActive(true);
+            submitButton.gameObject.SetActive(false);
             return;
         }
-
-
-        if (allAttributes[currentPage] == finishTransitPage)
+        else if (allAttributes[currentPage] == finishTransitPage)
         {
             toggleGroup.gameObject.SetActive(false);
             slider.gameObject.SetActive(false);
@@ -283,26 +272,11 @@ public class PageManager : MonoBehaviour
         }
         else
         {
-            pageText.text = "Rate your " + pageList[currentPage].Name + " using the scale below ";
-            pageText.text += pageList[currentPage].IsSlider ? sliderInstruction : checkBoxInstruction;
-            foreach (XMLManager.XMLFood f in foodList)
+            foreach (XMLManager.XMLQuestion q in currFood.questionList)
             {
-                if (f.Name == nameOfFood)
+                if (q.Key == pageList[currentPage].Key)
                 {
-                    foreach(XMLManager.XMLQuestion q in f.questionList)
-                    {
-                        //print(q.Name + " - " + pageList[currentPage].Name);
-                        if (q.Name == pageList[currentPage].Name)
-                        {
-                            if(q.Content != "")
-                            {
-                                pageText.text = q.Content;
-                            }
-                            break;
-                        }
-                        
-                    }
-                    break;
+                    pageText.text = q.Content;
                 }
             }
             toggleGroup.gameObject.SetActive(!pageList[currentPage].IsSlider);
@@ -317,10 +291,10 @@ public class PageManager : MonoBehaviour
     {
         ChangeVisual();
         // Debug.Log("Survey submitted!");
-        File.AppendAllText(outputPath, resultID + "," + nameOfFood);
+        File.AppendAllText(outputPath, resultID + "," + foodName);
         for (int i = 0; i < pageList.Count; i++)
         {
-            if (!transitPages.Contains(pageList[i].Name))
+            if (!transitPages.Contains(pageList[i].Key))
             {
                 string text = pageList[i].Score == 0 ? "NULL" : pageList[i].Score.ToString();
                 File.AppendAllText(outputPath, "," + text);
@@ -332,6 +306,12 @@ public class PageManager : MonoBehaviour
         gameObject.SetActive(false);
 
     }
+    public void SubmitSurveyWithoutData()
+    {
+        ChangeVisual();
+        gameObject.SetActive(false);
+    }
+
     public void ChangePage()
     {
         //Extract data first
@@ -379,9 +359,5 @@ public class PageManager : MonoBehaviour
         ChangeVisual();
 
     }
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }

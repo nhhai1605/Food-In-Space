@@ -80,7 +80,7 @@ public class InstructionManager : MonoBehaviour
         {
             currentPage = pageManager.currentPage;
             currentText.text = instructions[currentPage];
-            if(!pageManager.transitPages.Contains(pageManager.pageList[currentPage].Name))
+            if(!pageManager.transitPages.Contains(pageManager.pageList[currentPage].Key))
             {
                 currentText.text += pageManager.pageList[currentPage].IsSlider ? " using the slider with the scale of " + sliderInstruction : " checking one box with the scale of " + checkBoxInstruction;
             }
