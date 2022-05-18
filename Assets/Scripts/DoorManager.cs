@@ -17,12 +17,20 @@ public class DoorManager : MonoBehaviour
     private Renderer buttonRenderer;
     private bool ButtonIsBeingPressed = false, buttonMoved = false;
     private Vector3 initialPos;
-    [SerializeField] GameObject button;
+    [SerializeField] private GameObject button;
     private int notToggleState = 0;
     private float timePassed = 0;
+    public GameObject GetButton()
+    {
+        return this.button;
+    }
     public bool IsDoorOpen()
     {
         return DoorIsOpen;
+    }
+    public void SetOpenTime(float time)
+    {
+        WaitTimeIfNotToggleInSecond = time;
     }
     void Awake()
     {

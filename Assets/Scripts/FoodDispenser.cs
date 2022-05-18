@@ -11,11 +11,12 @@ public class FoodDispenser : MonoBehaviour
     private DoorManager doorManager;
     private int currOrder;
     private bool spawning = false;
-    [SerializeField] float timeBetweenFoodSpawn = 2f; //seconds
+    private float timeBetweenFoodSpawn = 2f; //seconds
     private List<XMLManager.XMLFood> currFoods;
     private int spawned = 0;
     private float dt = 0;
     private float yOffset = 0.5f;
+    private float doorOpenTime = 2f;
     void Start()
     {
         doorManager = Door.GetComponent<DoorManager>();
@@ -49,7 +50,7 @@ public class FoodDispenser : MonoBehaviour
     }
     void Update()
     {
-        if(spawning)
+        if (spawning)
         {
             if (currFoods.Count > 0)
             {
@@ -69,7 +70,6 @@ public class FoodDispenser : MonoBehaviour
             }
             else
             {
-                doorManager.InvokeControlDoor(timeBetweenFoodSpawn);
                 spawning = false;
                 dt = 0;
                 spawned = 0;
@@ -97,15 +97,17 @@ public class FoodDispenser : MonoBehaviour
 
     public void Dispense()
     {
-        doorManager.ControlDoor();
-
+        int quantity = 0;
         foreach (var food in xmlFoodList)
         {
             if (food.Order == currOrder)
             {
                 currFoods.Add(food);
+                quantity += food.Quantity;
             }
         }
+        doorManager.SetOpenTime(quantity * doorOpenTime);
+        doorManager.ControlDoor();
         this.spawning = true;
     }
 }

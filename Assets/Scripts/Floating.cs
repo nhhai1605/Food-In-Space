@@ -13,7 +13,7 @@ public class Floating : MonoBehaviour
         if (IsRandom)
         {
             offset = new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
-            rotation = Random.Range(-2f, 2f) / 10f;
+            rotation = Random.Range(-5f, 5f) / 10f;
         }
         transform.GetComponent<Rigidbody>().velocity = offset;
     }
@@ -28,7 +28,7 @@ public class Floating : MonoBehaviour
         this.IsRandom = false;
         offset = new Vector3(x, y, z);
         transform.GetComponent<Rigidbody>().velocity = offset;
-        rotation = Random.Range(-2f, 2f) / 10f;
+        rotation = Random.Range(-5f, 5f) / 10f;
     }
 
 }

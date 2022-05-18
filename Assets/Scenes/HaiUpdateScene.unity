@@ -1771,6 +1771,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1003605576}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &814749391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4848771934901761663, guid: 68f24431d8848bb439161e24fcfcaa88,
+    type: 3}
+  m_PrefabInstance: {fileID: 1003605576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814749390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ffbb2896cdf23b44bc0610934478b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &874836473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2215,7 @@ PrefabInstance:
     - target: {fileID: 4848771934901761663, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
       propertyPath: IsToggle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4848771935281359079, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
@@ -2257,13 +2269,33 @@ PrefabInstance:
       objectReference: {fileID: 141322068}
     - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 814749391}
+    - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
+        type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Dispense
       objectReference: {fileID: 0}
     - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ControlDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
+        type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: FoodDispenser, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DoorManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
+        type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4848771936116973035, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
@@ -4480,7 +4512,7 @@ PrefabInstance:
     - target: {fileID: 4512769975973830805, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: m_Name
-      value: Chroma-Pouch
+      value: Chroma Pouch
       objectReference: {fileID: 0}
     - target: {fileID: 4512769977073444544, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
@@ -4646,7 +4678,7 @@ PrefabInstance:
     - target: {fileID: 4512769977073444602, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: m_Name
-      value: Chroma-Pouch
+      value: Chroma Pouch
       objectReference: {fileID: 0}
     - target: {fileID: 4512769977073444602, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
