@@ -2991,51 +2991,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1155515556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1155515557}
-  - component: {fileID: 1155515558}
-  m_Layer: 0
-  m_Name: FoodTagManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1155515557
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155515556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02739983, y: -0.3224005, z: -2.506}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1155515558
+--- !u!114 &1155515558 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1992687797172250517, guid: 5011652ee7c51964aaeab87d0f61c86e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1992687796160750387}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155515556}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15fcb276b92d6214eb8f9f5523303e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFolder: {fileID: 1996469059}
-  spectatorCameras: []
 --- !u!1 &1180003475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5838296759952282096, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
@@ -4745,6 +4712,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47da0668706b5f54483e2e89a36e774e, type: 3}
+--- !u!1001 &1992687796160750387
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1992687797172250517, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: cameraFolder
+      value: 
+      objectReference: {fileID: 1996469059}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02739983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3224005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.506
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250518, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250519, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_Name
+      value: FoodTagManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992687797172250519, guid: 5011652ee7c51964aaeab87d0f61c86e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5011652ee7c51964aaeab87d0f61c86e, type: 3}
 --- !u!1001 &3510385359633831762
 PrefabInstance:
   m_ObjectHideFlags: 0
