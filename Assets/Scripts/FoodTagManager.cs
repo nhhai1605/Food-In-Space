@@ -10,15 +10,15 @@ public class FoodTagManager : MonoBehaviour
     [SerializeField] private List<Camera> spectatorCameras;
     private Camera activeCamera = null;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         foodTagList = new List<FoodTag>();
         for (int i = 0; i < cameraFolder.transform.childCount; i++)
         {
             spectatorCameras.Add(cameraFolder.transform.GetChild(i).GetComponent<Camera>());
-            //cameraFolder.transform.GetChild(i).GetComponent<Camera>().enabled = false;
+            cameraFolder.transform.GetChild(i).GetComponent<Camera>().enabled = false;
         }
-        //spectatorCameras[0].enabled = true;
+        spectatorCameras[0].enabled = true;
     }
 
     // Update is called once per frame

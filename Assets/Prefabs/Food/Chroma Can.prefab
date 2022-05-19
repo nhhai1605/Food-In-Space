@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5011252785942574858}
   - component: {fileID: 3763523215698840153}
   - component: {fileID: 3753779272860904487}
-  - component: {fileID: 3795035009690467635}
   - component: {fileID: 2840659284589151454}
   m_Layer: 0
   m_Name: Chroma Can Label
@@ -36,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.09819647}
+  m_AnchoredPosition: {x: 0, y: -0.038}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &3763523215698840153
@@ -88,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3795035009690467635
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3767471103786223033}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: fa22f1078e1a09443ad1c501ed2af2b5, type: 3}
 --- !u!222 &2840659284589151454
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -454,7 +439,6 @@ GameObject:
   - component: {fileID: 3765907468284507879}
   - component: {fileID: 3763463212766861485}
   - component: {fileID: 3753772807643923487}
-  - component: {fileID: 3794977916303307663}
   m_Layer: 0
   m_Name: Can
   m_TagString: Untagged
@@ -470,7 +454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3767973485473343497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1309286, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3768465616431848445}
@@ -525,20 +509,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3794977916303307663
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3767973485473343497}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: fa22f1078e1a09443ad1c501ed2af2b5, type: 3}
 --- !u!1 &3768465616431848444
 GameObject:
   m_ObjectHideFlags: 0

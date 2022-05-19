@@ -113,7 +113,9 @@ public class DoorManager : MonoBehaviour
                 DoorIsOpen = !DoorIsOpen;
                 ButtonIsPressedFirst = !ButtonIsPressedFirst;
                 button.GetComponent<MeshCollider>().enabled = false;
-                if(notToggleState == 2)
+                this.GetComponent<AudioSource>().Play();
+                button.GetComponent<AudioSource>().Play();
+                if (notToggleState == 2)
                 {
                     timePassed = WaitTimeIfNotToggleInSecond;
                 }
@@ -132,6 +134,8 @@ public class DoorManager : MonoBehaviour
         DoorIsOpen = !DoorIsOpen;
         ButtonIsPressedFirst = !ButtonIsPressedFirst;
         button.GetComponent<MeshCollider>().enabled = false;
+        this.GetComponent<AudioSource>().Play();
+        button.GetComponent<AudioSource>().Play();
     }
 
     public void InvokeControlDoor(float time)

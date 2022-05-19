@@ -48,8 +48,12 @@ public class Consumable : MonoBehaviour
             SetVisuals();
             if (index == portions.Length)
             {
-                
-                
+                //if object doesnt have anything left, will delete it after the audio source finish.
+                //If the object has something left, like the bone of the ham, keep it
+                if(this.GetComponent<Renderer>() == null)
+                {
+                    Destroy(gameObject, audioSrc.clip.length);
+                }
                 Debug.Log("Survey for: " + name);
                 surveyCanvas.GetComponentInChildren<Text>().text = name.Split('-')[3];
                 surveyCanvas.GetComponent<PageManager>().foodName = name.Split('-')[3];
@@ -61,6 +65,5 @@ public class Consumable : MonoBehaviour
             }
         }
     }
-
 
 }
