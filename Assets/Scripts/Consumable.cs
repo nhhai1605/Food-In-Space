@@ -48,26 +48,16 @@ public class Consumable : MonoBehaviour
             SetVisuals();
             if (index == portions.Length)
             {
-                
-                surveyCanvas.GetComponentInChildren<Text>().text = name;
+                //if object doesnt have anything left, will delete it after the audio source finish.
+                //If the object has something left, like the bone of the ham, keep it
+                if(this.GetComponent<Renderer>() == null)
+                {
+                    Destroy(gameObject, audioSrc.clip.length);
+                }
                 Debug.Log("Survey for: " + name);
-                //try
-                //{
-                //    surveyCanvas.GetComponent<OldPageManagement>().nameOfFood = name;
-                //}
-                //catch
-                //{
-                //    Debug.LogWarning("Using New PageManagement");
-                //}
-                //try
-                //{
-                //    surveyCanvas.GetComponent<PageManagement>().nameOfFood = name;
-                //}
-                //catch
-                //{
-                //    Debug.LogWarning("Using Old PageManagement");
-                //}
-                surveyCanvas.GetComponent<PageManager>().nameOfFood = name;
+                surveyCanvas.GetComponentInChildren<Text>().text = name.Split('-')[3];
+                surveyCanvas.GetComponent<PageManager>().foodName = name.Split('-')[3];
+                surveyCanvas.GetComponent<PageManager>().foodId = int.Parse(name.Split('-')[0]);
 
                 //Set the name first then deactive and active again to activate OnEnabled
                 surveyCanvas.gameObject.SetActive(false);
@@ -75,6 +65,5 @@ public class Consumable : MonoBehaviour
             }
         }
     }
-
 
 }
