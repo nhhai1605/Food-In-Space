@@ -18962,6 +18962,12 @@ PrefabInstance:
       propertyPath: pullingSpeed
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 3590449104462315582, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: buttonReference
+      value: 
+      objectReference: {fileID: -5294950080248747617, guid: da2b439d1a2de5c46a4f428f8cf4fe19,
+        type: 3}
     - target: {fileID: 4657911316261647290, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: m_LocalPosition.x
