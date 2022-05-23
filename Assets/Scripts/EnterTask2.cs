@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnterTask1 : MonoBehaviour
+public class EnterTask2 : MonoBehaviour
 {
     public GameObject uiObject;
     public GameObject uiObject2;
@@ -30,5 +30,4 @@ public class EnterTask1 : MonoBehaviour
         uiObject4.SetActive(false);
 
     }
-
 }
