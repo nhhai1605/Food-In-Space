@@ -33,12 +33,14 @@ public class CameraSwitchUI : MonoBehaviour
 
     public void onSpectatorButtonOpenSurveyButton()
     {
-        EditorUtility.RevealInFinder(Application.persistentDataPath);
+        // EditorUtility.RevealInFinder(Application.persistentDataPath);
+        Application.OpenURL(Application.persistentDataPath);
     }
 
     public void onSpectatorButtonOpenConfigurationButton()
     {
-        EditorUtility.RevealInFinder(Application.persistentDataPath);
+        // EditorUtility.RevealInFinder(Application.persistentDataPath);
+        Application.OpenURL(Application.persistentDataPath);
     }
 
     public void onSpectatorButtonReturnToMenuButton()
