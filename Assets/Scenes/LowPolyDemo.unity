@@ -404,6 +404,11 @@ PrefabInstance:
       objectReference: {fileID: 578700792}
     - target: {fileID: 7162523066327757568, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
+      propertyPath: smokeEffect
+      value: 
+      objectReference: {fileID: 1714272981}
+    - target: {fileID: 7162523066327757568, guid: 68f24431d8848bb439161e24fcfcaa88,
+        type: 3}
       propertyPath: foodTagFolder
       value: 
       objectReference: {fileID: 2019432864}
@@ -3756,6 +3761,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1714272981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3131764682143552366, guid: 68f24431d8848bb439161e24fcfcaa88,
+    type: 3}
+  m_PrefabInstance: {fileID: 83216469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812158483
 GameObject:
   m_ObjectHideFlags: 0
