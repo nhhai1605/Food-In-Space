@@ -14,16 +14,12 @@ public class DoorManager : MonoBehaviour
     public bool IsToggle = true;
     [SerializeField] private float WaitTimeIfNotToggleInSecond = 2f;
 
-    private Renderer buttonRenderer;
     private bool ButtonIsBeingPressed = false, buttonMoved = false;
     private Vector3 initialPos;
     [SerializeField] private GameObject[] buttons;
     private int notToggleState = 0;
     private float timePassed = 0;
-    //public GameObject GetButton()
-    //{
-    //    return this.button;
-    //}
+
     public bool IsDoorOpen()
     {
         return DoorIsOpen;
@@ -128,10 +124,6 @@ public class DoorManager : MonoBehaviour
                 buttonMoved = true;
                 DoorIsOpen = !DoorIsOpen;
                 ButtonIsPressedFirst = !ButtonIsPressedFirst;
-                foreach (GameObject button in buttons)
-                {
-                    button.transform.position = button.transform.position + button.transform.up * ButtonMoveDistance;
-                }
                 foreach (GameObject button in buttons)
                 {
                     button.GetComponent<MeshCollider>().enabled = false;

@@ -19,6 +19,7 @@ public class SkipTutorial : MonoBehaviour
     public void Skip()
     {
         taskActivator.SetActive(false);
+        this.GetComponent<AudioSource>().Play();
         foreach(GameObject obj in VROriginList)
         {
             obj.transform.position = Vector3.zero;
