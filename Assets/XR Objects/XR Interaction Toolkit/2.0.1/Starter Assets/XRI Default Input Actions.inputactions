@@ -126,11 +126,22 @@
                 },
                 {
                     "name": "",
-                    "id": "b2c06f7c-5089-4f69-b2f4-5b36ca25ade0",
-                    "path": "<XRController>{LeftHand}/pointerRotation",
+                    "id": "42e832f3-e332-4e2d-a718-c1d95dbe1c36",
+                    "path": "<OculusTouchController>{LeftHand}/pointerRotation",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Generic XR Controller",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "296a6c53-2222-4edf-adab-b406f5fd92ec",
+                    "path": "<ViveController>{LeftHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -252,50 +263,6 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Select Value",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "487f4f2e-9e9b-49aa-b0f2-4037a24624f5",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Activate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3b8b1b59-2fdc-4998-8259-50341075d9a2",
-                    "path": "<XRController>{LeftHand}/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Activate Value",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b34c79c1-ab5e-4851-87ac-abc43705eae0",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "UI Press",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "71d94579-1bf4-4034-ab9e-e7166842128f",
-                    "path": "<XRController>{LeftHand}/trigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "UI Press Value",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -450,6 +417,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Menu Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a360adfa-0134-45cd-921e-293a810fb316",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0411b8c3-cdc6-46d7-8343-2bd183aededc",
+                    "path": "<XRController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Activate Value",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -640,8 +629,19 @@
                 },
                 {
                     "name": "",
-                    "id": "b7172c48-14bf-4ef1-9efe-7a208a75a84c",
-                    "path": "<XRController>{RightHand}/pointerRotation",
+                    "id": "1b228f42-5650-4310-9a6c-f5c1fab4f74b",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerOpenXR>{RightHand}/pointerRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13be3ab5-b1b5-4509-b8df-48e5c1ddba07",
+                    "path": "<ViveController>{RightHand}/deviceRotation",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -916,8 +916,8 @@
                 },
                 {
                     "name": "",
-                    "id": "5aa40b95-519a-46f4-b4ca-151924fa4a0c",
-                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "id": "a88df5f4-19ab-494d-bfec-141e1f5c4192",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
