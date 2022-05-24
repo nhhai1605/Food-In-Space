@@ -11,10 +11,18 @@ public class MovementManager : MonoBehaviour
     [SerializeField] private float thrustingSpeed = 0.02f;
     [SerializeField] private float pullingDistance = 0.2f;
     [SerializeField] private float friction = 0.98f;
+    [SerializeField] private float pullFriction = 0.98f;
+
     [SerializeField] private InputActionReference buttonReference;
     private GameObject pullableObject = null;
     private bool IsThrusting = false;
-    Vector3 look = Vector3.zero;
+    private Vector3 look = Vector3.zero;
+    private Vector3 pullDir = Vector3.zero;
+
+    public void ResetVelocity()
+    {
+        look = pullDir = Vector3.zero;
+    }
     void Start()
     {
         VROrigin = this.gameObject;
@@ -50,15 +58,17 @@ public class MovementManager : MonoBehaviour
 
         if (pullableObject != null)
         {
-            Vector3 dir = pullableObject.transform.position - VRCamera.transform.position;
-            if (pullableObject != null && Vector3.Distance(VRCamera.transform.position, pullableObject.transform.position) > pullingDistance)
-            {
-                VROrigin.transform.position += dir * pullingSpeed;
-            }
+            pullDir = pullableObject.transform.position - VRCamera.transform.position;      
         }
-
-
-
+        else
+        {
+            pullDir *= pullFriction;
+        }
+        if (pullDir.magnitude < 0.0001f)
+        {
+            pullDir = Vector3.zero;
+        }
+        VROrigin.transform.position += pullDir * pullingSpeed;
     }
     private void Thrust(InputAction.CallbackContext context)
     {

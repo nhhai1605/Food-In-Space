@@ -7,11 +7,12 @@ public class BoundaryManager : MonoBehaviour
     // Start is called before the first frame update
     private GameObject VROrigin;
     [SerializeField] private List<GameObject> walls;
-
+    [SerializeField] private MovementManager movementManager;
 
     void Start()
     {
         VROrigin = GameObject.FindGameObjectWithTag("VR Origin");
+        movementManager = VROrigin.GetComponent<MovementManager>();
         
     }
 
@@ -30,8 +31,10 @@ public class BoundaryManager : MonoBehaviour
                 Camera.main.GetComponent<UnityEngine.SpatialTracking.TrackedPoseDriver>().trackingType = UnityEngine.SpatialTracking.TrackedPoseDriver.TrackingType.RotationOnly;
             }
             //Debug.DrawLine(this.transform.position, collision.GetContact(0).point);
+            movementManager.ResetVelocity();
             Vector3 dir = transform.position - collision.GetContact(0).point;
             VROrigin.transform.position += dir;
+           
         }
     }
     void OnCollisionExit(Collision collision)

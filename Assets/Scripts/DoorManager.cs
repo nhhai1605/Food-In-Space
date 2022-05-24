@@ -14,16 +14,12 @@ public class DoorManager : MonoBehaviour
     public bool IsToggle = true;
     [SerializeField] private float WaitTimeIfNotToggleInSecond = 2f;
 
-    private Renderer buttonRenderer;
     private bool ButtonIsBeingPressed = false, buttonMoved = false;
     private Vector3 initialPos;
-    [SerializeField] private GameObject button;
+    [SerializeField] private GameObject[] buttons;
     private int notToggleState = 0;
     private float timePassed = 0;
-    public GameObject GetButton()
-    {
-        return this.button;
-    }
+
     public bool IsDoorOpen()
     {
         return DoorIsOpen;
@@ -35,14 +31,19 @@ public class DoorManager : MonoBehaviour
     void Awake()
     {
         initialPos = this.transform.position;
-        buttonRenderer = button.GetComponent<Renderer>();
         if (ButtonIsPressedFirst)
         {
-            buttonRenderer.material.color = ButtonInactiveColor;
+            foreach(GameObject button in buttons)
+            {
+                button.GetComponent<Renderer>().material.color = ButtonInactiveColor;
+            }
         }
         else
         {
-            buttonRenderer.material.color = ButtonActiveColor;
+            foreach (GameObject button in buttons)
+            {
+                button.GetComponent<Renderer>().material.color = ButtonActiveColor;
+            }
         }
     }
 
@@ -65,7 +66,10 @@ public class DoorManager : MonoBehaviour
             if (IsToggle)
             {
                 ButtonIsBeingPressed = false;
-                button.GetComponent<MeshCollider>().enabled = true;
+                foreach (GameObject button in buttons)
+                {
+                    button.GetComponent<MeshCollider>().enabled = true;
+                }
             }
             else
             {
@@ -83,9 +87,13 @@ public class DoorManager : MonoBehaviour
         {
             if (buttonMoved)
             {
-                button.transform.position = button.transform.position - button.transform.up * ButtonMoveDistance;
+                foreach (GameObject button in buttons)
+                {
+                    button.transform.position = button.transform.position - button.transform.up * ButtonMoveDistance;
+                    button.GetComponent<Renderer>().material.color = ButtonActiveColor;
+
+                }
                 buttonMoved = false;
-                buttonRenderer.material.color = ButtonActiveColor;
 
             }
         }
@@ -93,8 +101,12 @@ public class DoorManager : MonoBehaviour
         {
             if (buttonMoved)
             {
-                button.transform.position = button.transform.position + button.transform.up * ButtonMoveDistance;
-                buttonRenderer.material.color = ButtonInactiveColor;
+                foreach (GameObject button in buttons)
+                {
+                    button.transform.position = button.transform.position + button.transform.up * ButtonMoveDistance;
+                    button.GetComponent<Renderer>().material.color = ButtonInactiveColor;
+                }
+                
                 buttonMoved = false;
             }
         }
@@ -112,9 +124,12 @@ public class DoorManager : MonoBehaviour
                 buttonMoved = true;
                 DoorIsOpen = !DoorIsOpen;
                 ButtonIsPressedFirst = !ButtonIsPressedFirst;
-                button.GetComponent<MeshCollider>().enabled = false;
+                foreach (GameObject button in buttons)
+                {
+                    button.GetComponent<MeshCollider>().enabled = false;
+                    button.GetComponent<AudioSource>().Play();
+                }
                 this.GetComponent<AudioSource>().Play();
-                button.GetComponent<AudioSource>().Play();
                 if (notToggleState == 2)
                 {
                     timePassed = WaitTimeIfNotToggleInSecond;
@@ -124,7 +139,11 @@ public class DoorManager : MonoBehaviour
             {
                 notToggleState = 0;
                 ButtonIsBeingPressed = false;
-                button.GetComponent<MeshCollider>().enabled = true;
+                foreach (GameObject button in buttons)
+                {
+                    button.GetComponent<MeshCollider>().enabled = true;
+
+                }
             }
             return;
         }
@@ -133,9 +152,12 @@ public class DoorManager : MonoBehaviour
         buttonMoved = true;
         DoorIsOpen = !DoorIsOpen;
         ButtonIsPressedFirst = !ButtonIsPressedFirst;
-        button.GetComponent<MeshCollider>().enabled = false;
         this.GetComponent<AudioSource>().Play();
-        button.GetComponent<AudioSource>().Play();
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<MeshCollider>().enabled = false;
+            button.GetComponent<AudioSource>().Play();
+        }
     }
 
     public void InvokeControlDoor(float time)

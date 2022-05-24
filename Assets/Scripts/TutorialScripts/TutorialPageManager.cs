@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using System.IO;
-public class OldPageManager : MonoBehaviour
+public class TutorialPageManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject pageObject;
@@ -240,6 +240,11 @@ public class OldPageManager : MonoBehaviour
         resultID = File.ReadAllLines(outputPath).Length;
         gameObject.SetActive(false);
 
+    }
+    public void SubmitSurveyWithoutData()
+    {
+        ChangeVisual();
+        gameObject.SetActive(false);
     }
     public void ChangePage()
     {
