@@ -35,7 +35,7 @@ public class TutorialConsumable : MonoBehaviour
     {
         IsGrabbed = true;
     }
-    public new void Drop()
+    public void Drop()
     {
         IsGrabbed = false;
     }

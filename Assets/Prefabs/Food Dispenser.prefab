@@ -118,7 +118,8 @@ MonoBehaviour:
   ButtonInactiveColor: {r: 0.5566038, g: 0.14440194, b: 0.14440194, a: 0}
   IsToggle: 0
   WaitTimeIfNotToggleInSecond: 2
-  button: {fileID: 4848771936116973076}
+  buttons:
+  - {fileID: 4848771936116973076}
 --- !u!82 &2986600835523369977
 AudioSource:
   m_ObjectHideFlags: 0
@@ -853,6 +854,8 @@ MonoBehaviour:
   xmlManager: {fileID: 0}
   foodTag: {fileID: 5573744547104592532, guid: e62b4f9a09b26f944822042d2fe39a20, type: 3}
   foodTagManager: {fileID: 0}
+  spawnFoodFolder: {fileID: 0}
+  foodTagFolder: {fileID: 0}
 --- !u!1 &4848771936548289506
 GameObject:
   m_ObjectHideFlags: 0
