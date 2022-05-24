@@ -7,24 +7,30 @@ public class EnterTask3 : MonoBehaviour
     public GameObject uiObject;
     public GameObject uiObject2;
     public GameObject uiObject3;
+    public GameObject uiObject4;
 
-    private void OnTriggerEnter()
-    {
-        uiObject.SetActive(true);
-        uiObject2.SetActive(true);
-    }
-    private void OnTriggerExit()
+    private void OnTriggerEnter(Collider other)
     {
         uiObject.SetActive(false);
-        uiObject2.SetActive(false);
+        uiObject2.SetActive(true);
         uiObject3.SetActive(true);
+        uiObject4.SetActive(false);
+
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         uiObject.SetActive(false);
         uiObject2.SetActive(false);
         uiObject3.SetActive(false);
+        uiObject4.SetActive(false);
 
+    }
+    public void ActiveSuccess()
+    {
+        uiObject.SetActive(false);
+        uiObject2.SetActive(false);
+        uiObject3.SetActive(false);
+        uiObject4.SetActive(true);
     }
 }
