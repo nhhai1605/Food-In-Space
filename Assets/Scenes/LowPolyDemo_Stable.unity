@@ -2668,26 +2668,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 978701191}
-    - target: {fileID: 2444172633785046248, guid: 16748a34466c2304798ff6b36401d072,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444172633785046255, guid: 16748a34466c2304798ff6b36401d072,
-        type: 3}
-      propertyPath: m_ScaleFactor
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444172633785046255, guid: 16748a34466c2304798ff6b36401d072,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444172633785046255, guid: 16748a34466c2304798ff6b36401d072,
-        type: 3}
-      propertyPath: m_ReferencePixelsPerUnit
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2444172634119109664, guid: 16748a34466c2304798ff6b36401d072,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3238,11 +3218,6 @@ PrefabInstance:
       propertyPath: positionOffset.z
       value: -0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 5820955312787599403, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Name
@@ -3317,11 +3292,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8804106536772056108, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: field of view
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a536069662d5cd64f87cf15a3522234d, type: 3}
