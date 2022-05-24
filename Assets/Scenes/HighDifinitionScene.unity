@@ -6228,7 +6228,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425527010}
-  - component: {fileID: 425527009}
   m_Layer: 0
   m_Name: RightHand Manager
   m_TagString: Untagged
@@ -6236,19 +6235,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &425527009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425527008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf673326da4ca0541961a995dc988595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
 --- !u!224 &425527010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7174,7 +7160,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 476311040}
-  - component: {fileID: 476311039}
   m_Layer: 0
   m_Name: LeftHand Manager
   m_TagString: Untagged
@@ -7182,19 +7167,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &476311039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 476311038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf673326da4ca0541961a995dc988595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
 --- !u!224 &476311040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18279,7 +18251,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1351903739}
-  - component: {fileID: 1351903738}
   m_Layer: 0
   m_Name: Grab Manager
   m_TagString: Untagged
@@ -18287,19 +18258,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1351903738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351903737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf673326da4ca0541961a995dc988595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
 --- !u!224 &1351903739
 RectTransform:
   m_ObjectHideFlags: 0
