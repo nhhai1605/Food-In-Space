@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CameraSwitch : MonoBehaviour
 {
-    private bool spectatorCameraOn = true;
-    private Camera currentCamera = null;
-    [SerializeField]
-    private Camera spectatorCamera = null;
+
+    public Camera currentCamera { private set; get; }
+    private Camera vrSpectatorCamera = null;
+    private CameraSwitchUI cameraSwitchUI = null;
 
     [SerializeField]
     private List<Camera> spectatorCameras = null;
@@ -21,12 +22,40 @@ public class CameraSwitch : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-
         setupCameraControls();
-        spectatorCameras[0].enabled = true;
-        spectatorCameras[0].depth = 1;
 
-        buttonReference.action.started += SwitchCamera;
+        vrSpectatorCamera = GameObject.FindGameObjectWithTag("VRSpectatorCamera").GetComponent<Camera>();
+        cameraSwitchUI = GetComponent<CameraSwitchUI>();
+
+        currentCamera = spectatorCameras[0];
+        currentCamera.enabled = true;
+        currentCamera.depth = 1;
+    }
+
+    public void setCamera(int id)
+    {
+        // 0 = VR
+        // 1-9 = spectator
+        if (id > spectatorCameras.Count)
+            return;
+
+        // Reset Camera
+        if (currentCamera != null)
+        {
+            currentCamera.depth = -1;
+            currentCamera.enabled = false;
+        }
+
+        // Vr Camera
+        if (id == 0)
+            currentCamera = vrSpectatorCamera;
+        else
+            currentCamera = spectatorCameras[id - 1];
+
+        // Set new Camera
+        currentCamera.enabled = true;
+        currentCamera.depth = 1;
+        cameraSwitchUI.SetCamera();
     }
 
     private void setupCameraControls()
@@ -47,7 +76,7 @@ public class CameraSwitch : MonoBehaviour
         }
 
         // Assign Button Events 
-        cameraKeyboardInputActionMap.actions[0].performed += SwitchCamera; // VRCamera
+        cameraKeyboardInputActionMap.actions[0].performed += onSpectatorCameraButtonPress; // VRCamera
         cameraKeyboardInputActionMap.actions[1].performed += onSpectatorCameraButtonPress; // Spectator Camera 1
         cameraKeyboardInputActionMap.actions[2].performed += onSpectatorCameraButtonPress; // Spectator Camera 2
         cameraKeyboardInputActionMap.actions[3].performed += onSpectatorCameraButtonPress; // etc...
@@ -55,45 +84,13 @@ public class CameraSwitch : MonoBehaviour
         cameraKeyboardInputActionMap.actions[5].performed += onSpectatorCameraButtonPress;
         cameraKeyboardInputActionMap.actions[6].performed += onSpectatorCameraButtonPress;
         cameraKeyboardInputActionMap.actions[7].performed += onSpectatorCameraButtonPress;
-
     }
 
-    private void onDestroy()
-    {
-        buttonReference.action.started -= SwitchCamera;
-    }
-
+    // Keyboard Button
     private void onSpectatorCameraButtonPress(InputAction.CallbackContext context)
     {
         // Confirm which button was pressed
         int cameraID = int.Parse(context.action.name[context.action.name.Length - 1].ToString());
-
-        if (cameraID > spectatorCameras.Count)
-            return;
-
-        // Reset Camera
-        if (currentCamera != null)
-        {
-            currentCamera.depth = -1;
-            currentCamera.enabled = false;
-        }
-
-        // Set new Camera
-        currentCamera = spectatorCameras[cameraID - 1];
-        currentCamera.enabled = true;
-        currentCamera.depth = 1;
-    }
-
-    private void SwitchCamera(InputAction.CallbackContext context)
-    {
-        if (spectatorCameraOn)
-        {
-            spectatorCamera.depth = -1;
-        }
-        else
-        {
-            spectatorCamera.depth = 1;
-        }
-        spectatorCameraOn = !spectatorCameraOn;
+        setCamera(cameraID);
     }
 }

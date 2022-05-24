@@ -1029,7 +1029,7 @@
             "id": "a5f9c2ac-d257-4c41-a23d-3d54f7c9a8b3",
             "actions": [
                 {
-                    "name": "VRView",
+                    "name": "Camera0",
                     "type": "Button",
                     "id": "efcb9630-0dc6-45f5-a2f2-18b3140a733d",
                     "expectedControlType": "Button",
@@ -1109,7 +1109,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "VRView",
+                    "action": "Camera0",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
