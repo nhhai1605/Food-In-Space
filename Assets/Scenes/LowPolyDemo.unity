@@ -4412,6 +4412,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148590229}
     m_Modifications:
+    - target: {fileID: 823103470424125690, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3590449104462315582, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: buttonReference
@@ -4552,6 +4557,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989880927681130030, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 277e15b63da459d418fb212202b1189d, type: 3}
@@ -5207,6 +5217,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4512769977321059384, guid: 3217f3c10a1740747bd1c880942c99bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5965856279634563526, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
       propertyPath: IsRandom
@@ -5382,7 +5397,7 @@ PrefabInstance:
     - target: {fileID: 7880130034100170570, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880130034100170572, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
