@@ -30,7 +30,7 @@ public class FoodDispenser : MonoBehaviour
         {
             foodObjects.Add(foodFolder.transform.GetChild(i).gameObject);
         }
-        foreach(XMLManager.XMLFood food in xmlFoodList)
+        foreach (XMLManager.XMLFood food in xmlFoodList)
         {
             foodOrderList.Add(food.Order);
         }
@@ -80,7 +80,7 @@ public class FoodDispenser : MonoBehaviour
                 {
                     currFoods.RemoveAt(0);
                     dt = 0;
-                    spawned=0;
+                    spawned = 0;
                 }
             }
             else
@@ -102,7 +102,7 @@ public class FoodDispenser : MonoBehaviour
             newSpawn.name = $"{currFood.Id}-{currFood.MeshName}-{currFood.Color}-{currFood.SurveyName}-{currFood.Quantity}-{currFood.Order}";
             newSpawn.SetActive(true);
             newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
-            if(currFood.Color != "Default")
+            if (currFood.Color != "Default")
             {
                 newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == currFood.Color).FirstOrDefault();
             }
@@ -120,6 +120,9 @@ public class FoodDispenser : MonoBehaviour
 
     public void Dispense()
     {
+        if (currIdx >= foodOrderList.Count)
+            return;
+
         int quantity = 0;
         foreach (var food in xmlFoodList)
         {
