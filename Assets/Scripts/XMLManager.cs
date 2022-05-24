@@ -67,7 +67,7 @@ public class XMLManager : MonoBehaviour
                     {
                         if(obj.name.Split(' ')[0] == "Chroma")
                         {
-                            if (color != "default")
+                            if (color != "Default")
                             {
                                 Material material = materials.Where(m => m.name == color).FirstOrDefault();
                                 if (material == null)
@@ -80,7 +80,7 @@ public class XMLManager : MonoBehaviour
                         }
                         else
                         {
-                            if(color != "default")
+                            if(color != "Default")
                             {
                                 LogOutput(logPath, $"[ERROR]: The color in the Food XML at line {info.LineNumber} is invalid because this food cannot change its color!");
                                 foodElement.ReplaceWith(new XComment(foodElement.ToString()));
@@ -126,7 +126,7 @@ public class XMLManager : MonoBehaviour
                     XElement foodElement = new XElement("Food");
                     foodElement.Add(new XAttribute("id", id));
                     foodElement.Add(new XAttribute("mesh", foodFolder.transform.GetChild(i).name));
-                    foodElement.Add(new XAttribute("color","default"));
+                    foodElement.Add(new XAttribute("color","Default"));
                     foodElement.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
                     foodElement.Add(new XAttribute("quantity", 0));
                     foodElement.Add(new XAttribute("order", 1));
@@ -154,7 +154,7 @@ public class XMLManager : MonoBehaviour
                 XElement foodElement = new XElement("Food");
                 foodElement.Add(new XAttribute("id", id));
                 foodElement.Add(new XAttribute("mesh", foodFolder.transform.GetChild(i).name));
-                foodElement.Add(new XAttribute("color", "default"));
+                foodElement.Add(new XAttribute("color", "Default"));
                 foodElement.Add(new XAttribute("name", foodFolder.transform.GetChild(i).name));
                 foodElement.Add(new XAttribute("quantity", 1));
                 foodElement.Add(new XAttribute("order", id));
@@ -401,6 +401,7 @@ public class XMLManager : MonoBehaviour
         File.AppendAllText(logPath, Environment.NewLine);
 
         allAttributes = generalAttributes.Concat(sensorialAttributes).Concat(emotionAttributes).ToArray();
+
         ReadFoodXML();
         ReadQuestionXML();
 
