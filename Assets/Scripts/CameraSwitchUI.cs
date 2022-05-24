@@ -41,9 +41,14 @@ public class CameraSwitchUI : MonoBehaviour
         EditorUtility.RevealInFinder(Application.persistentDataPath);
     }
 
-    public void onSpectatorButtonRestartSceneButton()
+    public void onSpectatorButtonReturnToMenuButton()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void onSpectatorButtonRestartSceneButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void onSpectatorButtonHideButton()
