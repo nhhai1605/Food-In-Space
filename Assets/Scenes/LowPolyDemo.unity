@@ -406,7 +406,7 @@ PrefabInstance:
         type: 3}
       propertyPath: foodTagManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 255118738}
     - target: {fileID: 7162523066327757568, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
       propertyPath: spawnFoodFolder
@@ -693,6 +693,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
+--- !u!114 &255118738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8050114643459207973, guid: 16748a34466c2304798ff6b36401d072,
+    type: 3}
+  m_PrefabInstance: {fileID: 659553635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fcb276b92d6214eb8f9f5523303e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &285719441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3130,20 +3142,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148590229}
     m_Modifications:
-    - target: {fileID: 5233144154086249007, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: spectatorCamera
-      value: 
-      objectReference: {fileID: 978701191}
     - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Name
       value: OculusOrigin
-      objectReference: {fileID: 0}
-    - target: {fileID: 6396972356140362788, guid: a536069662d5cd64f87cf15a3522234d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6396972356140362810, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
@@ -3285,12 +3287,6 @@ PrefabInstance:
 --- !u!4 &978701190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6684958047926896783, guid: 45a21b5aa30340d4c9ef6a3189a87879,
-    type: 3}
-  m_PrefabInstance: {fileID: 978701189}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &978701191 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6684958047926896780, guid: 45a21b5aa30340d4c9ef6a3189a87879,
     type: 3}
   m_PrefabInstance: {fileID: 978701189}
   m_PrefabAsset: {fileID: 0}
