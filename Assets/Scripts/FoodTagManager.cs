@@ -27,6 +27,12 @@ public class FoodTagManager : MonoBehaviour
         activeCamera = spectatorCameras.Where(cam => cam.enabled == true).SingleOrDefault();
         foreach (FoodTag ft in foodTagList)
         { 
+            if(ft.food == null)
+            {
+                Destroy(ft.tag);
+                foodTagList.Remove(ft);
+                break;
+            }
             ft.tag.transform.position = ft.food.transform.position + Vector3.up * yOffset;
             var lookAtPos = new Vector3(activeCamera.transform.position.x, activeCamera.transform.position.y, activeCamera.transform.position.z);
             ft.tag.transform.LookAt(lookAtPos, activeCamera.transform.up);

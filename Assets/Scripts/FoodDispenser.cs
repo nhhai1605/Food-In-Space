@@ -8,52 +8,60 @@ public class FoodDispenser : MonoBehaviour
     [SerializeField] private GameObject foodFolder, SpawningLocation, Door;
     [SerializeField] private XMLManager xmlManager;
     private List<XMLManager.XMLFood> xmlFoodList;
-    private List<GameObject> foodObjects;
+    private List<GameObject> foodObjects = new List<GameObject>();
     private DoorManager doorManager;
-    private int currOrder;
     private bool spawning = false;
     private float timeBetweenFoodSpawn = 2f; //seconds
-    private List<XMLManager.XMLFood> currFoods;
+    private List<XMLManager.XMLFood> currFoods = new List<XMLManager.XMLFood>();
     private int spawned = 0;
     private float dt = 0;
     private float yOffset = 0.5f;
     private float doorOpenTime = 2f;
+    private int currIdx = 0;
     [SerializeField] private GameObject foodTag;
     [SerializeField] private FoodTagManager foodTagManager;
+    List<int> foodOrderList = new List<int>();
+    [SerializeField] private Transform spawnFoodFolder, foodTagFolder;
     void Start()
     {
         doorManager = Door.GetComponent<DoorManager>();
-        foodObjects = new List<GameObject>();
-        currFoods = new List<XMLManager.XMLFood>();
         this.xmlFoodList = xmlManager.foodList;
         for (int i = 0; i < foodFolder.transform.childCount; i++)
         {
             foodObjects.Add(foodFolder.transform.GetChild(i).gameObject);
         }
-        currOrder = 1;
+        foreach(XMLManager.XMLFood food in xmlFoodList)
+        {
+            foodOrderList.Add(food.Order);
+        }
+        foodOrderList = foodOrderList.Distinct().ToList();
     }
     public void SpawnOneFood()
     {
         foreach (var food in xmlFoodList)
         {
-            if (food.Order == currOrder)
+            if (food.Order == foodOrderList[currIdx])
             {
                 GameObject foodMesh = foodObjects.Where(obj => obj.name == food.MeshName).First();
                 var newSpawn = Instantiate(foodMesh, SpawningLocation.transform.position, Quaternion.identity);
                 newSpawn.name = $"{food.Id}-{food.MeshName}-{food.Color}-{food.SurveyName}-{food.Quantity}-{food.Order}";
                 newSpawn.SetActive(true);
                 newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
-                if (food.Color != "default")
+                if (food.Color != "Default")
                 {
                     newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == food.Color).FirstOrDefault();
                 }
                 var foodTagSpawn = Instantiate(foodTag, newSpawn.transform.position, Quaternion.identity);
                 foodTagSpawn.name = $"Food ID: {food.Id}";
                 foodTagSpawn.GetComponentInChildren<Text>().text = $"Food ID: {food.Id}";
+
+                newSpawn.transform.SetParent(spawnFoodFolder);
+                foodTagSpawn.transform.SetParent(foodTagFolder);
+
                 foodTagManager.AddNewTag(new FoodTagManager.FoodTag(newSpawn, foodTagSpawn));
             }
         }
-        currOrder++;
+        currIdx++;
     }
     void Update()
     {
@@ -80,7 +88,7 @@ public class FoodDispenser : MonoBehaviour
                 spawning = false;
                 dt = 0;
                 spawned = 0;
-                currOrder++;
+                currIdx++;
             }
         }
     }
@@ -94,13 +102,17 @@ public class FoodDispenser : MonoBehaviour
             newSpawn.name = $"{currFood.Id}-{currFood.MeshName}-{currFood.Color}-{currFood.SurveyName}-{currFood.Quantity}-{currFood.Order}";
             newSpawn.SetActive(true);
             newSpawn.GetComponent<Floating>().SetOffset(0, yOffset, 0);
-            if(currFood.Color != "default")
+            if(currFood.Color != "Default")
             {
                 newSpawn.GetComponentsInChildren<MeshRenderer>().Where(c => c.name.Split(' ')[0] == "Chroma").FirstOrDefault().material = xmlManager.GetMaterialList().Where(m => m.name == currFood.Color).FirstOrDefault();
             }
             var foodTagSpawn = Instantiate(foodTag, newSpawn.transform.position, Quaternion.identity);
             foodTagSpawn.name = $"Food ID: {currFood.Id}";
             foodTagSpawn.GetComponentInChildren<Text>().text = $"Food ID: {currFood.Id}";
+
+            newSpawn.transform.SetParent(spawnFoodFolder);
+            foodTagSpawn.transform.SetParent(foodTagFolder);
+
             foodTagManager.AddNewTag(new FoodTagManager.FoodTag(newSpawn, foodTagSpawn));
         }
     }
@@ -111,7 +123,7 @@ public class FoodDispenser : MonoBehaviour
         int quantity = 0;
         foreach (var food in xmlFoodList)
         {
-            if (food.Order == currOrder)
+            if (food.Order == foodOrderList[currIdx])
             {
                 currFoods.Add(food);
                 quantity += food.Quantity;
