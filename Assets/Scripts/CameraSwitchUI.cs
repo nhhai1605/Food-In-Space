@@ -14,7 +14,7 @@ public class CameraSwitchUI : MonoBehaviour
 
     private GameObject hideableUi;
 
-    void Start()
+    void Awake()
     {
         cameraSwitch = GetComponent<CameraSwitch>();
         hideableUi = uiCanvas.transform.GetChild(1).gameObject;

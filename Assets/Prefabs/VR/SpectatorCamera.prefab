@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6684958047926896780}
   m_Layer: 0
   m_Name: SpectatorCamera
-  m_TagString: Untagged
+  m_TagString: SpectatorCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
