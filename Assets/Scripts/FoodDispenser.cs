@@ -22,6 +22,7 @@ public class FoodDispenser : MonoBehaviour
     [SerializeField] private FoodTagManager foodTagManager;
     List<int> foodOrderList = new List<int>();
     [SerializeField] private Transform spawnFoodFolder, foodTagFolder;
+    [SerializeField] private GameObject smokeEffect;
     void Start()
     {
         doorManager = Door.GetComponent<DoorManager>();
@@ -69,15 +70,18 @@ public class FoodDispenser : MonoBehaviour
         {
             if (currFoods.Count > 0)
             {
+                //smokeEffect.SetActive(true);
                 dt += Time.deltaTime;
                 if (dt > timeBetweenFoodSpawn)
                 {
+                    
                     SpawnFoodWithoutChangingOrder(currFoods[0]);
                     spawned++;
                     dt = 0;
                 }
                 if (spawned == currFoods[0].Quantity)
                 {
+                   
                     currFoods.RemoveAt(0);
                     dt = 0;
                     spawned=0;
@@ -85,6 +89,8 @@ public class FoodDispenser : MonoBehaviour
             }
             else
             {
+                //Invoke(nameof(TurnOffSmoke), 4f);
+                smokeEffect.SetActive(false);
                 spawning = false;
                 dt = 0;
                 spawned = 0;
@@ -93,6 +99,10 @@ public class FoodDispenser : MonoBehaviour
         }
     }
 
+    private void TurnOffSmoke()
+    {
+        smokeEffect.SetActive(false);
+    }
     private void SpawnFoodWithoutChangingOrder(XMLManager.XMLFood currFood)
     {
         if (currFood != null)
