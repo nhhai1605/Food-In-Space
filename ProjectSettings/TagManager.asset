@@ -7,6 +7,7 @@ TagManager:
   - VR Origin
   - Door
   - SpectatorCamera
+  - VRSpectatorCamera
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Consumer
-  - 
-  - 
+  - FoodTag
+  - SpectatorUI
   - 
   - 
   - 
@@ -41,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 1338431903
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

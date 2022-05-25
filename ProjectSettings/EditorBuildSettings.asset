@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/OpeningScene.unity
     guid: 4218a2c0c3630454086b406f20aeba62
   - enabled: 1
-    path: Assets/Scenes/LowPolyDemo.unity
-    guid: 2b25316ec1536d345b9298128bc43494
+    path: Assets/Scenes/LowPolyDemo_Stable.unity
+    guid: da55c023b9d5ba24a917c6807f252ce8
   - enabled: 1
     path: Assets/Scenes/HighDifinitionScene.unity
     guid: 61c3fc2c1be344690b19efb0147d93ee

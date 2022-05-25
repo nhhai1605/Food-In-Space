@@ -1074,6 +1074,7 @@ GameObject:
   - component: {fileID: 7712654576265780945}
   - component: {fileID: 427156781417754186}
   - component: {fileID: 5295921679081455884}
+  - component: {fileID: 368083715576159696}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1126,7 +1127,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1275,6 +1276,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walls: []
+  movementManager: {fileID: 0}
+--- !u!114 &368083715576159696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657911316261647293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c569ced7c52d64b8474a727a38316b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4657911316312695034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1403,7 @@ MonoBehaviour:
   thrustingSpeed: 0.02
   pullingDistance: 0.2
   friction: 0.98
+  pullFriction: 0.9
   buttonReference: {fileID: 0}
 --- !u!1001 &2602702350089936583
 PrefabInstance:
@@ -1450,6 +1465,11 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f3f8b0a06c6a7514e9f29ec4d20d80b5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4242482846685892375, guid: f3f8b0a06c6a7514e9f29ec4d20d80b5,
+        type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f3f8b0a06c6a7514e9f29ec4d20d80b5,
@@ -1525,6 +1545,11 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8267a1bd08682e54da2993eadfdd4396,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6598475261284798899, guid: 8267a1bd08682e54da2993eadfdd4396,
+        type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8267a1bd08682e54da2993eadfdd4396,
