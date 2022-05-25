@@ -14,7 +14,6 @@ public class TutorialPageManager : MonoBehaviour
     [SerializeField] Button nextButton, submitButton;
 
     public string nameOfFood { get; set; }
-    private string outputPath = @"SurveyResult.csv";
     [SerializeField] private Text pageText;
     private int resultID;
     private int numOfColumns = 0;
@@ -62,38 +61,7 @@ public class TutorialPageManager : MonoBehaviour
             pageList.Add(new Page(i, sliderAttribute.Contains(allAttributes[i]), allAttributes[i]));
         }
     }
-    void InitializeColumns()
-    {
-        File.WriteAllText(outputPath, "ID,Name");
-        for (int i = 0; i < allAttributes.Length; i++)
-        {
-            if (!transitPages.Contains(allAttributes[i]))
-            {
-                File.AppendAllText(outputPath, "," + allAttributes[i]);
-            }
-        }
-        File.AppendAllText(outputPath, Environment.NewLine);
-    }
-    void InitializeOutputFile()
-    {
 
-        if (File.Exists(outputPath) && !string.IsNullOrEmpty(File.ReadAllText(outputPath)))
-        {
-            string[] columns = File.ReadAllLines(outputPath)[0].Split(',');
-            // minus 2 for id and name
-            if (columns.Length - 2 != numOfColumns)
-            {
-                //Automatically create file if not exist
-                File.WriteAllText(outputPath, string.Empty);
-                InitializeColumns();
-            }
-        }
-        else
-        {
-            InitializeColumns();
-        }
-
-    }
     private static bool FileInUse(string path)
     {
         try
@@ -128,15 +96,7 @@ public class TutorialPageManager : MonoBehaviour
     void OnDisable()
     {
         Reset();
-        if (FileInUse(outputPath))
-        {
-            // Debug.LogError("try closing the csv file first and try again!");
-            DisplayError("try closing the csv file first and try again!");
-        }
-        else
-        {
-            ChangeVisual();
-        }
+        ChangeVisual();
     }
     void Awake()
     {
@@ -145,23 +105,13 @@ public class TutorialPageManager : MonoBehaviour
     }
     void Start()
     {
-        // Path
-        outputPath = Application.persistentDataPath + "/SurveyResult.csv";
 
         this.numOfColumns = allAttributes.Length - transitPages.Length;
         Reset();
         nextButton.gameObject.SetActive(true);
         submitButton.gameObject.SetActive(false);
-        if (FileInUse(outputPath))
-        {
-            // Debug.LogError("try closing the csv file first and try again!");
-            DisplayError("Try closing the csv file first and try again!");
-            return;
-        }
 
-        resultID = File.ReadAllLines(outputPath).Length;
         InitializePages();
-        InitializeOutputFile();
         ChangeVisual();
 
     }
@@ -221,25 +171,6 @@ public class TutorialPageManager : MonoBehaviour
             nextButton.gameObject.SetActive(true);
             submitButton.gameObject.SetActive(false);
         }
-    }
-    public void SubmitSurvey()
-    {
-        ChangeVisual();
-        // Debug.Log("Survey submitted!");
-        File.AppendAllText(outputPath, resultID + "," + nameOfFood);
-        for (int i = 0; i < pageList.Count; i++)
-        {
-            if (!transitPages.Contains(pageList[i].Name))
-            {
-                string text = pageList[i].Score == 0 ? "NULL" : pageList[i].Score.ToString();
-                File.AppendAllText(outputPath, "," + text);
-            }
-
-        }
-        File.AppendAllText(outputPath, Environment.NewLine);
-        resultID = File.ReadAllLines(outputPath).Length;
-        gameObject.SetActive(false);
-
     }
     public void SubmitSurveyWithoutData()
     {
