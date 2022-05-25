@@ -1345,6 +1345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpectatorCameras
       objectReference: {fileID: 0}
+    - target: {fileID: 2444172635576805154, guid: 16748a34466c2304798ff6b36401d072,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2444172635576805155, guid: 16748a34466c2304798ff6b36401d072,
         type: 3}
       propertyPath: m_RootOrder
@@ -4614,6 +4619,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5294950080248747617, guid: da2b439d1a2de5c46a4f428f8cf4fe19,
         type: 3}
+    - target: {fileID: 4657911315142699352, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_EnableInputActions
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4657911315142699355, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: m_InteractionManager
@@ -4653,6 +4663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RaycastMask.m_Bits
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657911315856165831, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_EnableInputActions
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4657911315856165832, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
@@ -4727,7 +4742,7 @@ PrefabInstance:
     - target: {fileID: 4657911316405339383, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4657911316499463558, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
@@ -6031,6 +6046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VROrigin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122832456930600004, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2122832456930600026, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}

@@ -15,8 +15,7 @@ public class TutorialPageManager : MonoBehaviour
 
     public string nameOfFood { get; set; }
     [SerializeField] private Text pageText;
-    private int resultID;
-    private int numOfColumns = 0;
+
 
     [SerializeField] private Slider slider;
     [SerializeField] private ToggleGroup toggleGroup;
@@ -62,19 +61,6 @@ public class TutorialPageManager : MonoBehaviour
         }
     }
 
-    private static bool FileInUse(string path)
-    {
-        try
-        {
-            using FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
-
-            return false;
-        }
-        catch
-        {
-            return true;
-        }
-    }
     private void Reset()
     {
         currentPage = 0;
@@ -106,7 +92,6 @@ public class TutorialPageManager : MonoBehaviour
     void Start()
     {
 
-        this.numOfColumns = allAttributes.Length - transitPages.Length;
         Reset();
         nextButton.gameObject.SetActive(true);
         submitButton.gameObject.SetActive(false);

@@ -209,7 +209,8 @@ public class PageManager : MonoBehaviour
     {
         transitPages = new[] { sensorialTransitPage, emotionTransitPage, finishTransitPage };
         foodList = xmlManager.foodList;
-        outputPath = Application.persistentDataPath + "/SurveyResult.csv";
+        outputPath = Application.persistentDataPath + "/SurveyResult-" + DateTime.Now.ToString("yyyy-MM-dd-HH_mm_ss") + ".csv";
+        print(outputPath);
     }
     void Start()
     {        
