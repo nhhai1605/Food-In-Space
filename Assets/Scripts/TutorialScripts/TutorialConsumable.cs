@@ -8,7 +8,7 @@ public class TutorialConsumable : MonoBehaviour
     [SerializeField] private GameObject[] portions;
     [SerializeField] private int index = 0;
 
-    [SerializeField] GameObject uiObject;
+    [SerializeField] GameObject task2, task3;
     public bool IsFinished => index == portions.Length;
     [SerializeField] private Canvas surveyCanvas;
     private AudioSource audioSrc;
@@ -16,6 +16,7 @@ public class TutorialConsumable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        task3.SetActive(false);
         IsGrabbed = false;
         audioSrc = GetComponent<AudioSource>();
         SetVisuals();
@@ -59,7 +60,8 @@ public class TutorialConsumable : MonoBehaviour
                 Debug.Log("Survey for: " + name);
                 surveyCanvas.GetComponentInChildren<Text>().text = name;
                 //surveyCanvas.GetComponent<TutorialPageManager>().pageText.text = name;
-                uiObject.SetActive(true);
+                task3.SetActive(true);
+                task2.SetActive(false);
                 //Set the name first then deactive and active again to activate OnEnabled
                 surveyCanvas.gameObject.SetActive(false);
                 surveyCanvas.gameObject.SetActive(true);

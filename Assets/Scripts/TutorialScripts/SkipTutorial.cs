@@ -11,5 +11,13 @@ public class SkipTutorial : MonoBehaviour
         taskActivator.SetActive(false);
         this.GetComponent<AudioSource>().Play();
         GameObject.FindGameObjectWithTag("VR Origin").transform.position = Vector3.zero;
+        GameObject.FindGameObjectWithTag("VR Origin").transform.rotation = Quaternion.Euler(0, 180, 0);
+
+
+    }
+    public void DeactivateTutorial()
+    {
+        taskActivator.SetActive(false);
+        this.GetComponent<AudioSource>().Play();
     }
 }
