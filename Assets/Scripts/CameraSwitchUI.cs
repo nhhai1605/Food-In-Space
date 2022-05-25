@@ -14,7 +14,7 @@ public class CameraSwitchUI : MonoBehaviour
 
     private GameObject hideableUi;
 
-    void Start()
+    void Awake()
     {
         cameraSwitch = GetComponent<CameraSwitch>();
         hideableUi = uiCanvas.transform.GetChild(1).gameObject;
@@ -33,17 +33,24 @@ public class CameraSwitchUI : MonoBehaviour
 
     public void onSpectatorButtonOpenSurveyButton()
     {
-        EditorUtility.RevealInFinder(Application.persistentDataPath);
+        // EditorUtility.RevealInFinder(Application.persistentDataPath);
+        Application.OpenURL(Application.persistentDataPath);
     }
 
     public void onSpectatorButtonOpenConfigurationButton()
     {
-        EditorUtility.RevealInFinder(Application.persistentDataPath);
+        // EditorUtility.RevealInFinder(Application.persistentDataPath);
+        Application.OpenURL(Application.persistentDataPath);
+    }
+
+    public void onSpectatorButtonReturnToMenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void onSpectatorButtonRestartSceneButton()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void onSpectatorButtonHideButton()

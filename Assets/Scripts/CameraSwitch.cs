@@ -20,16 +20,14 @@ public class CameraSwitch : MonoBehaviour
     private string cameraKeyboardActionMapName = "Camera Keyboard";
     public InputActionReference buttonReference;
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         setupCameraControls();
 
         vrSpectatorCamera = GameObject.FindGameObjectWithTag("VRSpectatorCamera").GetComponent<Camera>();
         cameraSwitchUI = GetComponent<CameraSwitchUI>();
 
-        currentCamera = spectatorCameras[0];
-        currentCamera.enabled = true;
-        currentCamera.depth = 1;
+        setCamera(1);
     }
 
     public void setCamera(int id)
