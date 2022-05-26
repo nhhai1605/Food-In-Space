@@ -3158,6 +3158,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1506118082}
     m_Modifications:
+    - target: {fileID: 8534032060930484876, guid: 850d3e25adaa874498760dede55830c0,
+        type: 3}
+      propertyPath: buildIndexOfScene
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8534032060930484878, guid: 850d3e25adaa874498760dede55830c0,
         type: 3}
       propertyPath: m_InteractionManager

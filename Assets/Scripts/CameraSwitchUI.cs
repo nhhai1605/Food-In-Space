@@ -45,7 +45,7 @@ public class CameraSwitchUI : MonoBehaviour
 
     public void onSpectatorButtonReturnToMenuButton()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void onSpectatorButtonRestartSceneButton()
