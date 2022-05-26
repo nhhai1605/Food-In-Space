@@ -51,9 +51,9 @@ public class MainMenuUIController : MonoBehaviour
     public void onReturnToMenuButton()
     {
         // If we're not already in the menu, load the scene
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 }
