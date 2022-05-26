@@ -5968,6 +5968,31 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 1072575107}
+    - target: {fileID: 4264001366789839456, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 138.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264001366789839456, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 442.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264001366789839456, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -339.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264001366789839458, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264001366789839459, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4264001367052909753, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_Name
