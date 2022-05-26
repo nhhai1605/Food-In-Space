@@ -8,7 +8,6 @@ public class EnterTask3 : MonoBehaviour
     public GameObject uiObject2;
     public GameObject uiObject3;
     public GameObject uiObject4;
-    public GameObject taskActivator;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,8 +23,6 @@ public class EnterTask3 : MonoBehaviour
         uiObject2.SetActive(false);
         uiObject3.SetActive(false);
         uiObject4.SetActive(false);
-        taskActivator.SetActive(false);
-
     }
     void Start()
     {

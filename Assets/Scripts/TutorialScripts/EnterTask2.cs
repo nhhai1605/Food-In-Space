@@ -20,18 +20,7 @@ public class EnterTask2 : MonoBehaviour
         }
 
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.name == "Main Camera")
-        {
-            uiObject.SetActive(false);
-            uiObject2.SetActive(false);
-            uiObject3.SetActive(false);
-        }
 
-       // uiObject3.SetActive(true);
-        //uiObject4.SetActive(true);
-    }
     // Start is called before the first frame update
     void Start()
     {
