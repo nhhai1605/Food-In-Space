@@ -244,6 +244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
+    - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
+        type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -683,6 +688,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f9df95cd1aac904985de1268c04101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &119504330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1012685135351992878, guid: a536069662d5cd64f87cf15a3522234d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022442294567521513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &120780597
@@ -1291,6 +1308,11 @@ PrefabInstance:
       propertyPath: surveyCanvas
       value: 
       objectReference: {fileID: 674487016}
+    - target: {fileID: 3768465617290251223, guid: 84c74737222a86d43ab26f45e75f0d2a,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 5011252785942574858, guid: 84c74737222a86d43ab26f45e75f0d2a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2837,7 +2859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &404423725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2931,6 +2953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish
       objectReference: {fileID: 0}
+    - target: {fileID: 5275154890867272369, guid: 55f203789e199414ba0f33eb964e0bda,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 5275154890867272375, guid: 55f203789e199414ba0f33eb964e0bda,
         type: 3}
       propertyPath: surveyCanvas
@@ -2976,6 +3003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watermelon
       objectReference: {fileID: 0}
+    - target: {fileID: 956884428515400218, guid: 686e77adb8211f941a5d5f28751b1a61,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 956884428515400219, guid: 686e77adb8211f941a5d5f28751b1a61,
         type: 3}
       propertyPath: surveyCanvas
@@ -3782,6 +3814,11 @@ PrefabInstance:
       propertyPath: surveyCanvas
       value: 
       objectReference: {fileID: 674487016}
+    - target: {fileID: 181462432940319039, guid: 40720ae5cb675ef4290bce5f1c400b58,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 181462433138599492, guid: 40720ae5cb675ef4290bce5f1c400b58,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4170,7 +4207,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 119504330}
     - target: {fileID: 3821935952105121239, guid: 8d51dc9568c66bf47ad579428c1bb9d5,
         type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
@@ -4974,7 +5011,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 119504330}
     - target: {fileID: 3594376287011569602, guid: 89ae2c269182ebd4aa3b11262aaa300e,
         type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
@@ -5171,7 +5208,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 119504330}
     - target: {fileID: 3510385359526197247, guid: d48f5dbdf48b8c34aac8e278392e087b,
         type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
@@ -5392,6 +5429,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4512769977073444551, guid: 3217f3c10a1740747bd1c880942c99bf,
         type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
+    - target: {fileID: 4512769977073444551, guid: 3217f3c10a1740747bd1c880942c99bf,
+        type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5572,6 +5614,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7880130034100170569, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 7880130034100170569, guid: 0ba0a8d455d61b64baf284dd10e8bb5b,
         type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
@@ -5935,6 +5982,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ribs
       objectReference: {fileID: 0}
+    - target: {fileID: 1645717935951175246, guid: 47da0668706b5f54483e2e89a36e774e,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 1645717935951175601, guid: 47da0668706b5f54483e2e89a36e774e,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -6070,6 +6122,16 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 1072575107}
+    - target: {fileID: 4264001367217142343, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
+    - target: {fileID: 4264001367635547766, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     - target: {fileID: 4264001367729980619, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6080,6 +6142,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: Try to use the left trigger to move forwards
       objectReference: {fileID: 0}
+    - target: {fileID: 4264001367749258270, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 119504330}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a32881c3b79149428ee8ed2a4de3c0f, type: 3}
 --- !u!1001 &5022442294567521513
