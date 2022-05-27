@@ -156,6 +156,7 @@ public class PageManager : MonoBehaviour
         Toggle[] toggles = sensorialGroup.GetComponentsInChildren<Toggle>(true).Concat(emotionGroup.GetComponentsInChildren<Toggle>(true)).ToArray();
         foreach (Toggle toggle in toggles)
         {
+            toggle.gameObject.SetActive(true);
             toggle.isOn = false;
             if (activeAttr.Contains(toggle.GetComponentInChildren<Text>().text))
             {
@@ -168,7 +169,7 @@ public class PageManager : MonoBehaviour
                 toggle.GetComponentInChildren<Image>().color = Color.gray;
             }
         }
-       
+        RearrangeEmotionGroup();
         allAttributes = xmlGeneralAttr.Concat(new[] { sensorialTransitPage }).Concat(xmlSensorialAttr).Concat(new[] { emotionTransitPage }).Concat(xmlEmotionAttr).Concat(new[] { finishTransitPage }).ToArray();
         checkedAttributes = new List<string> { sensorialTransitPage, emotionTransitPage, finishTransitPage };
         //checkedAttributes.AddRange(xmlGeneralAttr);
@@ -361,7 +362,75 @@ public class PageManager : MonoBehaviour
         //Then change to next page
         currentPage++;
         ChangeVisual();
-
     }
+
+    private void RearrangeEmotionGroup()
+    {
+        Toggle[] toggles = emotionGroup.GetComponentsInChildren<Toggle>(true);
+        int idx = 0;
+        int row = 0;
+        float x1 = toggles[0].transform.localPosition.x;
+        float x2 = toggles[1].transform.localPosition.x;
+        float y1 = toggles[0].transform.localPosition.y;
+        float yGap = toggles[2].transform.localPosition.y - y1;
+        foreach (Toggle toggle in toggles)
+        {
+            if(toggle.interactable)
+            {
+                if(idx == 0)
+                {
+                    toggle.transform.localPosition = new Vector3(x1, y1 + row * yGap, 0f);                  
+                    idx = 1;
+                }
+                else
+                {
+                    toggle.transform.localPosition = new Vector3(x2, y1 + row * yGap, 0f);
+                    row++;
+                    idx = 0;
+                }
+            }
+            //else
+            //{
+            //    toggle.gameObject.SetActive(false);
+            //}
+        }
+        foreach (Toggle toggle in toggles)
+        {
+            if (!toggle.interactable)
+            {
+                if (idx == 0)
+                {
+                    toggle.transform.localPosition = new Vector3(x1, y1 + row * yGap, 0f);
+                    idx = 1;
+                }
+                else
+                {
+                    toggle.transform.localPosition = new Vector3(x2, y1 + row * yGap, 0f);
+                    row++;
+                    idx = 0;
+                }
+            }
+        }
+            //float height = idx == 1 ? row * -yGap : (row - 1) * -yGap;
+            //Transform[] objects = emotionGroup.GetComponentsInChildren<RectTransform>(true);
+            //foreach(Transform obj in objects)
+            //{
+            //    if(obj.name == "Content")
+            //    {
+            //        print(obj.GetComponent<RectTransform>().sizeDelta);
+            //        print(obj.GetComponent<RectTransform>().rect.height);
+            //        print(obj.GetComponent<RectTransform>().localPosition.y);
+            //        obj.GetComponent<RectTransform>().sizeDelta = new Vector2(obj.GetComponent<RectTransform>().rect.width, height);
+            //        foreach (Toggle toggle in toggles)
+            //        {
+            //            if (toggle.gameObject.activeSelf)
+            //            {
+            //                toggle.transform.localPosition = new Vector3(toggle.transform.localPosition.x, toggle.transform.localPosition.y - toggle.GetComponent<RectTransform>().rect.height * 2 - 1081/2 , 0f);
+            //            }
+            //        }
+            //    }
+            //}
+
+        }
 
 }
