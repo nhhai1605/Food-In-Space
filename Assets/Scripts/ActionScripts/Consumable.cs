@@ -79,26 +79,6 @@ public class Consumable : MonoBehaviour
         if (!IsFinished && IsGrabbed)
         {
             IsEating = true;
-            //index++;
-            //audioSrc.Play();
-            //SetVisuals();
-            //if (index == portions.Length)
-            //{
-            //    //if object doesnt have anything left, will delete it after the audio source finish.
-            //    //If the object has something left, like the bone of the ham, keep it
-            //    if(this.GetComponent<Renderer>() == null)
-            //    {
-            //        Destroy(gameObject, audioSrc.clip.length);
-            //    }
-            //    Debug.Log("Survey for: " + name);
-            //    surveyCanvas.GetComponentInChildren<Text>().text = name.Split('-')[3];
-            //    surveyCanvas.GetComponent<PageManager>().foodName = name.Split('-')[3];
-            //    surveyCanvas.GetComponent<PageManager>().foodId = int.Parse(name.Split('-')[0]);
-
-            //    //Set the name first then deactive and active again to activate OnEnabled
-            //    surveyCanvas.gameObject.SetActive(false);
-            //    surveyCanvas.gameObject.SetActive(true);
-            //}
         }
     }
     public void StopConsume()
