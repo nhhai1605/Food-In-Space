@@ -13,7 +13,7 @@ public class Consumable : MonoBehaviour
     private AudioSource audioSrc;
     private bool IsGrabbed;
     private bool IsEating = false;
-    [SerializeField]  private float dt = 0f;
+    private float dt = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +46,7 @@ public class Consumable : MonoBehaviour
         if(IsEating)
         {
             dt += Time.deltaTime;
-            if(dt >= timeToConsumeEachPortion)
+            if (dt >= timeToConsumeEachPortion)
             {
                 index++;
                 audioSrc.Play();

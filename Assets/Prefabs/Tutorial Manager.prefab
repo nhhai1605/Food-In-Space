@@ -10199,6 +10199,7 @@ MonoBehaviour:
   task2: {fileID: 4264001365817945864}
   task3: {fileID: 4264001366838971442}
   surveyCanvas: {fileID: 4264001366709715536}
+  timeToConsumeEachPortion: 2
 --- !u!1 &4264001366847977227
 GameObject:
   m_ObjectHideFlags: 0
