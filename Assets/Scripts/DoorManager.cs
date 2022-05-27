@@ -10,10 +10,9 @@ public class DoorManager : MonoBehaviour
     [SerializeField] private float DoorMoveDistance = 2f;
     [SerializeField] private float ButtonMoveDistance = 0.03f;
     [SerializeField] private float DoorOpenSpeed = 0.02f;
-    [SerializeField] private Color ButtonActiveColor, ButtonInactiveColor;
     public bool IsToggle = true;
     [SerializeField] private float WaitTimeIfNotToggleInSecond = 2f;
-
+    [SerializeField] private Material lightButton, darkButton;
     private bool ButtonIsBeingPressed = false, buttonMoved = false;
     private Vector3 initialPos;
     [SerializeField] private GameObject[] buttons;
@@ -33,16 +32,16 @@ public class DoorManager : MonoBehaviour
         initialPos = this.transform.position;
         if (ButtonIsPressedFirst)
         {
-            foreach(GameObject button in buttons)
+            foreach (GameObject button in buttons)
             {
-                button.GetComponent<Renderer>().material.color = ButtonInactiveColor;
+                button.GetComponent<Renderer>().material = darkButton;
             }
         }
         else
         {
             foreach (GameObject button in buttons)
             {
-                button.GetComponent<Renderer>().material.color = ButtonActiveColor;
+                button.GetComponent<Renderer>().material = lightButton;
             }
         }
     }
@@ -90,8 +89,7 @@ public class DoorManager : MonoBehaviour
                 foreach (GameObject button in buttons)
                 {
                     button.transform.position = button.transform.position - button.transform.up * ButtonMoveDistance;
-                    button.GetComponent<Renderer>().material.color = ButtonActiveColor;
-
+                    button.GetComponent<Renderer>().material = lightButton;
                 }
                 buttonMoved = false;
 
@@ -104,9 +102,8 @@ public class DoorManager : MonoBehaviour
                 foreach (GameObject button in buttons)
                 {
                     button.transform.position = button.transform.position + button.transform.up * ButtonMoveDistance;
-                    button.GetComponent<Renderer>().material.color = ButtonInactiveColor;
+                    button.GetComponent<Renderer>().material = darkButton;
                 }
-                
                 buttonMoved = false;
             }
         }
