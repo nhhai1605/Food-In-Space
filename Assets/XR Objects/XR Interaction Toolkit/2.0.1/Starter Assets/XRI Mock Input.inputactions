@@ -2,7 +2,7 @@
     "name": "XRI Mock Input",
     "maps": [
         {
-            "name": "XRI Head",
+            "name": "Mock Head",
             "id": "09ff3ccc-21b4-4346-a3a2-7c978b5af892",
             "actions": [
                 {
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "name": "XRI LeftHand",
+            "name": "Mock LeftHand",
             "id": "5fe596f9-1b7b-49b7-80a7-3b5195caf74d",
             "actions": [
                 {
@@ -138,7 +138,7 @@
             ]
         },
         {
-            "name": "XRI LeftHand Interaction",
+            "name": "Mock LeftHand Interaction",
             "id": "7a5e7537-cc30-4eb1-a544-6946baa8f3eb",
             "actions": [
                 {
@@ -430,11 +430,33 @@
                     "action": "Activate Value",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b464665-6e11-4267-b761-682458ffe9e9",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "276bbdc8-b3f8-4fd7-8982-46995c56a74e",
+                    "path": "<XRController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Press Value",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "XRI LeftHand Locomotion",
+            "name": "Mock LeftHand Locomotion",
             "id": "22336389-9fb1-4c2c-8635-0ed30db0d29e",
             "actions": [
                 {
@@ -542,7 +564,7 @@
             ]
         },
         {
-            "name": "XRI RightHand",
+            "name": "Mock RightHand",
             "id": "7960f8ef-2bf3-4281-aecc-4c03809d6c8c",
             "actions": [
                 {
@@ -630,7 +652,7 @@
             ]
         },
         {
-            "name": "XRI RightHand Interaction",
+            "name": "Mock RightHand Interaction",
             "id": "461bce25-7762-40c5-b639-f190649be6d6",
             "actions": [
                 {
@@ -906,7 +928,7 @@
             ]
         },
         {
-            "name": "XRI RightHand Locomotion",
+            "name": "Mock RightHand Locomotion",
             "id": "99ce76d3-82c5-4289-9670-2ecffa6833fd",
             "actions": [
                 {

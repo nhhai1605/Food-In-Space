@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 917228516146934629}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 917228516146934629}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -838,7 +838,7 @@ MonoBehaviour:
   m_SphereCastRadius: 0.1
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
   m_HoverToSelect: 0
@@ -1337,6 +1337,7 @@ GameObject:
   - component: {fileID: 4657911316405339381}
   - component: {fileID: 4657911316405339380}
   - component: {fileID: 3590449104462315582}
+  - component: {fileID: 917228516146934629}
   m_Layer: 0
   m_Name: MockOrigin
   m_TagString: VR Origin
@@ -1406,9 +1407,21 @@ MonoBehaviour:
   thrustingSpeed: 0.02
   pullingDistance: 0.2
   friction: 0.98
-  pullFriction: 0.9
+  pullFriction: 0.98
   buttonReference: {fileID: -5294950080248747617, guid: da2b439d1a2de5c46a4f428f8cf4fe19,
     type: 3}
+--- !u!114 &917228516146934629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657911316405339383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2602702350089936583
 PrefabInstance:
   m_ObjectHideFlags: 0

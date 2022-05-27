@@ -201,7 +201,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 119504330}
+      objectReference: {fileID: 0}
     - target: {fileID: 4848771936116973034, guid: 68f24431d8848bb439161e24fcfcaa88,
         type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -408,7 +408,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.217
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1483,7 +1483,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 294654761649782133, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -1538,7 +1538,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 1205029128756461978, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -1823,7 +1823,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 4454200126526773952, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -1918,7 +1918,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 5130264696204974127, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1953,7 +1953,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 5838296757994905394, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_Lightmapping
@@ -2518,7 +2518,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 6329054902857441211, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -2543,7 +2543,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InteractionManager
       value: 
-      objectReference: {fileID: 404423725}
+      objectReference: {fileID: 0}
     - target: {fileID: 6780987738091753647, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
         type: 3}
       propertyPath: m_ReceiveShadows
@@ -2765,49 +2765,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c7af7aac9395844438866e50b7013b41, type: 3}
---- !u!1 &404423724
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 404423726}
-  - component: {fileID: 404423725}
-  m_Layer: 0
-  m_Name: XR Interaction Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &404423725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404423724}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &404423726
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404423724}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1151983, y: -0.29088065, z: 0.7467209}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1321067045}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &413602376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3418,6 +3375,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554717499632924576, guid: 923e588eb5af44bcb8bc5971cd19924d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7554717500170908380, guid: 923e588eb5af44bcb8bc5971cd19924d,
         type: 3}
       propertyPath: xmlManager
@@ -3427,6 +3389,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Survey Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554717500170908383, guid: 923e588eb5af44bcb8bc5971cd19924d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554717500855797589, guid: 923e588eb5af44bcb8bc5971cd19924d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923e588eb5af44bcb8bc5971cd19924d, type: 3}
@@ -4095,6 +4067,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1249974059}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1258928107 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 917228516146934629, guid: 277e15b63da459d418fb212202b1189d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1824341637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1299019801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5838296760097184945, guid: 38c04eb3dcb26e44b8024303c5bcd9cd,
@@ -4300,7 +4284,6 @@ Transform:
   m_LocalPosition: {x: -1.1151983, y: 0.29088065, z: -0.7467209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 404423726}
   - {fileID: 702821059}
   - {fileID: 859446508}
   m_Father: {fileID: 0}
@@ -4567,41 +4550,10 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3590449104462315582, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: pullFriction
-      value: 0.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 3590449104462315582, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: buttonReference
-      value: 
-      objectReference: {fileID: -5294950080248747617, guid: da2b439d1a2de5c46a4f428f8cf4fe19,
-        type: 3}
     - target: {fileID: 4657911315142699352, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
-      propertyPath: m_EnableInputActions
+      propertyPath: m_SelectAction.m_UseReference
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315142699355, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315142699355, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_MaxRaycastDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315142699355, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_RaycastMask.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315142699355, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4657911315142699357, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
@@ -4612,21 +4564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OverrideInteractorLineLength
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315856165830, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_MaxRaycastDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315856165830, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_RaycastMask.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4657911315856165831, guid: 277e15b63da459d418fb212202b1189d,
-        type: 3}
-      propertyPath: m_EnableInputActions
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4657911315856165832, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
@@ -4693,6 +4630,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4657911316405339380, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_ActionAssets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4657911316405339380, guid: 277e15b63da459d418fb212202b1189d,
+        type: 3}
+      propertyPath: m_ActionAssets.Array.data[1]
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
     - target: {fileID: 4657911316405339383, guid: 277e15b63da459d418fb212202b1189d,
         type: 3}
       propertyPath: m_Name
@@ -6061,6 +6009,11 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 1072575107}
+    - target: {fileID: 4264001365658017450, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4264001365658017452, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6216,6 +6169,11 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 1072575107}
+    - target: {fileID: 4264001367217142343, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1258928107}
     - target: {fileID: 4264001367308342600, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_Name
