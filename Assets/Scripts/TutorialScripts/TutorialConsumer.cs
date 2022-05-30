@@ -22,11 +22,14 @@ public class TutorialConsumer : MonoBehaviour
             consumable.Consume();
         }
 
-        //MainMenuFood mainMenuFood = other.collider.GetComponent<MainMenuFood>();
-        //if (mainMenuFood != null)
-        //{
-        //    mainMenuFood.GoToScene();
-        //}
     }
 
+    private void OnCollisionExit(Collision other)
+    {
+        TutorialConsumable consumable = other.collider.GetComponent<TutorialConsumable>();
+        if (consumable != null)
+        {
+            consumable.StopConsume();
+        }
+    }
 }

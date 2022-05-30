@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 public class MovementManager : MonoBehaviour
 {
     private GameObject VROrigin;
@@ -27,6 +28,13 @@ public class MovementManager : MonoBehaviour
     {
         VROrigin = this.gameObject;
         VRCamera = GetComponentInChildren<Camera>();
+        XRBaseInteractable[] allInteractables = GameObject.FindObjectsOfType<XRBaseInteractable>(true);
+        foreach (XRBaseInteractable interactable in allInteractables)
+        {
+            interactable.interactionManager = VROrigin.GetComponent<XRInteractionManager>();
+        }
+
+
     }
     void Awake()
     {
@@ -86,13 +94,13 @@ public class MovementManager : MonoBehaviour
         {
             VRCamera.GetComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>().trackingType = UnityEngine.InputSystem.XR.TrackedPoseDriver.TrackingType.RotationOnly;
         }
-        else if (VROrigin.name == "OculusOrigin")
+        else if (VROrigin.name == "VROrigin")
         {
             VRCamera.GetComponent<UnityEngine.SpatialTracking.TrackedPoseDriver>().trackingType = UnityEngine.SpatialTracking.TrackedPoseDriver.TrackingType.RotationOnly;
         }
         else
         {
-            Debug.LogError("Cannot find the VROrigin");
+            Debug.LogError("Cannot find any Origin");
         }
     }
 
@@ -103,13 +111,13 @@ public class MovementManager : MonoBehaviour
         {
             VRCamera.GetComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>().trackingType = UnityEngine.InputSystem.XR.TrackedPoseDriver.TrackingType.RotationAndPosition;
         }
-        else if (VROrigin.name == "OculusOrigin")
+        else if (VROrigin.name == "VROrigin")
         {
             VRCamera.GetComponent<UnityEngine.SpatialTracking.TrackedPoseDriver>().trackingType = UnityEngine.SpatialTracking.TrackedPoseDriver.TrackingType.RotationAndPosition;
         }
         else
         {
-            Debug.LogError("Cannot find the VROrigin");
+            Debug.LogError("Cannot find any Origin");
         }
     }
 }
