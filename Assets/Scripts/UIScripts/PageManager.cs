@@ -169,10 +169,9 @@ public class PageManager : MonoBehaviour
                 toggle.GetComponentInChildren<Image>().color = Color.gray;
             }
         }
-        RearrangeEmotionGroup();
+        //RearrangeEmotionGroup();
         allAttributes = xmlGeneralAttr.Concat(new[] { sensorialTransitPage }).Concat(xmlSensorialAttr).Concat(new[] { emotionTransitPage }).Concat(xmlEmotionAttr).Concat(new[] { finishTransitPage }).ToArray();
         checkedAttributes = new List<string> { sensorialTransitPage, emotionTransitPage, finishTransitPage };
-        //checkedAttributes.AddRange(xmlGeneralAttr);
         foreach(string general in xmlGeneralAttr)
         {
             if(activeAttr.Contains(general))
