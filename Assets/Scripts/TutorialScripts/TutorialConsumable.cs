@@ -12,7 +12,7 @@ public class TutorialConsumable : MonoBehaviour
     public bool IsFinished => index == portions.Length;
     [SerializeField] private Canvas surveyCanvas;
     [SerializeField] private float timeToConsumeEachPortion = 2f;
-
+    [SerializeField] private GameObject SurveyGuide, MovingToSurvey;
     private AudioSource audioSrc;
     private bool IsGrabbed;
     private bool IsEating = false;
@@ -70,6 +70,8 @@ public class TutorialConsumable : MonoBehaviour
                     //Set the name first then deactive and active again to activate OnEnabled
                     surveyCanvas.gameObject.SetActive(false);
                     surveyCanvas.gameObject.SetActive(true);
+                    SurveyGuide.SetActive(true);
+                    MovingToSurvey.SetActive(true);
                     IsEating = false;
                 }
                 dt = 0;
