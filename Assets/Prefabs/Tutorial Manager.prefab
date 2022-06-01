@@ -15983,9 +15983,9 @@ TextMesh:
   m_Text: 'Try to use and hold the grip button to Grab the Food.
 
     Then move the
-    Food to your mouth to consume.
+    Food to your mouth and hold it there
 
-    Repeat if the Food has many portions.'
+    until fully consume.'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
