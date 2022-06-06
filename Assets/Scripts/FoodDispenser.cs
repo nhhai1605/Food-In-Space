@@ -74,14 +74,14 @@ public class FoodDispenser : MonoBehaviour
                 dt += Time.deltaTime;
                 if (dt > timeBetweenFoodSpawn)
                 {
-                    
+
                     SpawnFoodWithoutChangingOrder(currFoods[0]);
                     spawned++;
                     dt = 0;
                 }
                 if (spawned == currFoods[0].Quantity)
                 {
-                   
+
                     currFoods.RemoveAt(0);
                     dt = 0;
                     spawned = 0;
@@ -130,16 +130,28 @@ public class FoodDispenser : MonoBehaviour
 
     public void Dispense()
     {
-        if (currIdx >= foodOrderList.Count)
-            return;
-
         int quantity = 0;
-        foreach (var food in xmlFoodList)
+        while (true)
         {
-            if (food.Order == foodOrderList[currIdx])
+            if (currIdx >= foodOrderList.Count)
             {
-                currFoods.Add(food);
-                quantity += food.Quantity;
+                return;
+            }
+            foreach (var food in xmlFoodList)
+            {
+                if (food.Order == foodOrderList[currIdx])
+                {
+                    currFoods.Add(food);
+                    quantity += food.Quantity;
+                }
+            }
+            if (quantity == 0)
+            {
+                currIdx++;
+            }
+            else
+            {
+                break;
             }
         }
         doorManager.SetOpenTime(quantity * doorOpenTime);
