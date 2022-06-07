@@ -29,4 +29,13 @@ public class Consumer : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit(Collision other)
+    {
+        Consumable consumable = other.collider.GetComponent<Consumable>();
+        if (consumable != null)
+        {
+            consumable.StopConsume();
+        }
+    }
+
 }

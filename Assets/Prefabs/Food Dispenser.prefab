@@ -114,10 +114,10 @@ MonoBehaviour:
   DoorMoveDistance: 0.6
   ButtonMoveDistance: 0.02
   DoorOpenSpeed: 0.01
-  ButtonActiveColor: {r: 0.9245283, g: 0.039248828, b: 0.039248828, a: 0}
-  ButtonInactiveColor: {r: 0.5566038, g: 0.14440194, b: 0.14440194, a: 0}
   IsToggle: 0
   WaitTimeIfNotToggleInSecond: 2
+  lightButton: {fileID: 2100000, guid: 03008125276bc6a4a84735dd641d1b62, type: 2}
+  darkButton: {fileID: 2100000, guid: 962bb97353a793344b11b9e09a50819a, type: 2}
   buttons:
   - {fileID: 4848771936116973076}
 --- !u!82 &2986600835523369977
@@ -130,8 +130,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 24b508296c4592b46a73eb331043945f, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -417,7 +417,6 @@ GameObject:
   - component: {fileID: 4848771935424067698}
   - component: {fileID: 4848771935424067703}
   - component: {fileID: 4848771935424067696}
-  - component: {fileID: 4848771935424067697}
   m_Layer: 0
   m_Name: Food Spawning Location
   m_TagString: Untagged
@@ -454,7 +453,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4848771935424067699}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -488,20 +487,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4848771935424067697
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4848771935424067699}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4848771936116973076
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +549,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 09fbc73ccf9e3474fbea026ccea60b2f, type: 2}
+  - {fileID: 2100000, guid: 36e98d779daf9844891bee4e29891246, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -642,19 +627,7 @@ MonoBehaviour:
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4848771934901761663}
-        m_TargetAssemblyTypeName: DoorManager, Assembly-CSharp
-        m_MethodName: ControlDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7162523066327757568}
         m_TargetAssemblyTypeName: FoodDispenser, Assembly-CSharp
         m_MethodName: Dispense
         m_Mode: 1
@@ -713,7 +686,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 605e81958640321488e2cdea4a6e8e3f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -857,6 +830,7 @@ MonoBehaviour:
   foodTagManager: {fileID: 0}
   spawnFoodFolder: {fileID: 0}
   foodTagFolder: {fileID: 0}
+  smokeEffect: {fileID: 0}
 --- !u!1 &4848771936548289506
 GameObject:
   m_ObjectHideFlags: 0

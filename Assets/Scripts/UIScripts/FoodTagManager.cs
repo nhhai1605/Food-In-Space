@@ -26,9 +26,16 @@ public class FoodTagManager : MonoBehaviour
                 foodTagList.Remove(ft);
                 break;
             }
-            ft.tag.transform.position = ft.food.transform.position + Vector3.up * yOffset;
-            var lookAtPos = new Vector3(cameraSwitch.currentCamera.transform.position.x, cameraSwitch.currentCamera.transform.position.y, cameraSwitch.currentCamera.transform.position.z);
-            ft.tag.transform.LookAt(lookAtPos, cameraSwitch.currentCamera.transform.up);
+            try
+            {
+                ft.tag.transform.position = ft.food.transform.position + Vector3.up * yOffset;
+                var lookAtPos = new Vector3(cameraSwitch.currentCamera.transform.position.x, cameraSwitch.currentCamera.transform.position.y, cameraSwitch.currentCamera.transform.position.z);
+                ft.tag.transform.LookAt(lookAtPos, cameraSwitch.currentCamera.transform.up);
+            }
+            catch 
+            {
+
+            }
         }
     }
     public void AddNewTag(FoodTag newTag)
