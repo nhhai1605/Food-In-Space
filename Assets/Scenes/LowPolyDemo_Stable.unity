@@ -7454,6 +7454,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2188135354877297890, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_Text
+      value: "Try to use your right hand to point to the box or slider in the Survey
+        \nand use right trigger button to tick or change it."
+      objectReference: {fileID: 0}
     - target: {fileID: 2188135354929765496, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_InteractionManager
@@ -7484,6 +7490,12 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 1072575107}
+    - target: {fileID: 2188135356200521849, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_Text
+      value: "Try to use and hold the right trigger button to \nGrab the Food.\nThen
+        move the Food to your mouth and hold it there\nuntil it is fully consumed."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a32881c3b79149428ee8ed2a4de3c0f, type: 3}
 --- !u!1001 &5022442294567521513
@@ -7518,6 +7530,21 @@ PrefabInstance:
       propertyPath: walls.Array.data[2]
       value: 
       objectReference: {fileID: 1664371794}
+    - target: {fileID: 2122832455889574040, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122832455889574041, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122832455889574047, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2122832456930600004, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Name
