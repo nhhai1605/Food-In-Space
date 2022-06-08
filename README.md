@@ -17,6 +17,7 @@ The project contains multiple assets within the repo, which is responsible for t
 - Huanan Lin
 - Yuepeng Du
 - Hoang Hai Nguyen
+- Consultant designer: Maya Schwalb
 
 # License
 Owned by RMIT
