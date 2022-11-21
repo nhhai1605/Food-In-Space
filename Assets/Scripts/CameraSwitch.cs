@@ -27,7 +27,7 @@ public class CameraSwitch : MonoBehaviour
         vrSpectatorCamera = GameObject.FindGameObjectWithTag("VRSpectatorCamera").GetComponent<Camera>();
         cameraSwitchUI = GetComponent<CameraSwitchUI>();
 
-        setCamera(1);
+        setCamera(0);
     }
 
     public void setCamera(int id)
