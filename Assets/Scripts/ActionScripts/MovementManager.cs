@@ -17,6 +17,7 @@ public class MovementManager : MonoBehaviour
     [SerializeField] private InputActionReference buttonReference;
     private GameObject pullableObject = null;
     private bool IsThrusting = false;
+    private Vector3 thrustMagnitude = Vector3.zero;
     private Vector3 look = Vector3.zero;
     private Vector3 pullDir = Vector3.zero;
 
@@ -38,12 +39,12 @@ public class MovementManager : MonoBehaviour
     }
     void Awake()
     {
-        buttonReference.action.started += Thrust;
+        buttonReference.action.performed += Thrust;
         buttonReference.action.canceled += StopThrust;
     }
     void OnDestroy()
     {
-        buttonReference.action.started -= Thrust;
+        buttonReference.action.performed -= Thrust;
         buttonReference.action.canceled -= StopThrust;
     }
 
@@ -52,7 +53,8 @@ public class MovementManager : MonoBehaviour
 
         if (IsThrusting)
         {
-            look = Camera.main.transform.TransformDirection(Vector3.forward);
+            //look = Vector3.Scale(Camera.main.transform.TransformDirection(Vector3.forward), thrustMagnitude);
+            look = Camera.main.transform.TransformDirection(thrustMagnitude);
         }
         else
         {
@@ -81,10 +83,13 @@ public class MovementManager : MonoBehaviour
     private void Thrust(InputAction.CallbackContext context)
     {
         IsThrusting =true;
+        Vector2 rawThrustMagnitude = context.ReadValue<Vector2>();
+        thrustMagnitude = new Vector3(rawThrustMagnitude.x, 0, rawThrustMagnitude.y);
     }
     private void StopThrust(InputAction.CallbackContext context)
     {
         IsThrusting = false;
+        thrustMagnitude = Vector3.zero;
     }
 
     public void Pull(GameObject pullableObject)

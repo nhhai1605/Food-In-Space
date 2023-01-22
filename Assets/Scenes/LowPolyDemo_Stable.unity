@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.012682014, g: 0.02424938, b: 0.060201615, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7475,6 +7475,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2188135355425579763, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_Text
+      value: Try to use the left joystick/touchpad to move forwards
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188135355425579763, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_Anchor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2188135355425579764, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 434.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2188135355477608993, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_InteractionManager
@@ -7493,8 +7508,8 @@ PrefabInstance:
     - target: {fileID: 2188135356200521849, guid: 4a32881c3b79149428ee8ed2a4de3c0f,
         type: 3}
       propertyPath: m_Text
-      value: "Try to use and hold the right trigger button to \nGrab the Food.\nThen
-        move the Food to your mouth and hold it there\nuntil it is fully consumed."
+      value: "Try to use and hold the trigger button to \nGrab the Food.\nThen move
+        the Food to your mouth and hold it there\nuntil it is fully consumed."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a32881c3b79149428ee8ed2a4de3c0f, type: 3}
@@ -7533,17 +7548,17 @@ PrefabInstance:
     - target: {fileID: 2122832455889574040, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2122832455889574041, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2122832455889574047, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2122832456930600004, guid: a536069662d5cd64f87cf15a3522234d,
         type: 3}
@@ -7610,6 +7625,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5022442295959218571, guid: a536069662d5cd64f87cf15a3522234d,
+        type: 3}
+      propertyPath: buttonReference
+      value: 
+      objectReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a536069662d5cd64f87cf15a3522234d, type: 3}
 --- !u!4 &6396972357681735859 stripped
